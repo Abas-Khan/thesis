@@ -1,0 +1,16 @@
+ccopy_reg
+_reconstructor
+p1
+(cDis2Vec.gensim.models.doc2vec
+TaggedLineDocument
+p2
+c__builtin__
+object
+p3
+NtRp4
+(dp5
+S'source'
+p6
+S'capital.txt'
+p7
+sb.
