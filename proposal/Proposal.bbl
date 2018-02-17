@@ -1,0 +1,105 @@
+\begin{thebibliography}{10}
+
+\bibitem{Bengio2006}
+Y.~Bengio, H.~Schwenk, J.-S. Sen{\'e}cal, F.~Morin, and J.-L. Gauvain.
+\newblock {\em Neural Probabilistic Language Models}, pages 137--186.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2006.
+
+\bibitem{pubmed}
+N.~C. for Biotechnology~Information.
+\newblock Pubmed.
+\newblock \url{https://www.ncbi.nlm.nih.gov/pubmed}.
+
+\bibitem{ghosh2016characterizing}
+S.~Ghosh, P.~Chakraborty, E.~Cohn, J.~S. Brownstein, and N.~Ramakrishnan.
+\newblock Characterizing diseases from unstructured text: A vocabulary driven
+  word2vec approach.
+\newblock In {\em Proceedings of the 25th ACM International on Conference on
+  Information and Knowledge Management}, pages 1129--1138. ACM, 2016.
+
+\bibitem{annoy}
+Github.
+\newblock Annoy.
+\newblock \url{https://github.com/spotify/annoy}.
+
+\bibitem{grefenstette2013multi}
+E.~Grefenstette, G.~Dinu, Y.-Z. Zhang, M.~Sadrzadeh, and M.~Baroni.
+\newblock Multi-step regression learning for compositional distributional
+  semantics.
+\newblock {\em arXiv preprint arXiv:1301.6939}, 2013.
+
+\bibitem{joulin2016bag}
+A.~Joulin, E.~Grave, P.~Bojanowski, and T.~Mikolov.
+\newblock Bag of tricks for efficient text classification.
+\newblock {\em arXiv preprint arXiv:1607.01759}, 2016.
+
+\bibitem{kusner2015word}
+M.~Kusner, Y.~Sun, N.~Kolkin, and K.~Weinberger.
+\newblock From word embeddings to document distances.
+\newblock In {\em International Conference on Machine Learning}, pages
+  957--966, 2015.
+
+\bibitem{le2014distributed}
+Q.~Le and T.~Mikolov.
+\newblock Distributed representations of sentences and documents.
+\newblock In {\em Proceedings of the 31st International Conference on Machine
+  Learning (ICML-14)}, pages 1188--1196, 2014.
+
+\bibitem{mikolov2013efficient}
+T.~Mikolov, K.~Chen, G.~Corrado, and J.~Dean.
+\newblock Efficient estimation of word representations in vector space.
+\newblock {\em arXiv preprint arXiv:1301.3781}, 2013.
+
+\bibitem{mikolov2013distributed}
+T.~Mikolov, I.~Sutskever, K.~Chen, G.~S. Corrado, and J.~Dean.
+\newblock Distributed representations of words and phrases and their
+  compositionality.
+\newblock In {\em Advances in neural information processing systems}, pages
+  3111--3119, 2013.
+
+\bibitem{mitchell2010composition}
+J.~Mitchell and M.~Lapata.
+\newblock Composition in distributional models of semantics.
+\newblock {\em Cognitive science}, 34(8):1388--1429, 2010.
+
+\bibitem{pennington2014glove}
+J.~Pennington, R.~Socher, and C.~Manning.
+\newblock Glove: Global vectors for word representation.
+\newblock In {\em Proceedings of the 2014 conference on empirical methods in
+  natural language processing (EMNLP)}, pages 1532--1543, 2014.
+
+\bibitem{rehurek_lrec}
+R.~{\v R}eh{\r u}{\v r}ek and P.~Sojka.
+\newblock {Software Framework for Topic Modelling with Large Corpora}.
+\newblock In {\em {Proceedings of the LREC 2010 Workshop on New Challenges for
+  NLP Frameworks}}, pages 45--50, Valletta, Malta, May 2010. ELRA.
+\newblock \url{http://is.muni.cz/publication/884893/en}.
+
+\bibitem{sidorov2014soft}
+G.~Sidorov, A.~Gelbukh, H.~G{\'o}mez-Adorno, and D.~Pinto.
+\newblock Soft similarity and soft cosine measure: Similarity of features in
+  vector space model.
+\newblock {\em Computaci{\'o}n y Sistemas}, 18(3):491--504, 2014.
+
+\bibitem{socher2011dynamic}
+R.~Socher, E.~H. Huang, J.~Pennin, C.~D. Manning, and A.~Y. Ng.
+\newblock Dynamic pooling and unfolding recursive autoencoders for paraphrase
+  detection.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  801--809, 2011.
+
+\bibitem{yessenalina2011compositional}
+A.~Yessenalina and C.~Cardie.
+\newblock Compositional matrix-space models for sentiment analysis.
+\newblock In {\em Proceedings of the Conference on Empirical Methods in Natural
+  Language Processing}, pages 172--182. Association for Computational
+  Linguistics, 2011.
+
+\bibitem{zanzotto2010estimating}
+F.~M. Zanzotto, I.~Korkontzelos, F.~Fallucchi, and S.~Manandhar.
+\newblock Estimating linear models for compositional distributional semantics.
+\newblock In {\em Proceedings of the 23rd International Conference on
+  Computational Linguistics}, pages 1263--1271. Association for Computational
+  Linguistics, 2010.
+
+\end{thebibliography}
