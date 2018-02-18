@@ -119,7 +119,7 @@ from gensim.models.base_any2vec import BaseWordEmbeddingsModel
 try:
     from queue import Queue, Empty
 except ImportError:
-    from Queue import Queue, Empty
+    from Queue import Queue, Empty    
 
 from numpy import exp, dot, zeros, random, dtype, float32 as REAL,\
     uint32, seterr, array, uint8, vstack, fromstring, sqrt,\
@@ -134,6 +134,10 @@ from six.moves import xrange
 
 logger = logging.getLogger(__name__)
 
+from gensim.models.word2vec_inner import train_batch_sg, train_batch_cbow
+from gensim.models.word2vec_inner import score_sentence_sg, score_sentence_cbow
+from gensim.models.word2vec_inner import FAST_VERSION, MAX_WORDS_IN_BATCH
+
 try:
     from gensim.models.word2vec_inner import train_batch_sg, train_batch_cbow
     from gensim.models.word2vec_inner import score_sentence_sg, score_sentence_cbow
@@ -144,7 +148,7 @@ except ImportError:
     FAST_VERSION = -1
     MAX_WORDS_IN_BATCH = 10000
 
-    def train_batch_sg(model, sentences, alpha, work=None, compute_loss=False , vocab_file = None):
+    def train_batch_sg(model, sentences, alpha, work=None, compute_loss=False):
         """
         Update skip-gram model by training on a sequence of sentences.
         Each sentence is a list of string tokens, which are looked up in the model's
@@ -168,7 +172,7 @@ except ImportError:
                     if pos2 != pos:
                        # print " the second word is .......................".format(model.wv.index2word[word2.index])
                         train_sg_pair(
-                            model, model.wv.index2word[word.index], word2.index, alpha, compute_loss=compute_loss , vocab_file = vocab_file 
+                            model, model.wv.index2word[word.index], word2.index, alpha, compute_loss=compute_loss 
                         )
 
             result += len(word_vocabs)
@@ -253,8 +257,9 @@ except ImportError:
 
 
 def train_sg_pair(model, word, context_index, alpha, learn_vectors=True, learn_hidden=True,
-                  context_vectors=None, context_locks=None, compute_loss=False, is_ft=False , vocab_file = None):
+                  context_vectors=None, context_locks=None, compute_loss=False, is_ft=False ):
     if context_vectors is None:
+        print "that worked" 
         if is_ft:
             context_vectors_vocab = model.wv.syn0_vocab
             context_vectors_ngrams = model.wv.syn0_ngrams
@@ -304,7 +309,7 @@ def train_sg_pair(model, word, context_index, alpha, learn_vectors=True, learn_h
         #print "............ first word is .................. {0}".format(word)
         #print "............ my Vocab is  ................... {0}".format(vocab_file)
 
-        if word in vocab_file and model.wv.index2word[context_index] in vocab_file:
+        if word in model.vocabulary.dis_vocab and model.wv.index2word[context_index] in model.vocabulary.dis_vocab:
             # use this word (label = 1) + `negative` other random words not
             # from the cumulative distribution of non-disease words (label = 0)
             word_indices = [predict_word.index]
@@ -318,7 +323,7 @@ def train_sg_pair(model, word, context_index, alpha, learn_vectors=True, learn_h
             if learn_hidden:
                 model.syn1neg[word_indices] += outer(gb, l1)  # learn hidden -> output
             neu1e += dot(gb, l2b)  # save error
-        elif word not in vocab_file and model.wv.index2word[context_index] not in vocab_file:
+        elif word not in model.vocabulary.dis_vocab and model.wv.index2word[context_index] not in model.vocabulary.dis_vocab:
             # use this word (label = 1) + `negative` other random words not
             # from the cumulative distribution of disease vocabulary words (label = 0)
             word_indices = [predict_word.index]
@@ -722,6 +727,8 @@ class Word2Vec(BaseWordEmbeddingsModel):
         >>> model = Word2Vec(min_count=1)
         >>> model.build_vocab(sentences)
         >>> model.train(sentences, total_examples=model.corpus_count, epochs=model.iter)
+
+
 
         """
 

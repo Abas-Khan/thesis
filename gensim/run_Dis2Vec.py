@@ -34,10 +34,10 @@ class Dis2Vec(object):
 
        
 
-        model = Doc2Vec(self.params["sent"], size=self.params["dim"], window=self.params["win"], 
+        model = Doc2Vec(self.params["sent"], vector_size=self.params["dim"], window=self.params["win"], 
                             min_count=self.params["min_cnt"], sample=self.params["sample"], workers=cores,
-                            dm=0,dbow_words=1,hs=0, negative=self.params["neg"], iter=self.params["iter"], smoothing=0.3,
-                            vocab_file=self.params["vocab"])
+                            dm=0,dbow_words=1,hs=0, negative=self.params["neg"], epochs=self.params["iter"], smoothing=0.3,
+                            sampling_param=0.3, objective_param=0.3, vocab_file=self.params["vocab"])
         # if you pass the document to the model , no need to build the vocabulary
         #model.build_vocab(self.params["sent"])
 
@@ -74,15 +74,7 @@ def main():
     
    # sentences_corpus = pickle.load(open(_arg.inputcorpus, "r")) # Input corpus (list of sentences as input where each sentence is a list of tokens. file should be in .pkl format).
     sentences = TaggedLineDocument('capital.txt')
-    output = open('sentence.pkl', 'wb')
-    pickle.dump(sentences,output)
-    output.close()
 
-
-
-    sentences = open('sentence.pkl', 'rb')
-
-    sentences_corpus = pickle.load(sentences)
 
 
     domain_vocab_file = "cancer , illness , sickness , Islamabad , Beghdad , Paris"
@@ -92,7 +84,7 @@ def main():
     win = 5
     neg = 5
    
-    kwargs = {"sent": sentences_corpus, "vocab": domain_vocab_file, 
+    kwargs = {"sent": sentences, "vocab": domain_vocab_file, 
               "dim": dim, "win": win, "min_cnt": 5, "neg": neg, "iter": 10, 
               "sample": 1e-05}
     Dis2Vec(**kwargs).run_Dis2Vec()
