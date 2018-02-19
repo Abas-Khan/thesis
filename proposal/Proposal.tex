@@ -345,14 +345,18 @@ The work is planned to consist of following stages:
 	\end{itemize}
 	
 	
-	\item PubMed uses special language/notation to describe different age groups. i.e elderly, middle aged, $>$60 years old and 50-60 years old. Similar language/notation is used while generating patient descriptions from a given database.
-	
-	\item Use different variants of Doc2Vec like DBOW, DM and DMC to see which performs the best.
-
-	\item Extending the query document by adding rephrases of the key parts. For example, The query document \say {75 years old patient has rectal cancer } is extended to \say{ Elderly patient, $>$70 years old, The patient has rectal cancer, cancer in rectum }. The query document is generated in a structured way to allow easy extension. The basic structure of the query document is ."Age, Gender, Type of cancer , Type of metastasis".   
+	\item Manual Preprocessing
+	\begin{itemize}
+			\item PubMed uses special language/notation to describe different age-groups. i.e elderly, middle aged, $>$60 years old and 50-60 years old. Similar language/notation will be used while generating patient descriptions from a given database.
+			
+			\item Extending the query document by adding rephrases of the key parts. For example, The query document \say {75 years old patient has rectal cancer } is extended to \say{ Elderly patient, $>$70 years old, The patient has rectal cancer, cancer in rectum }. The query document is generated in a structured way to allow easy extension. The basic structure of the query document is ."Age, Gender, Type of cancer , Type of metastasis". 
+		
+	\end{itemize}
+	\item Different variants of Doc2Vec like DBOW, DM and DMC will be used to see which performs the best.
+  
 	
 	\item Extend the Dis2Vec \cite{ghosh2016characterizing} model to work on document level.
-	\item The final results will compared against vanilla Doc2Vec model.
+	\item The final results will be compared against vanilla Doc2Vec model.
 	
 	
 \end{itemize}
@@ -388,9 +392,9 @@ be used:
 
 For medical domain, the following can be used:
 \begin{itemize}
-	\item Pubmed subset corpus on colorectal cancer
-	\item Full Pubmed abstracts
-	\item PMC another subset of PubMed which contains full articles
+	\item Pubmed abstracts subset corpus on colorectal cancer
+	\item Full set of Pubmed abstracts
+	\item PMC, another subset of PubMed which contains full articles
 \end{itemize}
 
 
@@ -403,7 +407,7 @@ Following steps describe the technique to be used as a proof of method on Full W
 	
 	
 	
-	\item Take a random target article and use the part of its information to infer a vector. Infer vector is a method to infer a vector for the out-of-sample documents. Inference starts with a low-magnitude random vector, that is then incrementally adjusted to be more predictive.
+	\item Take a random target article and use the part of its information to infer a vector. Infer-vector is a method to obtain an embedding for the out-of-sample documents. Inference starts with a low-magnitude random vector, that is then incrementally adjusted to be more predictive.
 	
 	\item Use this inferred vector to find 10 similar documents.
 	\item The prediction task is to predict the article the given information belongs to.
@@ -411,14 +415,14 @@ Following steps describe the technique to be used as a proof of method on Full W
 \end{itemize}
 
 
-This validation technique revealed an interesting correlation between the size of the document and the number of iterations (a.k.a steps)  used to infer a vector.
+Initial experiments revealed an interesting correlation between the size of the document and the number of iterations (a.k.a steps)  used to infer a vector.
 
 \subsubsection*{PubMed corpus}
 
 For medical domain, we first infer a vector for a patient description and then find PubMed abstracts which are semantically closer to the given patient record.
 For result evaluation, we have 400 labeled abstracts. For each of these 400 abstracts, we have 10 other abstracts which have been labeled to be semantically close. 
 
-For a given patient record the task is to predict semantically similar PubMed abstracts which can be helpful for the doctors.
+For a given query document the task is to predict semantically similar documents.
 
 
 
