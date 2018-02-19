@@ -241,19 +241,19 @@
 	The goal of this thesis is to use a neural network model to map patient records to semantically similar and potentially helpful research work. For training the model large volume of raw texts from PubMed \cite{pubmed}  will be used.
 	
 	
-	The traditional approach for finding relevant documents for a given query is to count repetitions of query terms in the documents. Different weight schemes for these counts lead to a variety of TF-IDF ranking features.However, the basic forms of such a ranking system only consider query terms, under the assumption that non-query terms are less useful for document ranking. This makes such ranking systems incapable of capturing the deep semantic meaning of the text all by itself. 
+	The traditional approach for finding relevant documents for a given query is to count repetitions of query terms in the documents. Different weight schemes for these counts lead to a variety of TF-IDF ranking features. However, the basic forms of such a ranking system only consider query terms, under the assumption that non-query terms are less useful for document ranking. This makes such ranking systems incapable of capturing the deep semantic meaning of the text all by itself. 
 	
 	Neural network models have recently shown impressive results in capturing the underlying semantics of the documents\cite{Bengio2006}.
-	The main stumbling block in creating such a semantic model is the lack of training labeled data. Another challenge is lack of freely available data, PubMed mostly provides abstracts of research articles for free. 
+	The main stumbling block in creating such a semantic model is the lack of labeled data required for training such a method. Another challenge is the lack of freely available data, PubMed mostly provides abstracts of research articles for free. 
 	
-	The main idea of this thesis is to explore ways in which deep-learning can be used for solving the problem of finding semantically similar/helpful research articles given a patient record. The chosen direction of the research is to apply Doc2Vec model proposed in \cite{le2014distributed} and explore different ways in which the Doc2Vec model can be extended/improved.
+	The main idea of this thesis is to explore ways in which deep learning can be used for solving the problem of finding semantically similar/helpful research articles given a patient record. The chosen direction of the research is to apply Doc2Vec model proposed in \cite{le2014distributed} and explore different ways in which the Doc2Vec model can be extended/improved.
 	
 	\section*{Background \& Literature Review}
 	
 	\subsection*{Embedding Models}
 	Usage of deep learning in the context of NLP tasks requires representing the text as the input for neural networks. As of late, the most used and powerful representations are one of the following embeddings: Word2Vec \cite{mikolov2013efficient} and GloVe \cite{pennington2014glove}, which are word level embeddings. An extension to Word2Vec known as Doc2Vec was proposed in \cite{le2014distributed}.  
 	
-	We look closer at the Word2Vec and Doc2Vec models, as they are the most relevant to this work. Word2Vec model uses distributed vector representation of words, a well-known framework for learning word vectors as shown in the (Figure 1). The task is to learn to predict a word given other words in the context.
+	We look closer at the Word2Vec and Doc2Vec models, as they are the most relevant to this work. Word2Vec model uses distributed vector representation of words, a well-known framework for learning word vectors as shown in the Figure 1. The task is to learn to predict a word given other words in the context.
 	More formally, given a sequence of training words
 	$w_{1}, w_{2}, w_{3}, ..., w_{T} $, the objective of the word vector model is to maximize the average log probability
 	\\
@@ -271,7 +271,7 @@
 		\label{fig:Word2Vec model}
 	\end{figure}
 	Some commendable efforts have been made to go beyond word level representations  \cite{mitchell2010composition}  \cite{zanzotto2010estimating} 
-	\cite{yessenalina2011compositional}  \cite{grefenstette2013multi}  \cite{mikolov2013distributed}. A simple approach is to use the weighted average of all the words in the document. But weighted averaging of word vectors loses the word order.A more sophisticated approach is combining the word vectors
+	\cite{yessenalina2011compositional}  \cite{grefenstette2013multi}  \cite{mikolov2013distributed}. A simple approach is to use the weighted average of all the words in the document. But weighted averaging of word vectors loses the word order. A more sophisticated approach is combining the word vectors
 	in an order given by a parse tree of a sentence, using
 	matrix-vector operations \cite{socher2011dynamic}. A drawback of such an approach is that it only works on sentences as it relies on parse trees.
 	
@@ -313,26 +313,10 @@
 		\item $D(\rightharpoondown d) = {(w, c): w \in V \oplus c \in V }$, i.e. either the word w is in V or the context c is in V but both cannot be in V
 	\end{itemize}
 	
-	
-	\section*{Possible Directions}
-	
-	Some interesting directions which might improve the performance for the given task are the following
-	
-	
-	\begin{itemize}
-		\item Extended the query document by adding all the synonym and rephrases of the keywords. 
-		\item Focusing only on the features which are more descriptive than others.
-		\item Learning out of vocabulary synonyms for key-words by using medical dictionaries.
-		\item Learning word morphologies as suggested in \cite{joulin2016bag}
-		\item Using different distance metrics such as \cite{sidorov2014soft} \cite{kusner2015word} instead of \cite{annoy} used by gensim \cite{rehurek_lrec}.
 		
-		
-	\end{itemize}
-	
-	
 	
 	\section*{Planned work} 
-	The work is planned to consist of following stages:
+	The work is planned to consist of the following stages:
 	\begin{itemize}
 		\item Use the gensim \cite{rehurek_lrec} implementation of the Doc2Vec model as described in (\cite{le2014distributed}), and train it on
 		the following
@@ -349,14 +333,29 @@
 		\begin{itemize}
 			\item PubMed uses special language/notation to describe different age-groups. i.e elderly, middle-aged, $>$60 years old and 50-60 years old. Similar language/notation will be used while generating patient descriptions from a given database.
 			
-			\item Extending the query document by adding rephrases of the key parts. For example, The query document \say {75 years old patient has rectal cancer } is extended to \say{ Elderly patient, $>$70 years old, The patient has rectal cancer, cancer in rectum }. The query document is generated in a structured way to allow an easy extension. The basic structure of the query document is ."Age, Gender, Type of cancer, Type of metastasis". 
+			\item Extending the query document by adding rephrases of the key parts. For example, The query document \say {75 years old patient has rectal cancer } is extended to \say{ Elderly patient, $>$70 years old, The patient has rectal cancer, cancer in rectum }. The query document is generated in a structured way to allow an easy extension. The basic structure of the query document is \say{Age, Gender, Type of cancer, Type of metastasis}.
+			 
+			\item Instead of generating the full patient record, only the following information is recorded
+			\begin{itemize}
+				\item The type of cancer
+				\item Patients age
+				\item Patients gender
+				\item Primary tumor location
+				\item Type of surgery to be performed
+				
+			\end{itemize} 
 			
 		\end{itemize}
-		\item Different variants of Doc2Vec like DBOW, DM and DMC will be used to see which performs the best.
+		
+
+		\item Use different variants of Doc2Vec like DBOW, DM and DMC to see which performs the best.
 		
 		
 		\item Extend the Dis2Vec \cite{ghosh2016characterizing} model to work on document level.
-		\item The final results will be compared against the vanilla Doc2Vec model.
+		
+		\item Use different distance metrics such as \cite{sidorov2014soft} \cite{kusner2015word} and \cite{annoy} to find out which distance metric produces the best results.
+		
+		\item Compare the final results against the vanilla Doc2Vec model.
 		
 		
 	\end{itemize}
@@ -365,7 +364,7 @@
 	
 	\section*{Technical Description} 
 	\subsection*{Implementation}
-	Following tools are to be used in the project
+	The Following tools are to be used in the project
 	
 	\begin{itemize}
 		\item Gensim library \cite{rehurek_lrec} implementation will be used for the vanilla Doc2vec model and its variants. 
@@ -419,7 +418,7 @@
 	
 	\subsubsection*{PubMed corpus}
 	
-	For medical domain, we first infer a vector for a patient description and then find PubMed abstracts which are semantically closer to the given patient record.
+	For the medical domain, we first infer a vector for a patient description and then find PubMed abstracts which are semantically closer to the given patient record.
 	For result evaluation, we have 400 labeled abstracts. For each of these 400 abstracts, we have 10 other abstracts which have been labeled to be semantically close. 
 	
 	For a given query document the task is to predict semantically similar documents.
@@ -435,7 +434,7 @@
 	
 	where k is the rank in the sequence of retrieved documents,  n is the number of retrieved documents,  P(k) is the precision at cut-off k in the list and rel(k) is an indicator function equaling 1 if the item at rank k is a relevant document, zero otherwise.
 	
-	For multiple queries, an extension of Average precision known as Mean average precision is used. Mean average precision for a set of queries is the mean of the average precision scores for each query. In this thesis Mean average precision(MAP) will be used as an evaluation metric.
+	For multiple queries, an extension of average precision known as mean average precision is used. Mean average precision for a set of queries is the mean of the average precision scores for each query. In this thesis mean average precision(MAP) will be used as an evaluation metric.
 	
 	\bibliographystyle{abbrv}
 	\bibliography{Proposal} 

@@ -4,45 +4,45 @@ The top-level auxiliary file: Proposal.aux
 The style file: abbrv.bst
 Database file #1: Proposal.bib
 Warning--can't use both author and editor fields in Bengio2006
-You've used 17 entries,
+You've used 16 entries,
             2118 wiz_defined-function locations,
-            597 strings with 7378 characters,
-and the built_in function-call counts, 7365 in all, are:
-= -- 744
-> -- 339
+            593 strings with 7213 characters,
+and the built_in function-call counts, 7063 in all, are:
+= -- 717
+> -- 316
 < -- 10
-+ -- 133
-- -- 116
-* -- 475
-:= -- 1120
-add.period$ -- 56
-call.type$ -- 17
-change.case$ -- 108
++ -- 124
+- -- 108
+* -- 454
+:= -- 1063
+add.period$ -- 53
+call.type$ -- 16
+change.case$ -- 101
 chr.to.int$ -- 0
-cite$ -- 18
-duplicate$ -- 303
-empty$ -- 569
-format.name$ -- 116
-if$ -- 1624
+cite$ -- 17
+duplicate$ -- 293
+empty$ -- 552
+format.name$ -- 108
+if$ -- 1566
 int.to.chr$ -- 0
-int.to.str$ -- 17
-missing$ -- 16
-newline$ -- 89
-num.names$ -- 34
-pop$ -- 141
+int.to.str$ -- 16
+missing$ -- 15
+newline$ -- 84
+num.names$ -- 32
+pop$ -- 134
 preamble$ -- 1
-purify$ -- 92
+purify$ -- 86
 quote$ -- 0
-skip$ -- 256
+skip$ -- 249
 stack$ -- 0
-substring$ -- 493
-swap$ -- 124
+substring$ -- 488
+swap$ -- 123
 text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 66
+type$ -- 62
 warning$ -- 1
-while$ -- 68
-width$ -- 19
-write$ -- 190
+while$ -- 66
+width$ -- 18
+write$ -- 180
 (There was 1 warning)
