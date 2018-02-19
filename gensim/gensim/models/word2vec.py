@@ -259,7 +259,7 @@ except ImportError:
 def train_sg_pair(model, word, context_index, alpha, learn_vectors=True, learn_hidden=True,
                   context_vectors=None, context_locks=None, compute_loss=False, is_ft=False ):
     if context_vectors is None:
-        print "that worked" 
+        #print "that worked" 
         if is_ft:
             context_vectors_vocab = model.wv.syn0_vocab
             context_vectors_ngrams = model.wv.syn0_ngrams
@@ -1545,7 +1545,9 @@ class Word2VecVocab(utils.SaveLoad):
         """
 
 
-       # print " ................................ making the cum_table ......................................................... \n"
+
+
+        print " ................................ making the cum_table ......................................................... \n"
 
 
         #self.wistle = " /////////////////////////// worked ////////////////////////////"

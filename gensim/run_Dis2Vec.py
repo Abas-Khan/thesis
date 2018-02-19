@@ -43,8 +43,9 @@ class Dis2Vec(object):
 
         # No need to train either if you provide the documents to the model it will train on it automatically
         #model.train(self.params["sent"], total_examples=model.corpus_count, epochs=model.iter)
-
-        print model.most_similar("Islamabad")
+        #for word, vocab_obj in model.wv.vocab.items():
+        #    print word
+        print model.similar_by_word("Bangladesh", topn=10, restrict_vocab=None)
         
         end_time = time.time()
         print ("Total time taken is: " + str((end_time - start_time) / 3600.) + " hours")
@@ -73,11 +74,11 @@ def main():
 
     
    # sentences_corpus = pickle.load(open(_arg.inputcorpus, "r")) # Input corpus (list of sentences as input where each sentence is a list of tokens. file should be in .pkl format).
-    sentences = TaggedLineDocument('capital.txt')
+    sentences = TaggedLineDocument('countries.txt')
 
 
 
-    domain_vocab_file = "cancer , illness , sickness , Islamabad , Beghdad , Paris"
+    domain_vocab_file = "country Bengal Bangladesh South Asia India Myanmar"
 
 
     dim = 300
@@ -85,7 +86,7 @@ def main():
     neg = 5
    
     kwargs = {"sent": sentences, "vocab": domain_vocab_file, 
-              "dim": dim, "win": win, "min_cnt": 5, "neg": neg, "iter": 10, 
+              "dim": dim, "win": win, "min_cnt": 1, "neg": neg, "iter": 10, 
               "sample": 1e-05}
     Dis2Vec(**kwargs).run_Dis2Vec()
 

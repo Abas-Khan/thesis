@@ -709,3 +709,4 @@ def init():
         return 2
 
 FAST_VERSION = init()  # initialize the module
+MAX_WORDS_IN_BATCH = MAX_SENTENCE_LEN
