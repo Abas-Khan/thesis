@@ -244,7 +244,7 @@
 	The traditional approach for finding relevant documents for a given query is to count repetitions of query terms in the documents. Different weight schemes for these counts lead to a variety of TF-IDF ranking features. However, the basic forms of such a ranking system only consider query terms, under the assumption that non-query terms are less useful for document ranking. This makes such ranking systems incapable of capturing the deep semantic meaning of the text all by itself. 
 	
 	Neural network models have recently shown impressive results in capturing the underlying semantics of the documents\cite{Bengio2006}.
-	The main stumbling block in creating such a semantic model is the lack of labeled data required for training such a method. Another challenge is the lack of freely available data, PubMed mostly provides abstracts of research articles for free. 
+	The main stumbling block in creating such a semantic model is the lack of freely available data, PubMed mostly provides abstracts of research articles for free. 
 	
 	The main idea of this thesis is to explore ways in which deep learning can be used for solving the problem of finding semantically similar/helpful research articles given a patient record. The chosen direction of the research is to apply Doc2Vec model proposed in \cite{le2014distributed} and explore different ways in which the Doc2Vec model can be extended/improved.
 	
@@ -348,7 +348,7 @@
 		\end{itemize}
 		
 
-		\item Use different variants of Doc2Vec like DBOW, DM and DMC to see which performs the best.
+		\item Use different variants of Doc2Vec like DBOW, DM, and DMC to see which performs the best.
 		
 		
 		\item Extend the Dis2Vec \cite{ghosh2016characterizing} model to work on document level.
@@ -364,7 +364,7 @@
 	
 	\section*{Technical Description} 
 	\subsection*{Implementation}
-	The Following tools are to be used in the project
+	The following tools are to be used in the project
 	
 	\begin{itemize}
 		\item Gensim library \cite{rehurek_lrec} implementation will be used for the vanilla Doc2vec model and its variants. 
@@ -389,7 +389,7 @@
 		\item Wikipedia info-box corpus
 	\end{itemize}
 	
-	For medical domain, the following can be used:
+	For the medical domain, the following can be used:
 	\begin{itemize}
 		\item Pubmed abstracts subset corpus on colorectal cancer
 		\item Full set of Pubmed abstracts
@@ -426,7 +426,7 @@
 	
 	
 	\subsection*{Evaluation Metric}
-	Precision and recall are single-value metrics based on the whole list of documents returned by the system. For systems that return a ranked sequence of documents, it is desirable to also consider the order in which the returned documents are presented. Average Precision(AP) is thus define as:
+	Precision and recall are single-value metrics based on the whole list of documents returned by the system. For systems that return a ranked sequence of documents, it is desirable to also consider the order in which the returned documents are presented. Average precision (AP) is thus define as:
 	
 	\begin{equation}
 	AP =\frac {\sum_{k=1}^{n}(P(k)\times rel (k))}{\mbox {number of relevant documents}}
@@ -434,7 +434,7 @@
 	
 	where k is the rank in the sequence of retrieved documents,  n is the number of retrieved documents,  P(k) is the precision at cut-off k in the list and rel(k) is an indicator function equaling 1 if the item at rank k is a relevant document, zero otherwise.
 	
-	For multiple queries, an extension of average precision known as mean average precision is used. Mean average precision for a set of queries is the mean of the average precision scores for each query. In this thesis mean average precision(MAP) will be used as an evaluation metric.
+	For multiple queries, an extension of average precision known as mean average precision is used. Mean average precision for a set of queries is the mean of the average precision scores for each query. In this thesis mean average precision (MAP) will be used as an evaluation metric.
 	
 	\bibliographystyle{abbrv}
 	\bibliography{Proposal} 
