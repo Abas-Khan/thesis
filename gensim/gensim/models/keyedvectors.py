@@ -169,6 +169,9 @@ class BaseKeyedVectors(utils.SaveLoad):
             return self.get_vector(entities)
 
         return vstack([self.get_vector(entity) for entity in entities])
+        
+    def setvector(self,entity,entity1):
+        self.vectors[self.vocab[entity].index] =   self.vectors[self.vocab[entity1].index]
 
     def __contains__(self, entity):
         return entity in self.vocab

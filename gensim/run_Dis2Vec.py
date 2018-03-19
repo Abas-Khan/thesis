@@ -11,6 +11,8 @@ import cPickle as pickle
 from gensim.models import Word2Vec
 from gensim.models import Doc2Vec
 from gensim.models.word2vec import LineSentence
+from gensim.models.doc2vec import TaggedDocument
+from nltk.corpus import stopwords
 
 from gensim.models.doc2vec import TaggedLineDocument
 import time
@@ -18,6 +20,16 @@ import logging
 import argparse
 import numpy as np
 import multiprocessing
+from sklearn.decomposition import PCA
+from matplotlib import pyplot
+from gensim.parsing.preprocessing import remove_stopwords
+
+from gensim.models import Phrases
+from gensim.models.phrases import Phraser
+
+
+import sys
+import codecs
 
 
 logging.basicConfig()
@@ -33,11 +45,12 @@ class Dis2Vec(object):
         cores = multiprocessing.cpu_count()
 
        
-
+        all_docs = self.params["tag_doc"]
         model = Doc2Vec(self.params["sent"], vector_size=self.params["dim"], window=self.params["win"], 
-                            min_count=self.params["min_cnt"], sample=self.params["sample"], workers=cores,
-                            dm=0,dbow_words=1,hs=0, negative=self.params["neg"], epochs=self.params["iter"], smoothing=0.3,
-                            sampling_param=0.3, objective_param=0.3, vocab_file=self.params["vocab"])
+                            min_count=self.params["min_cnt"], workers=1,hs=0,negative=15,
+                            dm=0,dbow_words=1,epochs=self.params["iter"], smoothing=0.5,
+                            sampling_param=0.7, objective_param=0.5, vocab_file=self.params["vocab"])
+                            
         # if you pass the document to the model , no need to build the vocabulary
         #model.build_vocab(self.params["sent"])
 
@@ -45,10 +58,38 @@ class Dis2Vec(object):
         #model.train(self.params["sent"], total_examples=model.corpus_count, epochs=model.iter)
         #for word, vocab_obj in model.wv.vocab.items():
         #    print word
-        print model.similar_by_word("Bangladesh", topn=10, restrict_vocab=None)
+        #query_doc = "".split()
+        #inferred_docvec = model.infer_vector(query_doc,steps=500)
+        #inferred_docvec = model.infer_vector(all_docs[0].words)
+        #print model.docvecs.most_similar([inferred_docvec], topn=10)
+        #print model.similar_by_word("Bangladesh", topn=10)
         
+        print " \n  results \n"
+        '''
+        for doc in all_docs:   
+            print doc[0][0:2]
+            inferred_docvec = model.infer_vector(doc.words)
+            print model.docvecs.most_similar([inferred_docvec], topn=10)
+        '''
+       
+        #print model.wv.get_vector('sport')
+        model.wv.setvector('mulk','country')
+        print model.similar_by_word("country", topn=10)
+   
+        #print "....................."
+        #print model.most_similar_cosmul("sport",topn=10)
         end_time = time.time()
         print ("Total time taken is: " + str((end_time - start_time) / 3600.) + " hours")
+
+        	
+        X = model[model.wv.vocab]
+        pca = PCA(n_components=2)
+        result = pca.fit_transform(X)
+        pyplot.scatter(result[:, 0], result[:, 1])
+        words = list(model.wv.vocab)
+        for i, word in enumerate(words):
+	        pyplot.annotate(word, xy=(result[i, 0], result[i, 1]))
+        pyplot.show()   
         out_folder = './output/'
         if not os.path.isdir(out_folder):
             os.makedirs(out_folder)
@@ -70,25 +111,59 @@ def parse_args():
     ap.add_argument("-sm", "--smoothing", type = str, required = True, help = "smoothing parameter (0.75, 1.0)")
     return ap.parse_args()
 
+
+class TaggedTester(object):
+    def __init__(self, data):
+        self.data = data
+        #self.wiki.metadata = True
+    def __iter__(self):
+        for line_no,doc in enumerate(self.data):
+            doc = list(filter(lambda word: word not in stopwords.words('english'), doc))
+            label = " ".join(doc[:5])
+            doc = [element.lower() for element in doc]
+        
+            yield TaggedDocument(doc, [label])
+
 def main():
 
     
    # sentences_corpus = pickle.load(open(_arg.inputcorpus, "r")) # Input corpus (list of sentences as input where each sentence is a list of tokens. file should be in .pkl format).
-    sentences = TaggedLineDocument('countries.txt')
+    sentences =  LineSentence('countries_filter.txt')
+    contents = TaggedTester(sentences)
+    #contents = TaggedLineDocument("countries_filter.txt")
+
+
+    
+    #phrases = Phrases(contents, min_count=1)
+    #bigram = Phraser(phrases)
+    # filtered_words = list(filter(lambda word: word not in stopwords.words('english'), line))
+           
+    '''
+    tagged_docs = []
+    for item_no, line in enumerate(contents):
+            filtered_words = list(filter(lambda word: word not in stopwords.words('english'), line))
+            tagged_docs.append(TaggedDocument(bigram[filtered_words], [item_no]))
+    '''
+    #sentences = TaggedDocument(bigram[contents])
 
 
 
-    domain_vocab_file = "country Bengal Bangladesh South Asia India Myanmar"
+    domain_vocab_file = "sports sport players teams team goal score scores scored target rules"
+    vocab_list = domain_vocab_file.split()
 
 
     dim = 300
-    win = 5
+    win = 12
     neg = 5
+
+    #print tagged_docs[1]
+    #sys.exit(0)
    
-    kwargs = {"sent": sentences, "vocab": domain_vocab_file, 
-              "dim": dim, "win": win, "min_cnt": 1, "neg": neg, "iter": 10, 
-              "sample": 1e-05}
+    kwargs = {"sent": contents, "vocab": vocab_list, 
+              "dim": dim, "win": win, "min_cnt": 1, "neg": neg, "iter":10 , "tag_doc" :contents
+              }
     Dis2Vec(**kwargs).run_Dis2Vec()
+    
 
 if __name__ == "__main__":
     main()

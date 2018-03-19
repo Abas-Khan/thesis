@@ -64,7 +64,7 @@ from numpy import zeros, float32 as REAL, empty, ones, \
 from gensim.utils import call_on_class_only
 from gensim import utils, matutils  # utility fnc for pickling, common scipy operations etc
 from gensim.models.word2vec import Word2VecKeyedVectors, Word2VecVocab, Word2VecTrainables, train_cbow_pair,\
-    train_sg_pair, train_batch_sg ,train_sg_pair_docs_only
+    train_sg_pair, train_batch_sg ,train_sg_pair_docs_only,train_cbow_pair_dis2vec,train_batch_sg_normal
 from six.moves import xrange
 from six import string_types, integer_types, itervalues
 from gensim.models.base_any2vec import BaseWordEmbeddingsModel
@@ -73,6 +73,7 @@ from types import GeneratorType
 from gensim.utils import deprecated
 
 logger = logging.getLogger(__name__)
+'''
 from gensim.models.doc2vec_inner import train_document_dbow,train_document_dbow_docs, train_document_dm, train_document_dm_concat
 from gensim.models.word2vec_inner import FAST_VERSION
 
@@ -82,161 +83,207 @@ try:
 
 except ImportError:
     # failed... fall back to plain numpy (20-80x slower training than the above)
-    FAST_VERSION = -1
+'''
 
-    def train_document_dbow(model, doc_words, doctag_indexes, alpha, work=None,
-                            train_words=False, learn_doctags=True, learn_words=True, learn_hidden=True,
-                            word_vectors=None, word_locks=None, doctag_vectors=None, doctag_locks=None ):
-        """
-        Update distributed bag of words model ("PV-DBOW") by training on a single document.
-        Called internally from `Doc2Vec.train()` and `Doc2Vec.infer_vector()`.
-        The document is provided as `doc_words`, a list of word tokens which are looked up
-        in the model's vocab dictionary, and `doctag_indexes`, which provide indexes
-        into the doctag_vectors array.
-        If `train_words` is True, simultaneously train word-to-word (not just doc-to-word)
-        examples, exactly as per Word2Vec skip-gram training. (Without this option,
-        word vectors are neither consulted nor updated during DBOW doc vector training.)
-        Any of `learn_doctags', `learn_words`, and `learn_hidden` may be set False to
-        prevent learning-updates to those respective model weights, as if using the
-        (partially-)frozen model to infer other compatible vectors.
-        This is the non-optimized, Python version. If you have cython installed, gensim
-        will use the optimized version from doc2vec_inner instead.
-        """
+FAST_VERSION = -1
 
-    # print "In dbow function i have ", vocab_file
+global iterations
+iterations = 0
+import sys
+def train_document_dbow(model, doc_words, doctag_indexes, alpha, work=None,
+                        train_words=False, learn_doctags=True, learn_words=True, learn_hidden=True,
+                        word_vectors=None, word_locks=None, doctag_vectors=None, doctag_locks=None ):
+    """
+    Update distributed bag of words model ("PV-DBOW") by training on a single document.
+    Called internally from `Doc2Vec.train()` and `Doc2Vec.infer_vector()`.
+    The document is provided as `doc_words`, a list of word tokens which are looked up
+    in the model's vocab dictionary, and `doctag_indexes`, which provide indexes
+    into the doctag_vectors array.
+    If `train_words` is True, simultaneously train word-to-word (not just doc-to-word)
+    examples, exactly as per Word2Vec skip-gram training. (Without this option,
+    word vectors are neither consulted nor updated during DBOW doc vector training.)
+    Any of `learn_doctags', `learn_words`, and `learn_hidden` may be set False to
+    prevent learning-updates to those respective model weights, as if using the
+    (partially-)frozen model to infer other compatible vectors.
+    This is the non-optimized, Python version. If you have cython installed, gensim
+    will use the optimized version from doc2vec_inner instead.
+    """
 
-        if doctag_vectors is None:
-            doctag_vectors = model.docvecs.doctag_syn0
-        if doctag_locks is None:
-            doctag_locks = model.docvecs.doctag_syn0_lockf
+# print "In dbow function i have ", vocab_file
+    #print model.corpus_count * model.iter/2
+    global iterations
+    # print "index is ",doctag_indexes
+    #print "\r",
 
-        if train_words and learn_words:
+    
+
+    
+    if doctag_vectors is None:
+        doctag_vectors = model.docvecs.doctag_syn0
+    if doctag_locks is None:
+        doctag_locks = model.docvecs.doctag_syn0_lockf
+    #for key, value in model.docvecs.doctags.iteritems():
+    #    print key, value
+    #sys,exit()
+    if train_words and learn_words:
+        if iterations >= model.corpus_count*5:
+            print "back to factory method"
+            train_batch_sg_normal(model, [doc_words], alpha, work)
+        else:
+            print "normal call"
+
             train_batch_sg(model, [doc_words], alpha, work)
-        for doctag_index in doctag_indexes:
+
+
+    if iterations >= model.corpus_count*0:
+       # print "starting document training"
+
+        for doctag_index in doctag_indexes:   
             for word in doc_words:
                 #print "................ a call from here ......................"
-                train_sg_pair(
+                train_sg_pair_docs_only(
                     model, word, doctag_index, alpha, learn_vectors=learn_doctags, learn_hidden=learn_hidden,
                     context_vectors=doctag_vectors, context_locks=doctag_locks
                 )
+    global iterations
+    iterations = iterations + 1
+    return len(doc_words)
 
-        return len(doc_words)
+def train_document_dm(model, doc_words, doctag_indexes, alpha, work=None, neu1=None,
+                    learn_doctags=True, learn_words=True, learn_hidden=True,
+                    word_vectors=None, word_locks=None, doctag_vectors=None, doctag_locks=None):
+    """
+    Update distributed memory model ("PV-DM") by training on a single document.
+    Called internally from `Doc2Vec.train()` and `Doc2Vec.infer_vector()`. This
+    method implements the DM model with a projection (input) layer that is
+    either the sum or mean of the context vectors, depending on the model's
+    `dm_mean` configuration field.  See `train_document_dm_concat()` for the DM
+    model with a concatenated input layer.
+    The document is provided as `doc_words`, a list of word tokens which are looked up
+    in the model's vocab dictionary, and `doctag_indexes`, which provide indexes
+    into the doctag_vectors array.
+    Any of `learn_doctags', `learn_words`, and `learn_hidden` may be set False to
+    prevent learning-updates to those respective model weights, as if using the
+    (partially-)frozen model to infer other compatible vectors.
+    This is the non-optimized, Python version. If you have a C compiler, gensim
+    will use the optimized version from doc2vec_inner instead.
+    """
+    if word_vectors is None:
+        word_vectors = model.wv.syn0
+    if word_locks is None:
+        word_locks = model.syn0_lockf
+    if doctag_vectors is None:
+        doctag_vectors = model.docvecs.doctag_syn0
+    if doctag_locks is None:
+        doctag_locks = model.docvecs.doctag_syn0_lockf
 
-    def train_document_dm(model, doc_words, doctag_indexes, alpha, work=None, neu1=None,
-                        learn_doctags=True, learn_words=True, learn_hidden=True,
-                        word_vectors=None, word_locks=None, doctag_vectors=None, doctag_locks=None):
-        """
-        Update distributed memory model ("PV-DM") by training on a single document.
-        Called internally from `Doc2Vec.train()` and `Doc2Vec.infer_vector()`. This
-        method implements the DM model with a projection (input) layer that is
-        either the sum or mean of the context vectors, depending on the model's
-        `dm_mean` configuration field.  See `train_document_dm_concat()` for the DM
-        model with a concatenated input layer.
-        The document is provided as `doc_words`, a list of word tokens which are looked up
-        in the model's vocab dictionary, and `doctag_indexes`, which provide indexes
-        into the doctag_vectors array.
-        Any of `learn_doctags', `learn_words`, and `learn_hidden` may be set False to
-        prevent learning-updates to those respective model weights, as if using the
-        (partially-)frozen model to infer other compatible vectors.
-        This is the non-optimized, Python version. If you have a C compiler, gensim
-        will use the optimized version from doc2vec_inner instead.
-        """
-        if word_vectors is None:
-            word_vectors = model.wv.syn0
-        if word_locks is None:
-            word_locks = model.syn0_lockf
-        if doctag_vectors is None:
-            doctag_vectors = model.docvecs.doctag_syn0
-        if doctag_locks is None:
-            doctag_locks = model.docvecs.doctag_syn0_lockf
+    word_vocabs = [model.wv.vocab[w] for w in doc_words if w in model.wv.vocab and
+                model.wv.vocab[w].sample_int > model.random.rand() * 2 ** 32]
+    #print "\n the word list  "  
+    words = []       
+    for i,word in enumerate(word_vocabs):
+        words.append(model.wv.index2word[word.index])
 
-        word_vocabs = [model.wv.vocab[w] for w in doc_words if w in model.wv.vocab and
-                    model.wv.vocab[w].sample_int > model.random.rand() * 2 ** 32]
+    word_list = ' '.join(words)      
+    #print "words list is ",word_list,    
+    #print "\n"
+    for pos, word in enumerate(word_vocabs):
+        #print "------main word----------- ",model.wv.index2word[word.index]
+        #main_word = model.wv.index2word[word.index]
+        #lh, _, rh = word_list.partition(main_word)
+        #print "main solution is",
+        #print ' '.join(lh.split()[-3:]+[main_word]+rh.split()[:3])
+        reduced_window = model.random.randint(model.window)  # `b` in the original doc2vec code
+        #print "reduced window size is ",reduced_window
+        start = max(0, pos - model.window + reduced_window)
+        if pos >3:
+            start = pos - 3
+            
 
-        for pos, word in enumerate(word_vocabs):
-            reduced_window = model.random.randint(model.window)  # `b` in the original doc2vec code
-            start = max(0, pos - model.window + reduced_window)
-            window_pos = enumerate(word_vocabs[start:(pos + model.window + 1 - reduced_window)], start)
-            word2_indexes = [word2.index for pos2, word2 in window_pos if pos2 != pos]
-            l1 = np_sum(word_vectors[word2_indexes], axis=0) + np_sum(doctag_vectors[doctag_indexes], axis=0)
-            count = len(word2_indexes) + len(doctag_indexes)
-            if model.cbow_mean and count > 1:
-                l1 /= count
-            neu1e = train_cbow_pair(model, word, word2_indexes, l1, alpha,
-                                    learn_vectors=False, learn_hidden=learn_hidden)
-            if not model.cbow_mean and count > 1:
-                neu1e /= count
-            if learn_doctags:
-                for i in doctag_indexes:
-                    doctag_vectors[i] += neu1e * doctag_locks[i]
-            if learn_words:
-                for i in word2_indexes:
-                    word_vectors[i] += neu1e * word_locks[i]
+        window_pos = enumerate(word_vocabs[start:(pos + model.window + 1 - reduced_window)], start) 
+    # for ps,wrd in window_pos:
+    #     print "word ",wrd,
 
-        return len(word_vocabs)
+        word2_indexes = [word2.index for pos2, word2 in window_pos if pos2 != pos]
+        l1 = np_sum(word_vectors[word2_indexes], axis=0) + np_sum(doctag_vectors[doctag_indexes], axis=0)
+        count = len(word2_indexes) + len(doctag_indexes)
+        if model.cbow_mean and count > 1:
+            l1 /= count
+        neu1e = train_cbow_pair_dis2vec(model, word, word2_indexes, l1, alpha,
+                                learn_vectors=False, learn_hidden=learn_hidden)                     
+        if not model.cbow_mean and count > 1:
+            neu1e /= count
+        if learn_doctags:
+            for i in doctag_indexes:
+                doctag_vectors[i] += neu1e * doctag_locks[i]
+        if learn_words:
+            for i in word2_indexes:
+                word_vectors[i] += neu1e * word_locks[i]
 
-    def train_document_dm_concat(model, doc_words, doctag_indexes, alpha, work=None, neu1=None, learn_doctags=True,
-                                learn_words=True, learn_hidden=True, word_vectors=None, word_locks=None,
-                                doctag_vectors=None, doctag_locks=None):
-        """
-        Update distributed memory model ("PV-DM") by training on a single document, using a
-        concatenation of the context window word vectors (rather than a sum or average).
-        Called internally from `Doc2Vec.train()` and `Doc2Vec.infer_vector()`.
-        The document is provided as `doc_words`, a list of word tokens which are looked up
-        in the model's vocab dictionary, and `doctag_indexes`, which provide indexes
-        into the doctag_vectors array.
-        Any of `learn_doctags', `learn_words`, and `learn_hidden` may be set False to
-        prevent learning-updates to those respective model weights, as if using the
-        (partially-)frozen model to infer other compatible vectors.
-        This is the non-optimized, Python version. If you have a C compiler, gensim
-        will use the optimized version from doc2vec_inner instead.
-        """
-        if word_vectors is None:
-            word_vectors = model.wv.syn0
-        if word_locks is None:
-            word_locks = model.syn0_lockf
-        if doctag_vectors is None:
-            doctag_vectors = model.docvecs.doctag_syn0
-        if doctag_locks is None:
-            doctag_locks = model.docvecs.doctag_syn0_lockf
+    return len(word_vocabs)
 
-        word_vocabs = [model.wv.vocab[w] for w in doc_words if w in model.wv.vocab and
-                    model.wv.vocab[w].sample_int > model.random.rand() * 2 ** 32]
-        doctag_len = len(doctag_indexes)
-        if doctag_len != model.dm_tag_count:
-            return 0  # skip doc without expected number of doctag(s) (TODO: warn/pad?)
+def train_document_dm_concat(model, doc_words, doctag_indexes, alpha, work=None, neu1=None, learn_doctags=True,
+                            learn_words=True, learn_hidden=True, word_vectors=None, word_locks=None,
+                            doctag_vectors=None, doctag_locks=None):
+    """
+    Update distributed memory model ("PV-DM") by training on a single document, using a
+    concatenation of the context window word vectors (rather than a sum or average).
+    Called internally from `Doc2Vec.train()` and `Doc2Vec.infer_vector()`.
+    The document is provided as `doc_words`, a list of word tokens which are looked up
+    in the model's vocab dictionary, and `doctag_indexes`, which provide indexes
+    into the doctag_vectors array.
+    Any of `learn_doctags', `learn_words`, and `learn_hidden` may be set False to
+    prevent learning-updates to those respective model weights, as if using the
+    (partially-)frozen model to infer other compatible vectors.
+    This is the non-optimized, Python version. If you have a C compiler, gensim
+    will use the optimized version from doc2vec_inner instead.
+    """
+    if word_vectors is None:
+        word_vectors = model.wv.syn0
+    if word_locks is None:
+        word_locks = model.syn0_lockf
+    if doctag_vectors is None:
+        doctag_vectors = model.docvecs.doctag_syn0
+    if doctag_locks is None:
+        doctag_locks = model.docvecs.doctag_syn0_lockf
 
-        null_word = model.wv.vocab['\0']
-        pre_pad_count = model.window
-        post_pad_count = model.window
-        padded_document_indexes = (
-                (pre_pad_count * [null_word.index])  # pre-padding
-                + [word.index for word in word_vocabs if word is not None]  # elide out-of-Vocabulary words
-                + (post_pad_count * [null_word.index])  # post-padding
+    word_vocabs = [model.wv.vocab[w] for w in doc_words if w in model.wv.vocab and
+                model.wv.vocab[w].sample_int > model.random.rand() * 2 ** 32]
+    doctag_len = len(doctag_indexes)
+    if doctag_len != model.dm_tag_count:
+        return 0  # skip doc without expected number of doctag(s) (TODO: warn/pad?)
+
+    null_word = model.wv.vocab['\0']
+    pre_pad_count = model.window
+    post_pad_count = model.window
+    padded_document_indexes = (
+            (pre_pad_count * [null_word.index])  # pre-padding
+            + [word.index for word in word_vocabs if word is not None]  # elide out-of-Vocabulary words
+            + (post_pad_count * [null_word.index])  # post-padding
+    )
+
+    for pos in range(pre_pad_count, len(padded_document_indexes) - post_pad_count):
+        word_context_indexes = (
+                padded_document_indexes[(pos - pre_pad_count): pos]  # preceding words
+                + padded_document_indexes[(pos + 1):(pos + 1 + post_pad_count)]  # following words
         )
+        predict_word = model.wv.vocab[model.wv.index2word[padded_document_indexes[pos]]]
+        # numpy advanced-indexing copies; concatenate, flatten to 1d
+        l1 = concatenate((doctag_vectors[doctag_indexes], word_vectors[word_context_indexes])).ravel()
+        neu1e = train_cbow_pair(model, predict_word, None, l1, alpha,
+                                learn_hidden=learn_hidden, learn_vectors=False)
 
-        for pos in range(pre_pad_count, len(padded_document_indexes) - post_pad_count):
-            word_context_indexes = (
-                    padded_document_indexes[(pos - pre_pad_count): pos]  # preceding words
-                    + padded_document_indexes[(pos + 1):(pos + 1 + post_pad_count)]  # following words
-            )
-            predict_word = model.wv.vocab[model.wv.index2word[padded_document_indexes[pos]]]
-            # numpy advanced-indexing copies; concatenate, flatten to 1d
-            l1 = concatenate((doctag_vectors[doctag_indexes], word_vectors[word_context_indexes])).ravel()
-            neu1e = train_cbow_pair(model, predict_word, None, l1, alpha,
-                                    learn_hidden=learn_hidden, learn_vectors=False)
+        # filter by locks and shape for addition to source vectors
+        e_locks = concatenate((doctag_locks[doctag_indexes], word_locks[word_context_indexes]))
+        neu1e_r = (neu1e.reshape(-1, model.vector_size)
+                * np_repeat(e_locks, model.vector_size).reshape(-1, model.vector_size))
 
-            # filter by locks and shape for addition to source vectors
-            e_locks = concatenate((doctag_locks[doctag_indexes], word_locks[word_context_indexes]))
-            neu1e_r = (neu1e.reshape(-1, model.vector_size)
-                    * np_repeat(e_locks, model.vector_size).reshape(-1, model.vector_size))
+        if learn_doctags:
+            np_add.at(doctag_vectors, doctag_indexes, neu1e_r[:doctag_len])
+        if learn_words:
+            np_add.at(word_vectors, word_context_indexes, neu1e_r[doctag_len:])
 
-            if learn_doctags:
-                np_add.at(doctag_vectors, doctag_indexes, neu1e_r[:doctag_len])
-            if learn_words:
-                np_add.at(word_vectors, word_context_indexes, neu1e_r[doctag_len:])
-
-        return len(padded_document_indexes) - pre_pad_count - post_pad_count
+    return len(padded_document_indexes) - pre_pad_count - post_pad_count
 
 
 class TaggedDocument(namedtuple('TaggedDocument', 'words tags')):
@@ -424,11 +471,14 @@ class Doc2Vec(BaseWordEmbeddingsModel):
             self.build_vocab(documents)
             
             # Vocabulary variables
-
+            print "Going good! "
+            #sys.exit()
             self.dis_index = self.vocabulary.dis_index 
             self.nondis_index = self.vocabulary.nondis_index
             self.cum_table_dis = self.vocabulary.cum_table_dis
             self.cum_table_nondis = self.vocabulary.cum_table_nondis
+            self.index2nondisword = self.vocabulary.index2nondisword
+            self.index2disword = self.vocabulary.index2disword
             self.isdis = self.vocabulary.isdis
 
             
@@ -482,7 +532,7 @@ class Doc2Vec(BaseWordEmbeddingsModel):
                         self, doc.words, doctag_indexes, alpha, work, train_words=self.dbow_words,
                         doctag_vectors=doctag_vectors, doctag_locks=doctag_locks) 
                 else:
-                    tally += train_document_dbow_docs(
+                    tally += train_document_dbow(
                         self, doc.words, doctag_indexes, alpha, work, train_words=self.dbow_words,
                         doctag_vectors=doctag_vectors, doctag_locks=doctag_locks)
             elif self.dm_concat:
@@ -575,6 +625,8 @@ class Doc2Vec(BaseWordEmbeddingsModel):
             Returns the inferred vector for the new document.
 
         """
+        global infer
+        infer = True
         doctag_vectors, doctag_locks = self.trainables.get_doctag_trainables(doc_words, self.docvecs.vector_size)
         doctag_indexes = [0]
         work = zeros(self.trainables.layer1_size, dtype=REAL)
@@ -760,6 +812,7 @@ class Doc2Vec(BaseWordEmbeddingsModel):
         update : bool
             If true, the new words in `sentences` will be added to model's vocab.
         """
+
         print "........call logger ............."
         total_words, corpus_count = self.vocabulary.scan_vocab(
             documents, self.docvecs, progress_per=progress_per, trim_rule=trim_rule)
