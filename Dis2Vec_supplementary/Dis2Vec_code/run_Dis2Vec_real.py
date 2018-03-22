@@ -59,19 +59,13 @@ def main():
 
     
    # sentences_corpus = pickle.load(open(_arg.inputcorpus, "r")) # Input corpus (list of sentences as input where each sentence is a list of tokens. file should be in .pkl format).
-    sentences = TaggedLineDocument('capital.txt')
-    output = open('sentence.pkl', 'wb')
-    pickle.dump(sentences,output)
-    output.close()
+    contents = TaggedLineDocument("countries_filter.txt")
 
 
 
-    sentences = open('sentence.pkl', 'rb')
 
-    sentences_corpus = pickle.load(sentences)
-
-
-    domain_vocab_file = 'data.pkl'
+    domain_vocab_file = "Sports Sport sport"
+    vocab_list = domain_vocab_file.split()'
 
 
     dim = 300
@@ -80,7 +74,7 @@ def main():
     spm = 0.3
     opm = 0.5
     smoothing = 0.75
-    kwargs = {"sent": sentences_corpus, "vocab": domain_vocab_file, 
+    kwargs = {"sent": contents, "vocab": vocab_list, 
               "dim": dim, "win": win, "min_cnt": 5, "neg": neg, "iter": 1, 
               "spm": spm, "opm": opm, "smoothing": smoothing, "sample": 1e-05}
     Dis2Vec(**kwargs).run_Dis2Vec()

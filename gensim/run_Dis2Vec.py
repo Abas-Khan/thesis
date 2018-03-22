@@ -47,9 +47,9 @@ class Dis2Vec(object):
        
         all_docs = self.params["tag_doc"]
         model = Doc2Vec(self.params["sent"], vector_size=self.params["dim"], window=self.params["win"], 
-                            min_count=self.params["min_cnt"], workers=1,hs=0,negative=15,
+                            min_count=self.params["min_cnt"], workers=1,hs=0,negative=5,
                             dm=0,dbow_words=1,epochs=self.params["iter"], smoothing=0.5,
-                            sampling_param=0.7, objective_param=0.5, vocab_file=self.params["vocab"])
+                            sampling_param=0.3, objective_param=0.3, vocab_file=self.params["vocab"])
                             
         # if you pass the document to the model , no need to build the vocabulary
         #model.build_vocab(self.params["sent"])
@@ -63,6 +63,18 @@ class Dis2Vec(object):
         #inferred_docvec = model.infer_vector(all_docs[0].words)
         #print model.docvecs.most_similar([inferred_docvec], topn=10)
         #print model.similar_by_word("Bangladesh", topn=10)
+
+        query_doc = "tajiskistan is a small landlocked country in asia with an estimated population of 8.7 million people.".split()
+        inferred_docvec = model.infer_vector(query_doc,steps=100)
+        #inferred_docvec = model.infer_vector(all_docs[0].words)
+        print model.docvecs.most_similar([inferred_docvec], topn=10)
+
+
+        query_doc = "Football also known as soccer is a team sports that involves kicking a ball to score a goal , word football , association football , football codes".split()
+        inferred = model.infer_vector(query_doc,steps=500)
+        #inferred_docvec = model.infer_vector(all_docs[0].words)
+        print model.docvecs.most_similar([inferred], topn=10)
+        #
         
         print " \n  results \n"
         '''
@@ -73,7 +85,7 @@ class Dis2Vec(object):
         '''
        
         #print model.wv.get_vector('sport')
-        model.wv.setvector('mulk','country')
+        model.wv.setvector('das-land','country')
         print model.similar_by_word("country", topn=10)
    
         #print "....................."
@@ -148,19 +160,19 @@ def main():
 
 
 
-    domain_vocab_file = "sports sport players teams team goal score scores scored target rules"
+    domain_vocab_file = "sports sport players teams team score scores scored game games ball pass win wins play opponent net court opponent's"
     vocab_list = domain_vocab_file.split()
 
 
     dim = 300
-    win = 12
+    win = 8
     neg = 5
 
     #print tagged_docs[1]
     #sys.exit(0)
    
     kwargs = {"sent": contents, "vocab": vocab_list, 
-              "dim": dim, "win": win, "min_cnt": 1, "neg": neg, "iter":10 , "tag_doc" :contents
+              "dim": dim, "win": win, "min_cnt": 1, "neg": neg, "iter":30 , "tag_doc" :contents
               }
     Dis2Vec(**kwargs).run_Dis2Vec()
     

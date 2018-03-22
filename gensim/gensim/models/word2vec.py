@@ -217,21 +217,7 @@ def train_batch_sg_normal(model, sentences, alpha, work=None, compute_loss=False
                     # print " the second word is .......................".format(model.wv.index2word[word2.index])
                     train_sg_pair_docs_only(
                         model, model.wv.index2word[word.index], word2.index, alpha, compute_loss=compute_loss 
-                    )
-                if model.wv.index2word[word.index] in diction:
-                    for synonym in diction[model.wv.index2word[word.index]]:
-                        print "training for ",synonym
-                        syn_vocab = model.wv.vocab[synonym]
-                        train_sg_pair(
-                        model, model.wv.index2word[syn_vocab.index], word2.index, alpha, compute_loss=compute_loss 
-                        )
-                if model.wv.index2word[word2.index] in diction:
-                    for synonym in diction[model.wv.index2word[word2.index]]:
-                        print "training for --- context level ",synonym
-                        syn_vocab = model.wv.vocab[synonym]
-                        train_sg_pair(
-                        model, model.wv.index2word[word.index], syn_vocab.index, alpha, compute_loss=compute_loss 
-                        )    
+                    )  
 
         result += len(word_vocabs)
     return result
@@ -379,9 +365,12 @@ def train_sg_pair(model, word, context_index, alpha, learn_vectors=True, learn_h
                 w = model.vocabulary.cum_table_nondis.searchsorted(model.random.randint(model.vocabulary.cum_table_nondis[-1]))
                 if model.wv.vocab[model.vocabulary.index2nondisword[w]].index != predict_word.index:
                     word_indices.append(model.wv.vocab[model.vocabulary.index2nondisword[w]].index) 
+                      
             l2b = model.syn1neg[word_indices]  # 2d matrix, k+1 x layer1_size
-            fb = 1. / (1. + exp(-dot(l1, l2b.T)))  # propagate hidden -> output
-            gb = (model.neg_labels - fb) * alpha  # vector of error gradients multiplied by the learning rate
+            prod_term = dot(l1, l2b.T)
+            fb = expit(prod_term)
+            #fb = 1. / (1. + exp(-dot(l1, l2b.T)))  # propagate hidden -> output
+            gb = (model.neg_labels - fb) * alpha # vector of error gradients multiplied by the learning rate
             if learn_hidden:
                 model.syn1neg[word_indices] += outer(gb, l1)  # learn hidden -> output
             neu1e += dot(gb, l2b)  # save error
@@ -391,26 +380,30 @@ def train_sg_pair(model, word, context_index, alpha, learn_vectors=True, learn_h
             word_indices = [predict_word.index]
             while len(word_indices) < model.negative + 1:
 
-               # print " ................... Sanity check ....................... ", model.vocabulary.cum_table_dis
                 w = model.vocabulary.cum_table_dis.searchsorted(model.random.randint(model.vocabulary.cum_table_dis[-1]))
                 if model.wv.vocab[model.vocabulary.index2disword[w]].index != predict_word.index:
-                    word_indices.append(model.wv.vocab[model.vocabulary.index2disword[w]].index)
+                    word_indices.append(model.wv.vocab[model.vocabulary.index2disword[w]].index)        
             l2b = model.syn1neg[word_indices]  # 2d matrix, k+1 x layer1_size
-            fb = 1. / (1. + exp(-dot(l1, l2b.T)))  # propagate hidden -> output
+
+
+            prod_term = dot(l1, l2b.T)
+            fb = expit(prod_term)  # propagate hidden -> output
+            #fb = 1. / (1. + exp(-dot(l1, l2b.T)))  # propagate hidden -> output
             gb = (model.neg_labels - fb) * alpha  # vector of error gradients multiplied by the learning rate
             if learn_hidden:
                 model.syn1neg[word_indices] += outer(gb, l1)  # learn hidden -> output
             neu1e += dot(gb, l2b)  # save error
         else:
             # use this word as label = 0
-            word_indices = [predict_word.index]
             
-            # while len(word_indices) < model.negative + 1:
-            #    w = model.cum_table.searchsorted(model.random.randint(model.cum_table[-1]))
-            #    if w != predict_word.index:
-            #        word_indices.append(w)
+            word_indices = [predict_word.index]
+
             l2b = model.syn1neg[word_indices]  # 2d matrix, 1 x layer1_size
-            fb = 1. / (1. + exp(-dot(l1, l2b.T)))  # propagate hidden -> output
+
+            prod_term = dot(l1, l2b.T)
+            fb = expit(prod_term)  # propagate hidden -> output
+
+            #fb = 1. / (1. + exp(-dot(l1, l2b.T)))  # propagate hidden -> output
             gb = (model.neg_labels[0] - 1 - fb) * alpha  # vector of error gradients multiplied by the learning rate
             if learn_hidden:
                 model.syn1neg[word_indices] += outer(gb, l1)  # learn hidden -> output
