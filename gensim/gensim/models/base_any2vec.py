@@ -49,6 +49,7 @@ class BaseAny2VecModel(utils.SaveLoad):
         self.batch_words = batch_words
         self.model_trimmed_post_training = False
         self.callbacks = callbacks
+        self.current_epoch = 0
         
 
     def _get_job_params(self, cur_epoch):
@@ -250,6 +251,8 @@ class BaseAny2VecModel(utils.SaveLoad):
         job_tally = 0
 
         for cur_epoch in range(self.epochs):
+            self.current_epoch = cur_epoch
+            #print "current epoch is ",self.current_epoch
             for callback in self.callbacks:
                 callback.on_epoch_begin(self)
 

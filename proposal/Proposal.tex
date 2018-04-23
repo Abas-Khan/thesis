@@ -7,6 +7,8 @@
 \usepackage{dirtytalk}
 
 \usepackage{filecontents}
+\usepackage{multirow}
+
 \begin{filecontents}{Proposal.bib}
 	@misc{pubmed,
 		author = {National Center for Biotechnology Information},
@@ -227,6 +229,14 @@
 		language={English}
 	}
 	
+	@InProceedings{mrksic:2016:naacl,
+		author    = {Nikola Mrk\v{s}i\'c and Diarmuid {\'O S\'eaghdha} and Blaise Thomson and Milica Ga\v{s}i\'c 
+			and Lina Rojas-Barahona and Pei-Hao Su and David Vandyke and Tsung-Hsien Wen and Steve Young},
+		title     = {Counter-fitting Word Vectors to Linguistic Constraints},
+		booktitle = {Proceedings of HLT-NAACL},
+		year      = {2016},
+	}
+	
 \end{filecontents}
 
 \begin{document}
@@ -302,7 +312,7 @@
 	
 	\subsection*{Embedding Model Extension}
 	
-	Classical emitting methods such as Doc2Vec and Word2Vec are generally unsupervised requiring no domain information and as such has broad
+	Classical emitting methods such as Doc2Vec and Word2Vec are generally unsupervised requiring no domain information and as such have broad
 	applicability. However, for highly specified domains with a moderately sized corpus, classical methods fail to find meaningful semantic relationships. 
 	\cite{ghosh2016characterizing} introduce a vocabulary driven Word2Vec method known as Dis2Vec which is used to generate disease-specific word embeddings from unstructured health-related news corpus. The input corpus $D$ consists of a collection of word context pairs. Based on the vocabulary $ V$, we can categorize the word context pairs into three types as shown
 	below:
@@ -313,7 +323,48 @@
 		\item $D(\rightharpoondown d) = {(w, c): w \in V \oplus c \in V }$, i.e. either the word w is in V or the context c is in V but both cannot be in V
 	\end{itemize}
 	
+	\subsection*{Counter-fitting Word Vectors}
+	One drawback of learning word embeddings from
+	co-occurrence information in corpora is that such methods will generally fail to tell synonyms from antonyms
+	(Mohammad et al., 2008). For example, words like east and west or expensive and cheaper appear
+	in near-identical contexts, which means that distributional
+	models produce very similar word vectors for
+	such words.  
+	\cite{mrksic:2016:naacl} proposed a novel counter-fitting
+	method which injects antonymy and synonymy
+	constraints into vector space representations in
+	order to circumvent this issue. \ref{tab:counter_fitting} shows the results \cite{mrksic:2016:naacl} achieved using their counter-fitting technique.
+	\begin{table}[h]
+	\begin{center}
+		\begin{tabular}{ c c c c } 
+			\hline
+			 & east & expensive & British \\
+			\hline
+			\multirow{5}{4em}{Before} &
 		
+		    west & pricey &  American
+		    \\ 
+			& north & cheaper & Australian\\ 
+			& south & costly & Britain\\ 
+			& southeast & overpriced & European\\
+			& northeast & inexpensive & England\\
+			\hline
+			\multirow{5}{4em}{After} & 
+			eastward & costly & Brits\\ 
+			& eastern & pricy & London\\ 
+			& easterly & overpriced & BBC\\ 
+			& - & pricey & UK\\ 
+			& - & afford & Britain\\ 
+			\hline
+		\end{tabular}
+		
+	\end{center}
+	
+	\caption{Nearest neighbours for target words using GloVe
+		vectors before and after counter-fitting} \label{tab:counter_fitting}
+\end{table}
+	
+	
 	
 	\section*{Planned work} 
 	The work is planned to consist of the following stages:

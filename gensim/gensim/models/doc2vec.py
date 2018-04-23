@@ -91,7 +91,7 @@ except ImportError:
 
     def train_document_dbow(model, doc_words, doctag_indexes, alpha, work=None,
                             train_words=False, learn_doctags=True, learn_words=True, learn_hidden=True,
-                            word_vectors=None, word_locks=None, doctag_vectors=None, doctag_locks=None ):
+                            word_vectors=None, word_locks=None, doctag_vectors=None, doctag_locks=None ,push_words =0 ,push_documents=0):
         """
         Update distributed bag of words model ("PV-DBOW") by training on a single document.
         Called internally from `Doc2Vec.train()` and `Doc2Vec.infer_vector()`.
@@ -496,6 +496,16 @@ class Doc2Vec(BaseWordEmbeddingsModel):
         'distributed memory' (PV-DM) is used."""
         return self.sg  # same as SG
 
+    def initialize_vars(self):
+        print "its good"
+        self.dis_index = self.vocabulary.dis_index 
+        self.nondis_index = self.vocabulary.nondis_index
+        self.cum_table_dis = self.vocabulary.cum_table_dis
+        self.cum_table_nondis = self.vocabulary.cum_table_nondis
+        self.index2nondisword = self.vocabulary.index2nondisword
+        self.index2disword = self.vocabulary.index2disword
+        self.isdis = self.vocabulary.isdis
+        
     def _set_train_params(self, **kwargs):
         pass
 
@@ -524,6 +534,7 @@ class Doc2Vec(BaseWordEmbeddingsModel):
             doctag_indexes = self.vocabulary.indexed_doctags(doc.tags, self.docvecs)
             doctag_vectors = self.docvecs.vectors_docs
             doctag_locks = self.trainables.vectors_docs_lockf
+            print "current epoch is ",self.current_epoch
             if self.sg:
                 if self.dbow_words:
                     tally += train_document_dbow(

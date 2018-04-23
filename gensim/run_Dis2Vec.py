@@ -46,9 +46,12 @@ class Dis2Vec(object):
 
        
         all_docs = self.params["tag_doc"]
+
+    
+
         model = Doc2Vec(self.params["sent"], vector_size=self.params["dim"], window=self.params["win"], 
                             min_count=self.params["min_cnt"], workers=1,hs=0,negative=5,
-                            dm=0,dbow_words=1,epochs=self.params["iter"], smoothing=0.5,
+                            dm=0,dbow_words=1,epochs=self.params["iter"], smoothing=0.75,
                             sampling_param=0.3, objective_param=0.3, vocab_file=self.params["vocab"])
                             
         # if you pass the document to the model , no need to build the vocabulary
@@ -63,17 +66,18 @@ class Dis2Vec(object):
         #inferred_docvec = model.infer_vector(all_docs[0].words)
         #print model.docvecs.most_similar([inferred_docvec], topn=10)
         #print model.similar_by_word("Bangladesh", topn=10)
-
-        query_doc = "tajiskistan is a small landlocked country in asia with an estimated population of 8.7 million people.".split()
+        #model.wv.setvector('das-land','country')
+        #model.wv.setvector('football','soccer')
+        query_doc = "Radioactive labeling and location of specific thiol groups in myosin from fast, slow and cardiac muscles.1. Based incorporation radioactively labeled N-ethylmaleimide, readily reactive thiol groups isolated myosin (EC 3.6.1.3) fast, slow cardiac muscles could classified 3 types. All 3 myosins contain 2 thiol-1, 2 thiol-2 variable number thiol-3 groups per molecule. Both thiol-1 thiol-2 groups essential functioning K+-stimulated ATPase, located heavy chains 3 myosin types. 2. The variation incorporation pattern N-ethylmaleimide 3 thiol group classes steady-state conditions Mg(2+) - ATP hydrolysis allowed different conformations reaction intermediates characterized. In 3 types myosin hydrolytic cycle Mg(2+) - ATP found controlled step 25 degrees C. In three cases, rate-limiting step changed way lowereing temperature. 3. Using chemically determined molecular weights myosin light chains, stoichiometry found basis sodium dodecyl sulfate electrophoresis 1.2 : 2.1 : 0.8 light chain-1: light chain-2:light chain-3 per molecule fast myosin, 2.0 : 1.9 light chain-1:light chain-2 per molecule slow myosin 1.9 : 1.9 light chain-1:light chain-2 per molecule cardiac myosin. This qualitative difference light subunit composition fast two types slow myosin reflected small variations characteristics exhibited isolated myosins, rather seems connected respective myofibrillar ATPase activities.".split()
         inferred_docvec = model.infer_vector(query_doc,steps=100)
         #inferred_docvec = model.infer_vector(all_docs[0].words)
         print model.docvecs.most_similar([inferred_docvec], topn=10)
 
 
-        query_doc = "Football also known as soccer is a team sports that involves kicking a ball to score a goal , word football , association football , football codes".split()
-        inferred = model.infer_vector(query_doc,steps=500)
+        #query_doc = "Football also known as soccer is a team sports that involves kicking a ball to score a goal , word football , association football , football codes".split()
+        #inferred = model.infer_vector(query_doc,steps=500)
         #inferred_docvec = model.infer_vector(all_docs[0].words)
-        print model.docvecs.most_similar([inferred], topn=10)
+        #print model.docvecs.most_similar([inferred], topn=10)
         #
         
         print " \n  results \n"
@@ -85,8 +89,8 @@ class Dis2Vec(object):
         '''
        
         #print model.wv.get_vector('sport')
-        model.wv.setvector('das-land','country')
-        print model.similar_by_word("country", topn=10)
+        
+        #print model.similar_by_word("country", topn=10)
    
         #print "....................."
         #print model.most_similar_cosmul("sport",topn=10)
@@ -110,20 +114,6 @@ class Dis2Vec(object):
         else:
             model.save(out_folder + 'model_Dis2Vec_w_sample.word2vec')
 
-def parse_args():
-
-    ap = argparse.ArgumentParser()
-    ap.add_argument("-ic", "--inputcorpus", type = str, required = True, help = "Input corpus which should be a list of sentences as input where each sentence is a list of tokens. file should be in .pkl format")
-    ap.add_argument("-v", "--domainvocab", type = str, required = True, help = "Domain-specific vocabulary. file should be in .pkl format")
-    ap.add_argument("-d", "--dim", type = str, required = True, help = "Dimension of word embeddings (300, 600)")
-    ap.add_argument("-w", "--window", type = str, required = True, help = "Word window (5, 10, 15)")
-    ap.add_argument("-n", "--negative", type = str, required = True, help = "Number of negative samples (1, 5, 15)")
-    ap.add_argument("-spm", "--samplingparameter", type = str, required = True, help = "Sampling parameter (0.3, 0.5, 0.7)")
-    ap.add_argument("-opm", "--objectiveparameter", type = str, required = True, help = "Objective selection parameter (0.3, 0.5, 0.7)")
-    ap.add_argument("-sm", "--smoothing", type = str, required = True, help = "smoothing parameter (0.75, 1.0)")
-    return ap.parse_args()
-
-
 class TaggedTester(object):
     def __init__(self, data):
         self.data = data
@@ -140,42 +130,39 @@ def main():
 
     
    # sentences_corpus = pickle.load(open(_arg.inputcorpus, "r")) # Input corpus (list of sentences as input where each sentence is a list of tokens. file should be in .pkl format).
-    sentences =  LineSentence('countries_filter.txt')
+    sentences =  LineSentence('new_test_1000.txt')
     contents = TaggedTester(sentences)
-    #contents = TaggedLineDocument("countries_filter.txt")
 
-
-    
-    #phrases = Phrases(contents, min_count=1)
-    #bigram = Phraser(phrases)
-    # filtered_words = list(filter(lambda word: word not in stopwords.words('english'), line))
-           
-    '''
-    tagged_docs = []
-    for item_no, line in enumerate(contents):
-            filtered_words = list(filter(lambda word: word not in stopwords.words('english'), line))
-            tagged_docs.append(TaggedDocument(bigram[filtered_words], [item_no]))
-    '''
-    #sentences = TaggedDocument(bigram[contents])
-
-
-
-    domain_vocab_file = "sports sport players teams team score scores scored game games ball pass win wins play opponent net court opponent's"
+    domain_vocab_file = "study effects studies analysis evidence liver cancer"
     vocab_list = domain_vocab_file.split()
 
 
-    dim = 300
+    dim = 200
     win = 8
     neg = 5
-
-    #print tagged_docs[1]
-    #sys.exit(0)
    
     kwargs = {"sent": contents, "vocab": vocab_list, 
-              "dim": dim, "win": win, "min_cnt": 1, "neg": neg, "iter":30 , "tag_doc" :contents
+              "dim": dim, "win": win, "min_cnt": 2, "neg": neg, "iter":20 , "tag_doc" :contents
               }
     Dis2Vec(**kwargs).run_Dis2Vec()
     
 
 if __name__ == "__main__":
     main()
+
+
+'''
+def parse_args():
+
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-ic", "--inputcorpus", type = str, required = True, help = "Input corpus which should be a list of sentences as input where each sentence is a list of tokens. file should be in .pkl format")
+    ap.add_argument("-v", "--domainvocab", type = str, required = True, help = "Domain-specific vocabulary. file should be in .pkl format")
+    ap.add_argument("-d", "--dim", type = str, required = True, help = "Dimension of word embeddings (300, 600)")
+    ap.add_argument("-w", "--window", type = str, required = True, help = "Word window (5, 10, 15)")
+    ap.add_argument("-n", "--negative", type = str, required = True, help = "Number of negative samples (1, 5, 15)")
+    ap.add_argument("-spm", "--samplingparameter", type = str, required = True, help = "Sampling parameter (0.3, 0.5, 0.7)")
+    ap.add_argument("-opm", "--objectiveparameter", type = str, required = True, help = "Objective selection parameter (0.3, 0.5, 0.7)")
+    ap.add_argument("-sm", "--smoothing", type = str, required = True, help = "smoothing parameter (0.75, 1.0)")
+    return ap.parse_args()
+
+'''

@@ -57,6 +57,12 @@ J.~Mitchell and M.~Lapata.
 \newblock Composition in distributional models of semantics.
 \newblock {\em Cognitive science}, 34(8):1388--1429, 2010.
 
+\bibitem{mrksic:2016:naacl}
+N.~Mrk\v{s}i\'c, D.~{\'O S\'eaghdha}, B.~Thomson, M.~Ga\v{s}i\'c,
+  L.~Rojas-Barahona, P.-H. Su, D.~Vandyke, T.-H. Wen, and S.~Young.
+\newblock Counter-fitting word vectors to linguistic constraints.
+\newblock In {\em Proceedings of HLT-NAACL}, 2016.
+
 \bibitem{pennington2014glove}
 J.~Pennington, R.~Socher, and C.~Manning.
 \newblock Glove: Global vectors for word representation.

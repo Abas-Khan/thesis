@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.2.19)  20 FEB 2018 13:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.2.19)  23 APR 2018 03:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -187,6 +187,9 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 Package: filecontents 2011/10/08 v1.3 Create an external file from within a LaT
 eX document
 )
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen109
+)
 
 LaTeX Warning: Overwriting file `./Proposal.bib'.
 
@@ -199,22 +202,22 @@ LaTeX Warning: Tab has been converted to Blank Space.
 (./Proposal.aux)
 \openout1 = `Proposal.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 232.
-LaTeX Font Info:    ... okay on input line 232.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 232.
-LaTeX Font Info:    ... okay on input line 232.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 232.
-LaTeX Font Info:    ... okay on input line 232.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 232.
-LaTeX Font Info:    ... okay on input line 232.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 232.
-LaTeX Font Info:    ... okay on input line 232.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 232.
-LaTeX Font Info:    ... okay on input line 232.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 232.
-LaTeX Font Info:    ... okay on input line 232.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 242.
+LaTeX Font Info:    ... okay on input line 242.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 242.
+LaTeX Font Info:    ... okay on input line 242.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 242.
+LaTeX Font Info:    ... okay on input line 242.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 242.
+LaTeX Font Info:    ... okay on input line 242.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 242.
+LaTeX Font Info:    ... okay on input line 242.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 242.
+LaTeX Font Info:    ... okay on input line 242.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 242.
+LaTeX Font Info:    ... okay on input line 242.
 \AtBeginShipoutBox=\box26
-Package hyperref Info: Link coloring OFF on input line 232.
+Package hyperref Info: Link coloring OFF on input line 242.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -223,9 +226,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count99
 )
-LaTeX Info: Redefining \ref on input line 232.
-LaTeX Info: Redefining \pageref on input line 232.
-LaTeX Info: Redefining \nameref on input line 232.
+LaTeX Info: Redefining \ref on input line 242.
+LaTeX Info: Redefining \pageref on input line 242.
+LaTeX Info: Redefining \nameref on input line 242.
 
 (./Proposal.out) (./Proposal.out)
 \@outlinefile=\write3
@@ -235,13 +238,13 @@ LaTeX Info: Redefining \nameref on input line 232.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count100
-\scratchdimen=\dimen109
+\scratchdimen=\dimen110
 \scratchbox=\box27
 \nofMPsegments=\count101
 \nofMParguments=\count102
 \everyMPshowfont=\toks16
 \MPscratchCnt=\count103
-\MPscratchDim=\dimen110
+\MPscratchDim=\dimen111
 \MPnumerator=\count104
 \makeMPintoPDFobject=\count105
 \everyMPtoPDFconversion=\toks17
@@ -260,26 +263,26 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for U+msa on input line 240.
+LaTeX Font Info:    Try loading font information for U+msa on input line 250.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 240.
+LaTeX Font Info:    Try loading font information for U+msb on input line 250.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 256--260
+Underfull \hbox (badness 10000) in paragraph at lines 266--270
 
  []
 
 <w2v.png, id=20, 606.265pt x 373.395pt>
 File: w2v.png Graphic file (type png)
  <use w2v.png>
-Package pdftex.def Info: w2v.png used on input line 266.
+Package pdftex.def Info: w2v.png used on input line 276.
 (pdftex.def)             Requested size: 227.62634pt x 142.26192pt.
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
@@ -337,21 +340,21 @@ Missing character: There is no “ in font cmr12!
 <para.jpg, id=50, 587.19376pt x 312.16624pt>
 File: para.jpg Graphic file (type jpg)
  <use para.jpg>
-Package pdftex.def Info: para.jpg used on input line 291.
+Package pdftex.def Info: para.jpg used on input line 301.
 (pdftex.def)             Requested size: 227.61586pt x 142.2645pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 305--310
+Underfull \hbox (badness 10000) in paragraph at lines 315--320
 
  []
 
 [3 <./para.jpg>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 311.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 321.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 311.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 321.
 Missing character: There is no â in font cmr12!
 Missing character: There is no ˆ in font cmr12!
 Missing character: There is no § in font cmr12!
@@ -359,25 +362,25 @@ Missing character: There is no â in font cmr12!
 Missing character: There is no ˆ in font cmr12!
 Missing character: There is no § in font cmr12!
 
-[4] [5] [6] (./Proposal.bbl [7])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 442.
- [8] [9]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 442.
+[4] [5] [6] [7] (./Proposal.bbl [8])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 493.
+ [9]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 493.
  (./Proposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 442.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 442.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 493.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 493.
 Package rerunfilecheck Info: File `Proposal.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 442.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 493.
  ) 
 Here is how much of TeX's memory you used:
- 5538 strings out of 493029
- 81434 string characters out of 6136234
- 161442 words of memory out of 5000000
- 8980 multiletter control sequences out of 15000+600000
+ 5558 strings out of 493029
+ 81815 string characters out of 6136234
+ 162803 words of memory out of 5000000
+ 8993 multiletter control sequences out of 15000+600000
  12919 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,9n,26p,1405b,509s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,10n,26p,1405b,426s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
@@ -389,10 +392,10 @@ blic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 tt12.pfb>
-Output written on Proposal.pdf (9 pages, 167911 bytes).
+Output written on Proposal.pdf (9 pages, 170376 bytes).
 PDF statistics:
- 159 PDF objects out of 1000 (max. 8388607)
- 133 compressed objects within 2 object streams
- 42 named destinations out of 1000 (max. 500000)
+ 166 PDF objects out of 1000 (max. 8388607)
+ 140 compressed objects within 2 object streams
+ 45 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
