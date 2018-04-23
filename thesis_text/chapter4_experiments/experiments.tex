@@ -1,0 +1,55 @@
+\chapter{Experiments} 
+\label{chapter:experiments} 
+
+This chapter mainly focuses on answering the following questions:
+\begin{itemize}
+\item What are possible ways of using distantly supervised data?
+\item Can Distant Supervision improve upon the results of supervised training?
+\item Can a neural network architecture that is developed in a general domain setting be used to tackle the medical domain - a domain which is usually handled with lots of Natural Language Processing features?
+\item Which embedding types are best-suited for relation extraction in different domains?
+\end{itemize}
+
+The chapter is divided into two parts - one is dedicated to the supervised learning on manually labeled 
+datasets and serves to demonstrate the baseline, while the second one contains experiments with Distant Supervision. Each of them is divided into a part for the general domain and a part for the medical domain. Overall two supervised 
+datasets for each of the domains were evaluated and one dataset per domain is created for evaluating Distant Supervision. The scheme of all the experiments can be seen in the Figure \ref{fig:exp-schema}.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{chapter4_experiments/images/exp-schema.png}
+\caption[Experiments scheme]{Scheme of conducted experiments for the network evaluation.}
+\label{fig:exp-schema}
+\end{figure}
+
+In order to find the best network configuration, one 4-fold validation experiment was performed once for each domain. The parameters that were 
+tuned were the length of the embeddings, both for words and for distances, and the type of the 
+word embedding. The grid consisted of \{30, 40, 50, 70\} for distance embeddings length, \{300, 400\} for word embeddings length and \{Swivel, GloVe, Word2Vec\} for embedding types. In order to make the model universal, parameters for all the other experiments were fixed to the found via cross-validation.
+
+\section{Supervised training evaluation, general domain}
+The goal of experiments in this section is to validate the implementation of the network by 
+comparing with the results achieved in \cite{DBLP:journals/corr/SantosXZ15} and prove the quality 
+of the network by applying it to the other supervised dataset in general domain. 
+The experiments in general domain use text corpora and relations from unspecific sources, such as 
+Wikipedia, Freebase and news corpora. The biggest problem in the general domain setting is ambiguity. Named entities can have multiple meanings in different contexts and two entities can also belong to multiple relation types. Generally speaking, detecting one of the general domain relations is a 
+challenging task even for humans. For example, given the entity pair ''The Lord of The Ring'' and 
+''The Return of the King'' it is hard to decide whether the relation between them is 
+''Member-Collection'' or ''Component-Whole''.
+\input{chapter4_experiments/experiments_supervised_general}
+
+\section{Supervised training evaluation, medical domain}
+These experiments were held to check the applicability of the ranking CNN to the medical 
+domain. Thus several popular medical datasets for Relation Extraction were chosen and 
+evaluation compared to existing results.
+There are a lot of relational classes specific only for medical domain. One of the most popular ones 
+is about a general interaction between different entities, such as proteins, genes, drugs. Each 
+interaction can have numerous more specific subclass relations, but for now tests are performed 
+on generic relations. One more considered dataset contains \textit{treatment-for} and 
+\textit{prevents-from} relations, that are very interesting by having high granularity level, i.e. 
+they are very close by meaning.
+\input{chapter4_experiments/experiments_supervised_medical}
+
+\section{Distant supervision evaluation}
+The question to answer by these experiments is the possible quality of the model trained 
+distantly. Also, possible ways of creating distantly supervised data are described.
+\input{chapter4_experiments/experiments_distant_general}
+\input{chapter4_experiments/experiments_distant_medical}
+

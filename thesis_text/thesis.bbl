@@ -1,0 +1,226 @@
+\begin{thebibliography}{}
+
+\bibitem[Airola et~al., 2008]{airola2008all}
+Airola, A., Pyysalo, S., Bj{\"o}rne, J., Pahikkala, T., Ginter, F., and
+  Salakoski, T. (2008).
+\newblock All-paths graph kernel for protein-protein interaction extraction
+  with evaluation of cross-corpus learning.
+\newblock {\em BMC bioinformatics}, 9(11):S2.
+
+\bibitem[Angeli et~al., 2014]{angeli2014combining}
+Angeli, G., Tibshirani, J., Wu, J., and Manning, C.~D. (2014).
+\newblock Combining distant and partial supervision for relation extraction.
+\newblock In {\em EMNLP}, pages 1556--1567.
+
+\bibitem[Bojanowski et~al., 2016]{bojanowski2016enriching}
+Bojanowski, P., Grave, E., Joulin, A., and Mikolov, T. (2016).
+\newblock Enriching word vectors with subword information. corr abs/1607.04606.
+
+\bibitem[Bollegala et~al., 2015]{bollegala2015unsupervised}
+Bollegala, D., Maehara, T., and Kawarabayashi, K.-i. (2015).
+\newblock Unsupervised cross-domain word representation learning.
+\newblock {\em arXiv preprint arXiv:1505.07184}.
+
+\bibitem[Bunescu et~al., 2005]{bunescu2005comparative}
+Bunescu, R., Ge, R., Kate, R.~J., Marcotte, E.~M., Mooney, R.~J., Ramani,
+  A.~K., and Wong, Y.~W. (2005).
+\newblock Comparative experiments on learning information extractors for
+  proteins and their interactions.
+\newblock {\em Artificial intelligence in medicine}, 33(2):139--155.
+
+\bibitem[Bunescu and Mooney, 2005]{bunescu2005subsequence}
+Bunescu, R. and Mooney, R.~J. (2005).
+\newblock Subsequence kernels for relation extraction.
+\newblock In {\em NIPS}, pages 171--178.
+
+\bibitem[Craven et~al., 1999]{craven1999constructing}
+Craven, M., Kumlien, J., et~al. (1999).
+\newblock Constructing biological knowledge bases by extracting information
+  from text sources.
+\newblock In {\em ISMB}, volume 1999, pages 77--86.
+
+\bibitem[Dietterich et~al., 1997]{dietterich1997solving}
+Dietterich, T.~G., Lathrop, R.~H., and Lozano-P{\'e}rez, T. (1997).
+\newblock Solving the multiple instance problem with axis-parallel rectangles.
+\newblock {\em Artificial intelligence}, 89(1):31--71.
+
+\bibitem[dos Santos et~al., 2015]{DBLP:journals/corr/SantosXZ15}
+dos Santos, C.~N., Xiang, B., and Zhou, B. (2015).
+\newblock Classifying relations by ranking with convolutional neural networks.
+\newblock {\em CoRR}, abs/1504.06580.
+
+\bibitem[Ghosh et~al., 2016]{ghosh2016characterizing}
+Ghosh, S., Chakraborty, P., Cohn, E., Brownstein, J.~S., and Ramakrishnan, N.
+  (2016).
+\newblock Characterizing diseases from unstructured text: A vocabulary driven
+  word2vec approach.
+\newblock In {\em Proceedings of the 25th ACM International on Conference on
+  Information and Knowledge Management}, pages 1129--1138. ACM.
+
+\bibitem[Gormley et~al., 2015]{gormley2015improved}
+Gormley, M.~R., Yu, M., and Dredze, M. (2015).
+\newblock Improved relation extraction with feature-rich compositional
+  embedding models.
+\newblock {\em arXiv preprint arXiv:1505.02419}.
+
+\bibitem[Grefenstette et~al., 2013]{grefenstette2013multi}
+Grefenstette, E., Dinu, G., Zhang, Y.-Z., Sadrzadeh, M., and Baroni, M. (2013).
+\newblock Multi-step regression learning for compositional distributional
+  semantics.
+\newblock {\em arXiv preprint arXiv:1301.6939}.
+
+\bibitem[Hendrickx et~al., 2009]{hendrickx2009semeval}
+Hendrickx, I., Kim, S.~N., Kozareva, Z., Nakov, P., {\'O}~S{\'e}aghdha, D.,
+  Pad{\'o}, S., Pennacchiotti, M., Romano, L., and Szpakowicz, S. (2009).
+\newblock Semeval-2010 task 8: Multi-way classification of semantic relations
+  between pairs of nominals.
+\newblock In {\em Proceedings of the Workshop on Semantic Evaluations: Recent
+  Achievements and Future Directions}, pages 94--99. Association for
+  Computational Linguistics.
+
+\bibitem[Hu et~al., 2017]{hu2017controllable}
+Hu, Z., Yang, Z., Liang, X., Salakhutdinov, R., and Xing, E.~P. (2017).
+\newblock Controllable text generation.
+\newblock {\em arXiv preprint arXiv:1703.00955}.
+
+\bibitem[Le and Mikolov, 2014]{le2014distributed}
+Le, Q. and Mikolov, T. (2014).
+\newblock Distributed representations of sentences and documents.
+\newblock In {\em Proceedings of the 31st International Conference on Machine
+  Learning (ICML-14)}, pages 1188--1196.
+
+\bibitem[Lin et~al., 2016]{lin2016neural}
+Lin, Y., Shen, S., Liu, Z., Luan, H., and Sun, M. (2016).
+\newblock Neural relation extraction with selective attention over instances.
+\newblock In {\em Proceedings of ACL}, volume~1, pages 2124--2133.
+
+\bibitem[Mikolov et~al., 2013a]{mikolov2013distributed}
+Mikolov, T., Sutskever, I., Chen, K., Corrado, G.~S., and Dean, J. (2013a).
+\newblock Distributed representations of words and phrases and their
+  compositionality.
+\newblock In {\em Advances in neural information processing systems}, pages
+  3111--3119.
+
+\bibitem[Mikolov et~al., 2013b]{NIPS2013_5021}
+Mikolov, T., Sutskever, I., Chen, K., Corrado, G.~S., and Dean, J. (2013b).
+\newblock Distributed representations of words and phrases and their
+  compositionality.
+\newblock In Burges, C. J.~C., Bottou, L., Welling, M., Ghahramani, Z., and
+  Weinberger, K.~Q., editors, {\em Advances in Neural Information Processing
+  Systems 26}, pages 3111--3119. Curran Associates, Inc.
+
+\bibitem[Mintz et~al., 2009]{Mintz:2009:DSR:1690219.1690287}
+Mintz, M., Bills, S., Snow, R., and Jurafsky, D. (2009).
+\newblock Distant supervision for relation extraction without labeled data.
+\newblock In {\em Proceedings of the Joint Conference of the 47th Annual
+  Meeting of the ACL and the 4th International Joint Conference on Natural
+  Language Processing of the AFNLP: Volume 2 - Volume 2}, ACL '09, pages
+  1003--1011, Stroudsburg, PA, USA. Association for Computational Linguistics.
+
+\bibitem[Mitchell and Lapata, 2010]{mitchell2010composition}
+Mitchell, J. and Lapata, M. (2010).
+\newblock Composition in distributional models of semantics.
+\newblock {\em Cognitive science}, 34(8):1388--1429.
+
+\bibitem[Mrk\v{s}i\'c et~al., 2016]{mrksic:2016:naacl}
+Mrk\v{s}i\'c, N., {\'O S\'eaghdha}, D., Thomson, B., Ga\v{s}i\'c, M.,
+  Rojas-Barahona, L., Su, P.-H., Vandyke, D., Wen, T.-H., and Young, S. (2016).
+\newblock Counter-fitting word vectors to linguistic constraints.
+\newblock In {\em Proceedings of HLT-NAACL}.
+
+\bibitem[Nguyen and Grishman, 2015]{nguyen2015combining}
+Nguyen, T.~H. and Grishman, R. (2015).
+\newblock Combining neural networks and log-linear models to improve relation
+  extraction.
+\newblock {\em arXiv preprint arXiv:1511.05926}.
+
+\bibitem[Pennington et~al., 2014]{pennington2014glove}
+Pennington, J., Socher, R., and Manning, C. (2014).
+\newblock Glove: Global vectors for word representation.
+\newblock In {\em Proceedings of the 2014 conference on empirical methods in
+  natural language processing (EMNLP)}, pages 1532--1543.
+
+\bibitem[Ramon and De~Raedt, 2000]{ramon2000multi}
+Ramon, J. and De~Raedt, L. (2000).
+\newblock Multi instance neural networks.
+\newblock In {\em Proceedings of the ICML-2000 workshop on attribute-value and
+  relational learning}, pages 53--60.
+
+\bibitem[Riedel et~al., 2010]{riedel2010modeling}
+Riedel, S., Yao, L., and McCallum, A. (2010).
+\newblock Modeling relations and their mentions without labeled text.
+\newblock {\em Machine learning and knowledge discovery in databases}, pages
+  148--163.
+
+\bibitem[Riedel et~al., 2013]{riedel2013relation}
+Riedel, S., Yao, L., McCallum, A., and Marlin, B.~M. (2013).
+\newblock Relation extraction with matrix factorization and universal schemas.
+
+\bibitem[Roller and Stevenson, 2014]{roller2014applying}
+Roller, R. and Stevenson, M. (2014).
+\newblock Applying umls for distantly supervised relation detection.
+\newblock In {\em Proceedings of the 5th International Workshop on Health Text
+  Mining and Information Analysis (Louhi)@ EACL}, pages 80--84. Citeseer.
+
+\bibitem[Rosario and Hearst, 2004]{rosario2004classifying}
+Rosario, B. and Hearst, M.~A. (2004).
+\newblock Classifying semantic relations in bioscience texts.
+\newblock In {\em Proceedings of the 42nd annual meeting on association for
+  computational linguistics}, page 430. Association for Computational
+  Linguistics.
+
+\bibitem[Segura~Bedmar et~al., 2011]{segura20111st}
+Segura~Bedmar, I., Martinez, P., and S{\'a}nchez~Cisneros, D. (2011).
+\newblock The 1st ddiextraction-2011 challenge task: Extraction of drug-drug
+  interactions from biomedical texts.
+
+\bibitem[Shazeer et~al., 2016]{DBLP:journals/corr/ShazeerDEW16}
+Shazeer, N., Doherty, R., Evans, C., and Waterson, C. (2016).
+\newblock Swivel: Improving embeddings by noticing what's missing.
+\newblock {\em CoRR}, abs/1602.02215.
+
+\bibitem[Socher et~al., 2011]{socher2011dynamic}
+Socher, R., Huang, E.~H., Pennin, J., Manning, C.~D., and Ng, A.~Y. (2011).
+\newblock Dynamic pooling and unfolding recursive autoencoders for paraphrase
+  detection.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  801--809.
+
+\bibitem[Vu et~al., 2016]{vu2016combining}
+Vu, N.~T., Adel, H., Gupta, P., and Sch{\"u}tze, H. (2016).
+\newblock Combining recurrent and convolutional neural networks for relation
+  classification.
+\newblock {\em arXiv preprint arXiv:1605.07333}.
+
+\bibitem[Yessenalina and Cardie, 2011]{yessenalina2011compositional}
+Yessenalina, A. and Cardie, C. (2011).
+\newblock Compositional matrix-space models for sentiment analysis.
+\newblock In {\em Proceedings of the Conference on Empirical Methods in Natural
+  Language Processing}, pages 172--182. Association for Computational
+  Linguistics.
+
+\bibitem[Zanzotto et~al., 2010]{zanzotto2010estimating}
+Zanzotto, F.~M., Korkontzelos, I., Fallucchi, F., and Manandhar, S. (2010).
+\newblock Estimating linear models for compositional distributional semantics.
+\newblock In {\em Proceedings of the 23rd International Conference on
+  Computational Linguistics}, pages 1263--1271. Association for Computational
+  Linguistics.
+
+\bibitem[Zeng et~al., 2015]{zeng2015distant}
+Zeng, D., Liu, K., Chen, Y., and Zhao, J. (2015).
+\newblock Distant supervision for relation extraction via piecewise
+  convolutional neural networks.
+\newblock In {\em Proceedings of the 2015 Conference on Empirical Methods in
+  Natural Language Processing (EMNLP), Lisbon, Portugal}, pages 17--21.
+
+\bibitem[Zeng et~al., 2014]{zeng2014relation}
+Zeng, D., Liu, K., Lai, S., Zhou, G., Zhao, J., et~al. (2014).
+\newblock Relation classification via convolutional deep neural network.
+\newblock In {\em COLING}, pages 2335--2344.
+
+\bibitem[Zhang and Wang, 2015]{DBLP:journals/corr/ZhangW15a}
+Zhang, D. and Wang, D. (2015).
+\newblock Relation classification via recurrent neural network.
+\newblock {\em CoRR}, abs/1508.01006.
+
+\end{thebibliography}

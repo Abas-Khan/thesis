@@ -1,0 +1,32 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Example of Knowledge Graph}}{6}{figure.1.1}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces A framework for learning word vectors. Context of three words (“the,” “cat,” and “sat”) is used to predict the fourth word (“on”). The input words are mapped to columns of the matrix W to predict the output word.}}{10}{figure.2.1}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces }}{11}{figure.2.2}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Ranking Convolutional Neural Network}}{16}{figure.3.1}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Multiple Instance Learning example}}{20}{figure.3.2}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Schema of obtaining a trigram value}}{21}{figure.3.3}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Tensorboard visualisation of the network}}{23}{figure.3.4}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Experiments scheme}}{27}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Semantic values, general domain supervised experiments}}{37}{figure.4.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {witch - magic}}}{37}{figure.4.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {book - catalogues}}}{37}{figure.4.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {plant - storage unit}}}{37}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Scores distributions, general domain supervised experiments}}{38}{figure.4.3}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {InstrumentAgency}}}{38}{figure.4.3}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {ComponentWhole}}}{38}{figure.4.3}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {EntityOrigin}}}{38}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Semantic values, medical domain supervised experiments}}{46}{figure.4.4}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {LIGHT - HVEM}}}{46}{figure.4.4}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {IL-11 - IL-6}}}{46}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Scores distributions, medical domain supervised experiments}}{47}{figure.4.5}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Interaction}}}{47}{figure.4.5}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Other}}}{47}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Relation of supervised and distantly supervised knowledge}}{51}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Relation between correct answers for manually and distantly supervised training}}{52}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Correlation of amount of correct and wrong answers with sentence length and distance between entities}}{53}{figure.4.8}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Sentence length dependency}}}{53}{figure.4.8}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Distance between entities dependency}}}{53}{figure.4.8}
+\addvspace {10\p@ }

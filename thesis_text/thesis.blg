@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: thesis.aux
+The style file: apalike.bst
+Database file #1: literature.bib.bib
+Repeated entry---line 233 of file literature.bib.bib
+ : @inproceedings{pennington2014glove
+ :                                   ,
+I'm skipping whatever remains of this entry
+Warning--empty journal in riedel2013relation
+Warning--empty journal in segura20111st
+You've used 37 entries,
+            1935 wiz_defined-function locations,
+            676 strings with 11865 characters,
+and the built_in function-call counts, 18378 in all, are:
+= -- 1822
+> -- 858
+< -- 31
++ -- 300
+- -- 297
+* -- 1460
+:= -- 2998
+add.period$ -- 116
+call.type$ -- 37
+change.case$ -- 329
+chr.to.int$ -- 36
+cite$ -- 39
+duplicate$ -- 771
+empty$ -- 1222
+format.name$ -- 352
+if$ -- 3781
+int.to.chr$ -- 2
+int.to.str$ -- 0
+missing$ -- 36
+newline$ -- 185
+num.names$ -- 113
+pop$ -- 378
+preamble$ -- 1
+purify$ -- 329
+quote$ -- 0
+skip$ -- 615
+stack$ -- 0
+substring$ -- 1181
+swap$ -- 224
+text.length$ -- 22
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 222
+warning$ -- 2
+while$ -- 140
+width$ -- 0
+write$ -- 479
+(There was 1 error message)

@@ -1,0 +1,85 @@
+\chapter{Conclusions} 
+\label{chapter:conclusion}
+This chapter summarises the results of the conducted experiments and possible 
+conclusions that can be observed. Furthermore, interesting ways for future development of the 
+ideas and improvement of current results are discussed.
+
+\section{Conclusions}
+It can be concluded that a Convolutional Neural Network architecture can be successfully applied for the task of Information 
+Extraction, or Relation Classification more precisely. In specific domains, such as the biomedical domain, 
+it can outperform existing methods based on Natural Language Processing tools and manually extracted 
+features.
+
+The model configuration that showed the best performance for the general domain was 
+not the same for the medical domain. Different types and lengths of embeddings, Word2Vec, 
+Swivel and GloVe affect the performance in the setup of the considered problem.
+The initial quality of the embeddings influences the obtained results the most, e.g. Word2Vec embeddings trained on 
+a large amount of data would perform better, while GloVe can capture latent features of words on smaller corpora.
+An interesting observation can be done from the validation experiments for the medical domain (see Subsection \ref{subs:med-superv-res}). 
+It is that domain specific embeddings do result in better performance of the model comparing to 
+the general embeddings, even when embeddings are trained during the network training.
+
+Concerning Distant Supervision several main points should be noted:
+\begin{itemize}
+\item In the setup of real-world application for continuous extraction of new knowledge, Distant Supervision
+can be considered as the best approach with respect to overall effort among manual extraction and manually supervised automated 
+extraction. For example in the medical domain the amount of annually indexed articles on Medline is 
+more than one million and it keeps growing every year \footnote{\url{http://dan.corlan.net/cgi-bin/medline-trend?Q=}}.
+In the case of Distant Supervision only the resulting sentences should be checked manually, while 
+for supervised training the dataset should be created and also the results should be checked.
+\item The creation of the distantly supervised dataset does not require manual work of the experts 
+but should be very carefully performed. The correspondence between the context of the textual corpora and 
+required relational classes, the possible distribution of classes, the methods of aligning, the quality of 
+the Knowledge Base should be taken into account.
+\item As the evaluation of the distantly supervised model is a quite challenging task, a way to inspect 
+the training process should be introduced. The one considered in the thesis is extracting representative 
+trigrams (see Subsection \ref{subs:repr-trigr}). They might even serve as a basis for future application of an Active Learning approach that 
+can use representative trigrams for getting experts' feedback for improving the training dataset.
+\item There exist various ways of improving the Distant Supervision approach by mitigating the assumptions 
+made by it. One of them, that was proven to show rather good results (see Subsection \ref{subs:gen-dist-res}), is Multiple Instance Learning.
+\end{itemize}
+
+To summarise, the Ranking Convolutional Neural Network trained on distantly supervised dataset 
+showed ability to perform Relation Extraction task both in the general domain and in the medical domain.
+Various ways to get an intuition about the knowledge learned by the network and to improve the 
+results of the evaluation were investigated, among them representative trigrams and Multiple Instance Learning.
+
+\section{Future work}
+During the research, various ideas for future work that were not implemented due
+to the time constraints emerged. Among them:
+
+\begin{itemize}
+\item \textbf{Generation of the relational classes} One of the restrictions of the current model is a fixed 
+schema of relations \cite{riedel2013relation}. It means that only a fixed set of relational classes 
+can be learned and classified by the network. An alternative way is to generate relational classes
+names with a Recurrent Neural Network from a sentence representation obtained by the Ranking Convolutional Neural Network, thus 
+letting various new relations being extracted.
+
+\item \textbf{Widening the extraction area} Sometimes relations can be described in several 
+sentences, thus syntactical and semantical information from all of them is needed. To use it  
+the training set can be formed from the whole paragraphs that include entities mentions.
+
+\item \textbf{Generative Adversarial Networks} Tackling the problem of the small amount of data for the 
+training process might be also solved with Generative Adversarial Networks. The problem of text generation 
+has already a lot of attention (e.g. \cite{hu2017controllable}) and the results can be used as generators 
+of the text for the Ranking Convolutional Neural Network that will classify relations.
+
+\item \textbf{Improving Multiple Instance Learning}  As it is mentioned in \cite{lin2016neural} about Multiple Instance Learning \textit{''It's apparent  that  
+the  method  will  lose  a  large  amount of  rich  information  containing  in  neglected  
+sentences.''}. There are various different ways to improve it, for example, one of them is suggested by
+the authors of \cite{lin2016neural}. They implement selective attention mechanism for retrieving good examples.
+
+\item \textbf{Exploiting Representative Trigrams} Obtained during the training of the network 
+representative trigrams might be used for the improvement of distantly supervised examples 
+selection. Thus, if a sentence contains one of the trigrams it will be an example of the relation 
+with higher probability. The other way of exploiting representative trigrams is to improve 
+the quality of the distantly supervised dataset by filtering out sentences that contain not sensible trigrams 
+(see Paragraph \ref{par:active-learn}).
+
+\item \textbf{Improving preprocessing of the text} There are several ways to improve preprocessing, such as 
+extracting n-grams, replacing entities names with placeholders (see Paragraph \ref{par:gen-superv-repr-trig}), 
+improving the relational facts alignment in the 
+Distant Supervision approach, shortening the length of the sentences in the training dataset (see Paragraph \ref{par:ex-length}).
+\end{itemize}
+
+

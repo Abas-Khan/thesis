@@ -1,0 +1,78 @@
+\documentclass[12pt,a4paper] {report} 
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{amssymb}
+\usepackage{csquotes}
+\usepackage{subfigure}
+\usepackage{rotating}
+\usepackage[acronym]{glossaries}
+\usepackage[chapter]{algorithm}
+\usepackage{footnote}
+\usepackage{breakcites}
+\usepackage{float}
+
+% for using footnotes in tables
+\makesavenoteenv{table}
+
+\begin{document}
+  \sloppy
+
+% Title
+\input{title_page}
+\clearpage
+
+% Authorship
+\vspace*{\fill}
+I hereby declare that this thesis was formulated by myself and that no sources or tools other than those cited were used.
+\\Bonn, .................(Date) ...................................(Signature)
+\clearpage
+
+% Acknowledge
+\chapter*{Acknowledgements}
+I would like to thank Sven Giesselbach and Dr. Stefan R\"uping for their priceless contribution to  
+the ideas and to the work on this thesis.   
+\clearpage
+
+% Abstract
+\input{abstract}
+
+\clearpage
+
+% Content
+\tableofcontents
+
+\clearpage
+
+% Introduction
+\input{chapter1_introduction/introduction}
+
+% Background
+\input{chapter2_background/background}
+
+% Approach
+\input{chapter3_approach/approach}
+
+% Experiements
+\input{chapter4_experiments/experiments}
+
+% Conclusion
+\input{conclusion}
+\clearpage
+
+% List of figures and tables
+\addcontentsline{toc}{chapter}{List of figures}
+\listoffigures
+\clearpage
+ 
+\addcontentsline{toc}{chapter}{List of tables}
+\listoftables
+\clearpage
+
+% References
+\addcontentsline{toc}{chapter}{References}
+\renewcommand{\bibname}{References}
+\bibliography{literature.bib}
+\bibliographystyle{apalike}
+
+\end{document}

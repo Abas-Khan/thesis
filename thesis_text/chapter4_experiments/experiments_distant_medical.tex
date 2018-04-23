@@ -1,0 +1,130 @@
+\subsection{Medical domain: Rosario-Hearst based distantly supervised dataset}
+The Distant Supervision experiment setup for the medical domain was mainly performed according to 
+\cite{roller2014applying}. Rosario-Hearst dataset was chosen as base supervised dataset 
+because it contains more than two relations and relatively small that can allow evaluating the 
+effect of adding distantly supervised data more. 
+
+As a textual corpus, PubMed abstracts were used. The abstracts were downloaded without 
+specialised search and only around 500000 were finally used for creating the dataset. 
+In order to mark medical entities, MetaMap online tool 
+\footnote{https://metamap.nlm.nih.gov/} was utilised. It allows to setup a lot of parameters for different 
+output formats and text processing. As a simplest one, the Fielded MMI format was chosen. This 
+format gives as an output all found entities, their unique identifiers in the MetaMap system Knowledge Base, 
+their positioning in the text and additional information that was not used. It was chosen as it gives the least 
+volume of the processed file and rather simple to use further. Also, it is important to notice that the input file was 
+preprocessed with sentence tokeniser from NLTK toolkit, thus output was directly giving 
+positions of the entities in each of the sentences.
+
+The next step is to align a publicly available Knowledge Base to the preprocessed text. 
+As entities marked with identifiers from MetaMap, relational base MRREL from the same source was used. This Knowledge Base 
+\footnote{https://www.ncbi.nlm.nih.gov/books/NBK9684/} consists of many datasets 
+and thus includes a lot of relational classes (almost 600). Among them ''may-be-treated-by'' and 
+''may-be-prevented-by'' which correspond to ''treatment-for'' and ''prevents-from'' relations from 
+the supervised dataset. So, entity pairs are taken from these two classes of MRREL Knowledge Base.
+Then, with a Python script, all the tagged sentences that contain entity pairs with desired 
+relations are separated. In order to construct examples for ''Other'' class, all possible pairs of entities
+that are not in one of the classified relations according to the Knowledge Base were considered. Thus, a dataset containing 13025 
+sentences was formed. For medical domain difference in sizes of the manually and distantly supervised
+datasets is much larger, the distant dataset includes almost 16 times more examples than the manually
+supervised one.
+
+Using this distantly supervised dataset similar to the general domain experiments were 
+performed with the supervised testing set for evaluation.
+
+\subsection{Results}
+The results of the training of the network in various ways with distantly supervised data can be seen
+in the Table \ref{tab:dist-med-res}. For comparison, the supervised result also was included in the 
+table.
+
+\begin{table}[h]
+  \begin{center}
+ \begin{tabular}{ | c | c | c | c | }
+    \hline
+    Experiment & P & R & F1 \\ \hline
+    Supervised training & \textbf{90.05} & 82.14 & \textbf{85.58} \\ \hline
+    Distantly supervised training & 46.16 & 44.52 & 41.81 \\ \hline
+    Distantly supervised + MIL & 59.67 & 50.24 & 54.17 \\ \hline
+    Distantly supervised + supervised data & 76.81 & 67.62 & 70.45 \\ \hline
+    Distantly supervised + supervised data + MIL & 87.68 & \textbf{83.33} & 85.3 \\ \hline
+    Transfer from supervised & 54.07 & 48.57 & 51.17 \\ \hline
+    Transfer from supervised + MIL & 61.84 & 43.33 & 49.29 \\ \hline
+    \end{tabular}
+\caption[Medical domain, Distant Supervision experiments results]{Precision, Recall and F1-scores for distantly supervised training evaluation.}
+\label{tab:dist-med-res}
+\end{center}
+\end{table}
+
+So it can be seen, that all the conclusions that were made for distantly supervised training in 
+general domain, are also valid in the medical domain.
+
+One interesting aspect of Rosario-Hearst dataset that it is highly unbalanced. The formed 
+distantly supervised dataset is also unbalanced with the same relation ''treatment-for'' 
+dominating over all others. It was interesting to see the effect of balancing of the dataset and the 
+results of evaluation could be seen in the Table \ref{tab:dist-med-res-bal}.
+
+\begin{table}[h]
+  \begin{center}
+ \begin{tabular}{ | c | c | c | c | }
+    \hline
+    Experiment & P & R & F1 \\ \hline
+    Supervised training & \textbf{90.05} & 82.14 & 85.58 \\ \hline
+    Distantly supervised training & 43.1 & 35 & 37.83 \\ \hline
+    Distantly supervised + MIL & 56.22 & 60.24 & 55.87  \\ \hline
+    Distantly supervised + supervised data & 85.35 & 86.43 & 85.88 \\ \hline
+    Distantly supervised + supervised data + MIL & 84.17 & \textbf{89.05} & \textbf{86.45} \\ \hline
+    Transfer from supervised & 46.95 & 45.95 & 40.76 \\ \hline
+    Transfer from supervised + MIL & 60.14 & 43.57 & 50.53 \\ \hline
+    \end{tabular}
+\caption[Medical domain, Distant Supervision with balancing experiments results]{Precision, Recall and F1-scores for distantly supervised training evaluation with balanced distant dataset.}
+\label{tab:dist-med-res-bal}
+\end{center}
+\end{table}
+
+The results that were obtained by simply training on the balanced distant dataset are lower than for  
+unbalanced one, but when the supervised data is mixed in the results become much higher. The first 
+fact might be explained by the basic requirement of any supervised learner: the training and 
+the testing dataset are supposed to be drawn from the same distribution. But the second fact can either mean that distantly 
+supervised data is always uncertain, so true distribution of classes cannot be seen just from a number
+ of examples, or that simple neglecting of some of the dominating class examples 
+helped the network to avoid noisy data. Also, one point that was observed while constructing the distant dataset
+is that the set of entity pairs for the relation ''treatment-for'' intersects with the set for ''prevents-from'' significantly.
+Thus, there are a lot of examples in the dataset, that will be labelled with both of the relations, that confuses 
+the network more when all the examples are included (in unbalanced setup). 
+
+\paragraph{Representative trigrams} 
+The representative trigrams also give the same intuition that was there in the general domain - 
+distantly supervised data helps to avoid the biased understanding of the relations. So for the 
+supervised training for relation ''prevents-from'' they were:
+
+\textit{vaccine for pneumonia, vaccination against influenza, vaccination against swine, vaccine 
+against pneumococcus, polio vaccination participation, influenza vaccination on, influenza 
+vaccination, hepatitis b vaccine, vaccine 6}
+
+They are clearly biased to various forms of vaccines and vaccinations. While for distantly 
+supervised dataset mixed with supervised data were obtained:
+
+\textit{malaria, nausea and vomiting, hiv-infected patients, tuberculosis, beclomethasone dipropionate, fluoride, cimetidine 1, ganciclovir}
+
+These ones are not human-interpretable, but they are definitely not biased to 
+vaccinations. The amount of disease and drug names in the trigrams reveals 
+that it was not easy for the network to concentrate on the syntactic constructions for the 
+relation itself rather than on the names of the entities. This can be explained by 
+the bad choice of ''Other'' class examples. As all the sentences with various 
+named entities were used for it, only sentences containing exactly diseases and 
+drugs were classified for the relations and the network started to overfit on the 
+entity names. One possible way to fight this problem is to replace entity names with 
+certain keywords in all the examples. The experiment revealed, that this modification 
+of the dataset lead to the improvement of the score for distantly supervised training. 
+The score became P=52.06, R=52.38, F1=51.54 against 
+P=46.16, R=44.52, F1=41.81 for non-modified dataset. Representative trigrams also 
+show a very good progress:
+
+\textbf{prevents-from}: \textit{entity1-resistant entity2, nausea and entity2, to prevent entity2, entity2, entity1 and entity2, use of entity2, entity1(entity2}
+
+\textbf{treatment-for}: \textit{treatment of entity2, entity2, patients with entity2, treatment with entity1, treated with entity1, administration of entity1, response to entity1, entity2 with entity1}
+
+But the result of the evaluation is lower than one for the non transformed dataset and with Multiple Instance Learning.
+The problem with this approach is that Multiple Instance Learning cannot be applied anymore in the previous form, 
+as all the entity pairs are the same and the examples cannot be grouped to form the bags on the 
+basement of different entity pairs. But some other approaches might be explored, for example, 
+randomly grouping some fixed amount of examples for one class into bags.
