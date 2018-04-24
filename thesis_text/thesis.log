@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.2.19)  23 APR 2018 17:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.2.19)  24 APR 2018 17:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -471,29 +471,32 @@ Package: footnote 1997/01/28 1.13 Save footnotes around boxes
 \fn@width=\dimen132
 )
 (/usr/share/texlive/texmf-dist/tex/latex/breakcites/breakcites.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen133
+)
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... none found.
-
-(./thesis.aux)
+ (./thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
 \AtBeginShipoutBox=\box37
-Package hyperref Info: Link coloring OFF on input line 18.
- (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package hyperref Info: Link coloring OFF on input line 19.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -501,9 +504,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count152
 )
-LaTeX Info: Redefining \ref on input line 18.
-LaTeX Info: Redefining \pageref on input line 18.
-LaTeX Info: Redefining \nameref on input line 18.
+LaTeX Info: Redefining \ref on input line 19.
+LaTeX Info: Redefining \pageref on input line 19.
+LaTeX Info: Redefining \nameref on input line 19.
 
 (./thesis.out) (./thesis.out)
 \@outlinefile=\write3
@@ -513,13 +516,13 @@ LaTeX Info: Redefining \nameref on input line 18.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count153
-\scratchdimen=\dimen133
+\scratchdimen=\dimen134
 \scratchbox=\box38
 \nofMPsegments=\count154
 \nofMParguments=\count155
 \everyMPshowfont=\toks37
 \MPscratchCnt=\count156
-\MPscratchDim=\dimen134
+\MPscratchDim=\dimen135
 \MPnumerator=\count157
 \makeMPintoPDFobject=\count158
 \everyMPtoPDFconversion=\toks38
@@ -558,7 +561,7 @@ tination with the same identifier (name{page.1}) has been already used, duplica
 te ignored
 <to be read again> 
                    \relax 
-l.30 \clearpage
+l.31 \clearpage
                 [1
 
 ] [2
@@ -568,14 +571,14 @@ l.30 \clearpage
 name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.41 \clearpage
+l.42 \clearpage
                 [1
 
 ] (./thesis.tocpdfTeX warning (ext4): destination with the same identifier (nam
 e{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.37 ...line {4.2.4}Results}{41}{subsection.4.2.4}
+l.35 ...line {4.2.4}Results}{42}{subsection.4.2.4}
                                                    [2
 
 
@@ -617,21 +620,10 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 Chapter 2.
 [8
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 32--37
-
- []
-
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no à in font cmr12!
-Missing character: There is no ß in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no à in font cmr12!
-Missing character: There is no ß in font cmr12!
-[9] <w2v.png, id=328, 606.265pt x 373.395pt>
+] <w2v.png, id=319, 606.265pt x 373.395pt>
 File: w2v.png Graphic file (type png)
  <use w2v.png>
-Package pdftex.def Info: w2v.png used on input line 76.
+Package pdftex.def Info: w2v.png used on input line 35.
 (pdftex.def)             Requested size: 227.62634pt x 142.26192pt.
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
@@ -681,28 +673,57 @@ Missing character: There is no ú in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
- [10pdfTeX warning (ext4): destination with the same identifier (name{figure.2.
-1}) has been already used, duplicate ignored
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--60
+
+ []
+
+[9]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no à in font cmr12!
+Missing character: There is no ß in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no à in font cmr12!
+Missing character: There is no ß in font cmr12!
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[10pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1
+}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.95 
-      <./w2v.png>] <para.jpg, id=346, 587.19376pt x 312.16624pt>
+l.114 \paragraph
+                {Doc2Vec}Doc2Vec is capable of constructing representations ...
+ <./w2v.png>] <para.jpg, id=354, 587.19376pt x 312.16624pt>
 File: para.jpg Graphic file (type jpg)
-
-<use para.jpg>
-Package pdftex.def Info: para.jpg used on input line 110.
+ <use para.jpg>
+Package pdftex.def Info: para.jpg used on input line 128.
 (pdftex.def)             Requested size: 227.61586pt x 142.2645pt.
-) (./chapter3_approach/approach.tex [11pdfTeX warning (ext4): destination with 
-the same identifier (name{figure.2.2}) has been already used, duplicate ignored
 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./chapter3_approach/approach.tex [11pdfTeX warning (ext4): destination with 
+the same identifier (name{table.2.1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1 \chapter
+            {Approach}] [12pdfTeX warning (ext4): destination with the same ide
+ntifier (name{figure.2.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1 \chapter
             {Approach} <./para.jpg>]
 Chapter 3.
-[12
+[13
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 48--48
@@ -787,56 +808,56 @@ Underfull \hbox (badness 10000) in paragraph at lines 50--50
 \OT1/cmr/m/n/12 Wikipedia dump
  []
 
-[13pdfTeX warning (ext4): destination with the same identifier (name{table.3.1}
+[14pdfTeX warning (ext4): destination with the same identifier (name{table.3.1}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.59 
-     ] [14]
-<chapter3_approach/images/ranking_cnn.png, id=416, 242.9075pt x 493.845pt>
+     ] [15]
+<chapter3_approach/images/ranking_cnn.png, id=468, 242.9075pt x 493.845pt>
 File: chapter3_approach/images/ranking_cnn.png Graphic file (type png)
 
 <use chapter3_approach/images/ranking_cnn.png>
 Package pdftex.def Info: chapter3_approach/images/ranking_cnn.png used on input
  line 111.
 (pdftex.def)             Requested size: 180.67566pt x 367.32343pt.
- [15] [16pdfTeX warning (ext4): destination with the same identifier (name{figu
+ [16] [17pdfTeX warning (ext4): destination with the same identifier (name{figu
 re.3.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.136 
-       <./chapter3_approach/images/ranking_cnn.png>] [17] [18]
-<chapter3_approach/images/mult-inst-learn.png, id=458, 201.75375pt x 312.16624p
+       <./chapter3_approach/images/ranking_cnn.png>] [18] [19]
+<chapter3_approach/images/mult-inst-learn.png, id=509, 201.75375pt x 312.16624p
 t>
 File: chapter3_approach/images/mult-inst-learn.png Graphic file (type png)
  <use chapter3_approach/images/mult-inst-learn.png>
 Package pdftex.def Info: chapter3_approach/images/mult-inst-learn.png used on i
 nput line 238.
 (pdftex.def)             Requested size: 150.56305pt x 232.96187pt.
- [19] [20pdfTeX warning (ext4): destination with the same identifier (name{figu
+ [20] [21pdfTeX warning (ext4): destination with the same identifier (name{figu
 re.3.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.266 
        <./chapter3_approach/images/mult-inst-learn.png>]
-<chapter3_approach/images/repr-trigram.png, id=479, 320.19624pt x 420.57124pt>
+<chapter3_approach/images/repr-trigram.png, id=530, 320.19624pt x 420.57124pt>
 File: chapter3_approach/images/repr-trigram.png Graphic file (type png)
 
 <use chapter3_approach/images/repr-trigram.png>
 Package pdftex.def Info: chapter3_approach/images/repr-trigram.png used on inpu
 t line 269.
 (pdftex.def)             Requested size: 200.75073pt x 263.68422pt.
- [21pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+ [22pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.295 
        <./chapter3_approach/images/repr-trigram.png>]
-<chapter3_approach/images/tensorboard_vis.png, id=492, 2475.2475pt x 1613.02625
+<chapter3_approach/images/tensorboard_vis.png, id=544, 2475.2475pt x 1613.02625
 pt>
 File: chapter3_approach/images/tensorboard_vis.png Graphic file (type png)
  <use chapter3_approach/images/tensorboard_vis.png>
@@ -849,41 +870,41 @@ Underfull \hbox (badness 10000) in paragraph at lines 328--328
 vanlp / edu / stanford / nlp / process /
  []
 
-[22] [23pdfTeX warning (ext4): destination with the same identifier (name{figur
+[23] [24pdfTeX warning (ext4): destination with the same identifier (name{figur
 e.3.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.339 
-       <./chapter3_approach/images/tensorboard_vis.png>] [24])
-(./chapter4_experiments/experiments.tex [25]
+       <./chapter3_approach/images/tensorboard_vis.png>] [25])
+(./chapter4_experiments/experiments.tex [26]
 Chapter 4.
 
-<chapter4_experiments/images/exp-schema.png, id=522, 530.98375pt x 280.04625pt>
+<chapter4_experiments/images/exp-schema.png, id=574, 530.98375pt x 280.04625pt>
 File: chapter4_experiments/images/exp-schema.png Graphic file (type png)
 <use chapter4_experiments/images/exp-schema.png>
 Package pdftex.def Info: chapter4_experiments/images/exp-schema.png used on inp
 ut line 18.
 (pdftex.def)             Requested size: 390.0pt x 205.69263pt.
 
-(./chapter4_experiments/experiments_supervised_general.tex [26
+(./chapter4_experiments/experiments_supervised_general.tex [27
 
-] [27pdfTeX warning (ext4): destination with the same identifier (name{figure.4
+] [28pdfTeX warning (ext4): destination with the same identifier (name{figure.4
 .1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.3 
-     <./chapter4_experiments/images/exp-schema.png>] [28]
+     <./chapter4_experiments/images/exp-schema.png>] [29]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 51.
- [29] [30] [31pdfTeX warning (ext4): destination with the same identifier (name
+ [30] [31] [32pdfTeX warning (ext4): destination with the same identifier (name
 {table.4.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.124 
-      ] [32pdfTeX warning (ext4): destination with the same identifier (name{ta
+      ] [33pdfTeX warning (ext4): destination with the same identifier (name{ta
 ble.4.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -965,14 +986,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 211--241
 
  []
 
-[33] [34pdfTeX warning (ext4): destination with the same identifier (name{table
+[34] [35pdfTeX warning (ext4): destination with the same identifier (name{table
 .4.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.241 
-      ] [35]
-<chapter4_experiments/images/sem-val1.png, id=620, 578.16pt x 433.62pt>
+      ] [36]
+<chapter4_experiments/images/sem-val1.png, id=671, 578.16pt x 433.62pt>
 File: chapter4_experiments/images/sem-val1.png Graphic file (type png)
 
 <use chapter4_experiments/images/sem-val1.png>
@@ -980,7 +1001,7 @@ Package pdftex.def Info: chapter4_experiments/images/sem-val1.png used on input
  line 273.
 (pdftex.def)             Requested size: 187.19833pt x 140.39551pt.
 
-<chapter4_experiments/images/sem-val2.png, id=621, 578.16pt x 433.62pt>
+<chapter4_experiments/images/sem-val2.png, id=672, 578.16pt x 433.62pt>
 File: chapter4_experiments/images/sem-val2.png Graphic file (type png)
 
 <use chapter4_experiments/images/sem-val2.png>
@@ -988,15 +1009,15 @@ Package pdftex.def Info: chapter4_experiments/images/sem-val2.png used on input
  line 276.
 (pdftex.def)             Requested size: 187.19833pt x 140.39551pt.
 
-<chapter4_experiments/images/sem-val3.png, id=622, 578.16pt x 433.62pt>
+<chapter4_experiments/images/sem-val3.png, id=673, 578.16pt x 433.62pt>
 File: chapter4_experiments/images/sem-val3.png Graphic file (type png)
 
 <use chapter4_experiments/images/sem-val3.png>
 Package pdftex.def Info: chapter4_experiments/images/sem-val3.png used on input
  line 279.
 (pdftex.def)             Requested size: 187.19833pt x 140.39551pt.
- [36]
-<chapter4_experiments/images/scores1.png, id=630, 578.16pt x 433.62pt>
+ [37]
+<chapter4_experiments/images/scores1.png, id=681, 578.16pt x 433.62pt>
 File: chapter4_experiments/images/scores1.png Graphic file (type png)
 
 <use chapter4_experiments/images/scores1.png>
@@ -1004,7 +1025,7 @@ Package pdftex.def Info: chapter4_experiments/images/scores1.png used on input
 line 298.
 (pdftex.def)             Requested size: 183.30048pt x 137.47101pt.
 
-<chapter4_experiments/images/scores2.png, id=631, 578.16pt x 433.62pt>
+<chapter4_experiments/images/scores2.png, id=682, 578.16pt x 433.62pt>
 File: chapter4_experiments/images/scores2.png Graphic file (type png)
 
 <use chapter4_experiments/images/scores2.png>
@@ -1012,14 +1033,14 @@ Package pdftex.def Info: chapter4_experiments/images/scores2.png used on input
 line 301.
 (pdftex.def)             Requested size: 183.30048pt x 137.47101pt.
 
-<chapter4_experiments/images/scores3.png, id=632, 578.16pt x 433.62pt>
+<chapter4_experiments/images/scores3.png, id=683, 578.16pt x 433.62pt>
 File: chapter4_experiments/images/scores3.png Graphic file (type png)
 
 <use chapter4_experiments/images/scores3.png>
 Package pdftex.def Info: chapter4_experiments/images/scores3.png used on input 
 line 304.
 (pdftex.def)             Requested size: 183.30048pt x 137.47101pt.
- [37pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
+ [38pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
 2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1027,7 +1048,7 @@ line 304.
 l.308 
        <./chapter4_experiments/images/sem-val1.png> <./chapter4_experiments/ima
 ges/sem-val2.png> <./chapter4_experiments/images/sem-val3.png>])
-(./chapter4_experiments/experiments_supervised_medical.tex [38pdfTeX warning (e
+(./chapter4_experiments/experiments_supervised_medical.tex [39pdfTeX warning (e
 xt4): destination with the same identifier (name{figure.4.3}) has been already 
 used, duplicate ignored
 
@@ -1036,13 +1057,13 @@ used, duplicate ignored
 l.8 \begin{enumerate}
                       <./chapter4_experiments/images/scores1.png> <./chapter4_e
 xperiments/images/scores2.png> <./chapter4_experiments/images/scores3.png>]
-[39]
+[40]
 Overfull \hbox (5.2002pt too wide) in paragraph at lines 71--71
 []\OT1/cmtt/m/n/12 <entity id="DrugDDI.d27.s0.e0" origId="s0.p1" charOffset="26
 -33"[] 
  []
 
-[40] [41]
+[41] [42]
 Overfull \hbox (1.7083pt too wide) in paragraph at lines 153--162
  [] 
  []
@@ -1050,13 +1071,13 @@ Overfull \hbox (1.7083pt too wide) in paragraph at lines 153--162
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[42pdfTeX warning (ext4): destination with the same identifier (name{table.4.5}
+[43pdfTeX warning (ext4): destination with the same identifier (name{table.4.5}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.197 
-      ] [43pdfTeX warning (ext4): destination with the same identifier (name{ta
+      ] [44pdfTeX warning (ext4): destination with the same identifier (name{ta
 ble.4.6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1074,21 +1095,21 @@ l.212
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.212 
-      ] [44]
+      ] [45]
 Underfull \hbox (badness 4181) in paragraph at lines 251--252
 []\OT1/cmr/m/n/12 "Our data sug-gest that TR6 in-hibits the in-ter-ac-tions of 
 $\OML/cmm/m/it/12 <
  []
 
 
-<chapter4_experiments/images/aimed-sem-val1.png, id=728, 1199.682pt x 433.62pt>
+<chapter4_experiments/images/aimed-sem-val1.png, id=779, 1199.682pt x 433.62pt>
 File: chapter4_experiments/images/aimed-sem-val1.png Graphic file (type png)
 <use chapter4_experiments/images/aimed-sem-val1.png>
 Package pdftex.def Info: chapter4_experiments/images/aimed-sem-val1.png used on
  input line 273.
 (pdftex.def)             Requested size: 390.0pt x 140.96452pt.
 
-<chapter4_experiments/images/aimed-sem-val2.png, id=729, 838.332pt x 433.62pt>
+<chapter4_experiments/images/aimed-sem-val2.png, id=780, 838.332pt x 433.62pt>
 File: chapter4_experiments/images/aimed-sem-val2.png Graphic file (type png)
 
 <use chapter4_experiments/images/aimed-sem-val2.png>
@@ -1100,8 +1121,8 @@ Overfull \hbox (4.99991pt too wide) in paragraph at lines 273--277
  [][] 
  []
 
-[45]
-<chapter4_experiments/images/aimed-scores1.png, id=737, 578.16pt x 433.62pt>
+[46]
+<chapter4_experiments/images/aimed-scores1.png, id=789, 578.16pt x 433.62pt>
 File: chapter4_experiments/images/aimed-scores1.png Graphic file (type png)
 
 <use chapter4_experiments/images/aimed-scores1.png>
@@ -1109,14 +1130,14 @@ Package pdftex.def Info: chapter4_experiments/images/aimed-scores1.png used on
 input line 292.
 (pdftex.def)             Requested size: 183.30048pt x 137.47101pt.
 
-<chapter4_experiments/images/aimed-scores2.png, id=738, 578.16pt x 433.62pt>
+<chapter4_experiments/images/aimed-scores2.png, id=790, 578.16pt x 433.62pt>
 File: chapter4_experiments/images/aimed-scores2.png Graphic file (type png)
 
 <use chapter4_experiments/images/aimed-scores2.png>
 Package pdftex.def Info: chapter4_experiments/images/aimed-scores2.png used on 
 input line 295.
 (pdftex.def)             Requested size: 183.30048pt x 137.47101pt.
-) [46pdfTeX warning (ext4): destination with the same identifier (name{figure.4
+) [47pdfTeX warning (ext4): destination with the same identifier (name{figure.4
 .4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1124,7 +1145,7 @@ input line 295.
 l.49 
       <./chapter4_experiments/images/aimed-sem-val1.png> <./chapter4_experiment
 s/images/aimed-sem-val2.png>]
-(./chapter4_experiments/experiments_distant_general.tex [47pdfTeX warning (ext4
+(./chapter4_experiments/experiments_distant_general.tex [48pdfTeX warning (ext4
 ): destination with the same identifier (name{figure.4.5}) has been already use
 d, duplicate ignored
 
@@ -1132,14 +1153,14 @@ d, duplicate ignored
                                                   \fi \fi 
 l.22 
       <./chapter4_experiments/images/aimed-scores1.png> <./chapter4_experiments
-/images/aimed-scores2.png>] [48] [49pdfTeX warning (ext4): destination with the
+/images/aimed-scores2.png>] [49] [50pdfTeX warning (ext4): destination with the
  same identifier (name{table.4.9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.95 
-     ] [50]
-<chapter4_experiments/images/dist-superv-knowledge.png, id=799, 450.68375pt x 2
+     ] [51]
+<chapter4_experiments/images/dist-superv-knowledge.png, id=851, 450.68375pt x 2
 39.89626pt>
 File: chapter4_experiments/images/dist-superv-knowledge.png Graphic file (type 
 png)
@@ -1148,21 +1169,21 @@ Package pdftex.def Info: chapter4_experiments/images/dist-superv-knowledge.png
 used on input line 136.
 (pdftex.def)             Requested size: 250.93842pt x 133.57593pt.
 
-<chapter4_experiments/images/uniq-correct.png, id=801, 1349.2809pt x 775.4571pt
+<chapter4_experiments/images/uniq-correct.png, id=853, 1349.2809pt x 775.4571pt
 >
 File: chapter4_experiments/images/uniq-correct.png Graphic file (type png)
  <use chapter4_experiments/images/uniq-correct.png>
 Package pdftex.def Info: chapter4_experiments/images/uniq-correct.png used on i
 nput line 151.
 (pdftex.def)             Requested size: 390.0pt x 224.14319pt.
- [51pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
+ [52pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
 6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.155 
        <./chapter4_experiments/images/dist-superv-knowledge.png>]
-<chapter4_experiments/images/length_errors.png, id=810, 807.9786pt x 433.62pt>
+<chapter4_experiments/images/length_errors.png, id=863, 807.9786pt x 433.62pt>
 File: chapter4_experiments/images/length_errors.png Graphic file (type png)
 
 <use chapter4_experiments/images/length_errors.png>
@@ -1170,14 +1191,14 @@ Package pdftex.def Info: chapter4_experiments/images/length_errors.png used on
 input line 170.
 (pdftex.def)             Requested size: 183.30048pt x 98.3675pt.
 
-<chapter4_experiments/images/betw_ent_errors.png, id=811, 813.0375pt x 433.62pt
+<chapter4_experiments/images/betw_ent_errors.png, id=864, 813.0375pt x 433.62pt
 >
 File: chapter4_experiments/images/betw_ent_errors.png Graphic file (type png)
  <use chapter4_experiments/images/betw_ent_errors.png>
 Package pdftex.def Info: chapter4_experiments/images/betw_ent_errors.png used o
 n input line 173.
 (pdftex.def)             Requested size: 183.30048pt x 97.75877pt.
- [52pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
+ [53pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
 7}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1185,7 +1206,7 @@ n input line 173.
 l.185 n
        ewly trained model was able to obtain more general trigrams, such as: <.
 /chapter4_experiments/images/uniq-correct.png>])
-(./chapter4_experiments/experiments_distant_medical.tex [53pdfTeX warning (ext4
+(./chapter4_experiments/experiments_distant_medical.tex [54pdfTeX warning (ext4
 ): destination with the same identifier (name{figure.4.8}) has been already use
 d, duplicate ignored
 
@@ -1193,7 +1214,7 @@ d, duplicate ignored
                                                   \fi \fi 
 l.6 
      <./chapter4_experiments/images/length_errors.png> <./chapter4_experiments/
-images/betw_ent_errors.png>] [54] [55pdfTeX warning (ext4): destination with th
+images/betw_ent_errors.png>] [55] [56pdfTeX warning (ext4): destination with th
 e same identifier (name{table.4.10}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -1205,11 +1226,11 @@ l.93
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.93 
-     ] [56])) (./conclusion.tex [57]
+     ] [57])) (./conclusion.tex [58]
 Chapter 5.
-[58
+[59
 
-] [59]) [60] (./thesis.lof
+] [60]) [61] (./thesis.lof
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ú in font cmr12!
@@ -1238,49 +1259,45 @@ Missing character: There is no ù in font cmr12!
 \tf@lof=\write5
 \openout5 = `thesis.lof'.
 
- [61
+ [62
 
 
 ] (./thesis.lot)
 \tf@lot=\write6
 \openout6 = `thesis.lot'.
 
- [62
+ [63
 
 
-] (./thesis.bbl [63
+] (./thesis.bbl [64
 
 
 ]
-Underfull \hbox (badness 4739) in paragraph at lines 67--71
-[]\OT1/cmr/m/n/12 Grefenstette, E., Dinu, G., Zhang, Y.-Z.,
- []
-
-[64] [65]
-Underfull \hbox (badness 6725) in paragraph at lines 173--176
+[65] [66]
+Underfull \hbox (badness 6725) in paragraph at lines 197--200
 []\OT1/cmr/m/n/12 Segura Bed-mar, I., Mar-tinez, P., and
  []
 
-[66])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 79.
- [67]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 79.
+[67])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 80.
+ [68]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 80.
  (./thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 79.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 79.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 80.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 80.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: FA00FF392857018B5182559DCECEBD33;2869.
+(rerunfilecheck)             Checksum: C30E4B7F6FFC0E1387D4314683308811;2869.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 79.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 80.
  ) 
 Here is how much of TeX's memory you used:
- 11166 strings out of 493029
- 166885 string characters out of 6136234
- 323269 words of memory out of 5000000
- 14173 multiletter control sequences out of 15000+600000
+ 11185 strings out of 493029
+ 167232 string characters out of 6136234
+ 327657 words of memory out of 5000000
+ 14186 multiletter control sequences out of 15000+600000
  18453 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  46i,18n,36p,1950b,623s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1308,10 +1325,10 @@ b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on thesis.pdf (70 pages, 1277070 bytes).
+Output written on thesis.pdf (71 pages, 1280046 bytes).
 PDF statistics:
- 1065 PDF objects out of 1200 (max. 8388607)
- 924 compressed objects within 10 object streams
- 261 named destinations out of 1000 (max. 500000)
+ 1118 PDF objects out of 1200 (max. 8388607)
+ 976 compressed objects within 10 object streams
+ 263 named destinations out of 1000 (max. 500000)
  455 words of extra memory for PDF output out of 10000 (max. 10000000)
 

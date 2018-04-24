@@ -12,14 +12,21 @@ Angeli, G., Tibshirani, J., Wu, J., and Manning, C.~D. (2014).
 \newblock Combining distant and partial supervision for relation extraction.
 \newblock In {\em EMNLP}, pages 1556--1567.
 
+\bibitem[Berger et~al., 2000]{berger2000bridging}
+Berger, A., Caruana, R., Cohn, D., Freitag, D., and Mittal, V. (2000).
+\newblock Bridging the lexical chasm: statistical approaches to answer-finding.
+\newblock In {\em Proceedings of the 23rd annual international ACM SIGIR
+  conference on Research and development in information retrieval}, pages
+  192--199. ACM.
+
 \bibitem[Bojanowski et~al., 2016]{bojanowski2016enriching}
 Bojanowski, P., Grave, E., Joulin, A., and Mikolov, T. (2016).
 \newblock Enriching word vectors with subword information. corr abs/1607.04606.
 
-\bibitem[Bollegala et~al., 2015]{bollegala2015unsupervised}
-Bollegala, D., Maehara, T., and Kawarabayashi, K.-i. (2015).
-\newblock Unsupervised cross-domain word representation learning.
-\newblock {\em arXiv preprint arXiv:1505.07184}.
+\bibitem[Boling and Das, 2014]{boling2014semantic}
+Boling, C. and Das, K. (2014).
+\newblock Semantic similarity of documents using latent semantic analysis.
+\newblock {\em 2014 NCUR}.
 
 \bibitem[Bunescu et~al., 2005]{bunescu2005comparative}
 Bunescu, R., Ge, R., Kate, R.~J., Marcotte, E.~M., Mooney, R.~J., Ramani,
@@ -49,6 +56,12 @@ dos Santos, C.~N., Xiang, B., and Zhou, B. (2015).
 \newblock Classifying relations by ranking with convolutional neural networks.
 \newblock {\em CoRR}, abs/1504.06580.
 
+\bibitem[Dumais, 2004]{dumais2004latent}
+Dumais, S.~T. (2004).
+\newblock Latent semantic analysis.
+\newblock {\em Annual review of information science and technology},
+  38(1):188--230.
+
 \bibitem[Ghosh et~al., 2016]{ghosh2016characterizing}
 Ghosh, S., Chakraborty, P., Cohn, E., Brownstein, J.~S., and Ramakrishnan, N.
   (2016).
@@ -62,12 +75,6 @@ Gormley, M.~R., Yu, M., and Dredze, M. (2015).
 \newblock Improved relation extraction with feature-rich compositional
   embedding models.
 \newblock {\em arXiv preprint arXiv:1505.02419}.
-
-\bibitem[Grefenstette et~al., 2013]{grefenstette2013multi}
-Grefenstette, E., Dinu, G., Zhang, Y.-Z., Sadrzadeh, M., and Baroni, M. (2013).
-\newblock Multi-step regression learning for compositional distributional
-  semantics.
-\newblock {\em arXiv preprint arXiv:1301.6939}.
 
 \bibitem[Hendrickx et~al., 2009]{hendrickx2009semeval}
 Hendrickx, I., Kim, S.~N., Kozareva, Z., Nakov, P., {\'O}~S{\'e}aghdha, D.,
@@ -83,23 +90,28 @@ Hu, Z., Yang, Z., Liang, X., Salakhutdinov, R., and Xing, E.~P. (2017).
 \newblock Controllable text generation.
 \newblock {\em arXiv preprint arXiv:1703.00955}.
 
-\bibitem[Le and Mikolov, 2014]{le2014distributed}
-Le, Q. and Mikolov, T. (2014).
-\newblock Distributed representations of sentences and documents.
-\newblock In {\em Proceedings of the 31st International Conference on Machine
-  Learning (ICML-14)}, pages 1188--1196.
+\bibitem[Joulin et~al., 2016]{joulin2016fasttext}
+Joulin, A., Grave, E., Bojanowski, P., Douze, M., J{\'e}gou, H., and Mikolov,
+  T. (2016).
+\newblock Fasttext. zip: Compressing text classification models.
+\newblock {\em arXiv preprint arXiv:1612.03651}.
+
+\bibitem[Levy and Goldberg, 2014]{levy2014dependency}
+Levy, O. and Goldberg, Y. (2014).
+\newblock Dependency-based word embeddings.
+\newblock In {\em Proceedings of the 52nd Annual Meeting of the Association for
+  Computational Linguistics (Volume 2: Short Papers)}, volume~2, pages
+  302--308.
 
 \bibitem[Lin et~al., 2016]{lin2016neural}
 Lin, Y., Shen, S., Liu, Z., Luan, H., and Sun, M. (2016).
 \newblock Neural relation extraction with selective attention over instances.
 \newblock In {\em Proceedings of ACL}, volume~1, pages 2124--2133.
 
-\bibitem[Mikolov et~al., 2013a]{mikolov2013distributed}
-Mikolov, T., Sutskever, I., Chen, K., Corrado, G.~S., and Dean, J. (2013a).
-\newblock Distributed representations of words and phrases and their
-  compositionality.
-\newblock In {\em Advances in neural information processing systems}, pages
-  3111--3119.
+\bibitem[Mikolov et~al., 2013a]{mikolov2013efficient}
+Mikolov, T., Chen, K., Corrado, G., and Dean, J. (2013a).
+\newblock Efficient estimation of word representations in vector space.
+\newblock {\em arXiv preprint arXiv:1301.3781}.
 
 \bibitem[Mikolov et~al., 2013b]{NIPS2013_5021}
 Mikolov, T., Sutskever, I., Chen, K., Corrado, G.~S., and Dean, J. (2013b).
@@ -117,10 +129,10 @@ Mintz, M., Bills, S., Snow, R., and Jurafsky, D. (2009).
   Language Processing of the AFNLP: Volume 2 - Volume 2}, ACL '09, pages
   1003--1011, Stroudsburg, PA, USA. Association for Computational Linguistics.
 
-\bibitem[Mitchell and Lapata, 2010]{mitchell2010composition}
-Mitchell, J. and Lapata, M. (2010).
-\newblock Composition in distributional models of semantics.
-\newblock {\em Cognitive science}, 34(8):1388--1429.
+\bibitem[Mitra et~al., 2016]{mitra2016dual}
+Mitra, B., Nalisnick, E., Craswell, N., and Caruana, R. (2016).
+\newblock A dual embedding space model for document ranking.
+\newblock {\em arXiv preprint arXiv:1602.01137}.
 
 \bibitem[Mrk\v{s}i\'c et~al., 2016]{mrksic:2016:naacl}
 Mrk\v{s}i\'c, N., {\'O S\'eaghdha}, D., Thomson, B., Ga\v{s}i\'c, M.,
@@ -146,6 +158,12 @@ Ramon, J. and De~Raedt, L. (2000).
 \newblock In {\em Proceedings of the ICML-2000 workshop on attribute-value and
   relational learning}, pages 53--60.
 
+\bibitem[Ramos et~al., 2003]{ramos2003using}
+Ramos, J. et~al. (2003).
+\newblock Using tf-idf to determine word relevance in document queries.
+\newblock In {\em Proceedings of the first instructional conference on machine
+  learning}, volume 242, pages 133--142.
+
 \bibitem[Riedel et~al., 2010]{riedel2010modeling}
 Riedel, S., Yao, L., and McCallum, A. (2010).
 \newblock Modeling relations and their mentions without labeled text.
@@ -155,6 +173,12 @@ Riedel, S., Yao, L., and McCallum, A. (2010).
 \bibitem[Riedel et~al., 2013]{riedel2013relation}
 Riedel, S., Yao, L., McCallum, A., and Marlin, B.~M. (2013).
 \newblock Relation extraction with matrix factorization and universal schemas.
+
+\bibitem[Robertson et~al., 2009]{robertson2009probabilistic}
+Robertson, S., Zaragoza, H., et~al. (2009).
+\newblock The probabilistic relevance framework: Bm25 and beyond.
+\newblock {\em Foundations and Trends{\textregistered} in Information
+  Retrieval}, 3(4):333--389.
 
 \bibitem[Roller and Stevenson, 2014]{roller2014applying}
 Roller, R. and Stevenson, M. (2014).
@@ -174,37 +198,21 @@ Segura~Bedmar, I., Martinez, P., and S{\'a}nchez~Cisneros, D. (2011).
 \newblock The 1st ddiextraction-2011 challenge task: Extraction of drug-drug
   interactions from biomedical texts.
 
-\bibitem[Shazeer et~al., 2016]{DBLP:journals/corr/ShazeerDEW16}
-Shazeer, N., Doherty, R., Evans, C., and Waterson, C. (2016).
+\bibitem[Shazeer et~al., 2016a]{shazeer2016swivel}
+Shazeer, N., Doherty, R., Evans, C., and Waterson, C. (2016a).
+\newblock Swivel: Improving embeddings by noticing what's missing.
+\newblock {\em arXiv preprint arXiv:1602.02215}.
+
+\bibitem[Shazeer et~al., 2016b]{DBLP:journals/corr/ShazeerDEW16}
+Shazeer, N., Doherty, R., Evans, C., and Waterson, C. (2016b).
 \newblock Swivel: Improving embeddings by noticing what's missing.
 \newblock {\em CoRR}, abs/1602.02215.
-
-\bibitem[Socher et~al., 2011]{socher2011dynamic}
-Socher, R., Huang, E.~H., Pennin, J., Manning, C.~D., and Ng, A.~Y. (2011).
-\newblock Dynamic pooling and unfolding recursive autoencoders for paraphrase
-  detection.
-\newblock In {\em Advances in Neural Information Processing Systems}, pages
-  801--809.
 
 \bibitem[Vu et~al., 2016]{vu2016combining}
 Vu, N.~T., Adel, H., Gupta, P., and Sch{\"u}tze, H. (2016).
 \newblock Combining recurrent and convolutional neural networks for relation
   classification.
 \newblock {\em arXiv preprint arXiv:1605.07333}.
-
-\bibitem[Yessenalina and Cardie, 2011]{yessenalina2011compositional}
-Yessenalina, A. and Cardie, C. (2011).
-\newblock Compositional matrix-space models for sentiment analysis.
-\newblock In {\em Proceedings of the Conference on Empirical Methods in Natural
-  Language Processing}, pages 172--182. Association for Computational
-  Linguistics.
-
-\bibitem[Zanzotto et~al., 2010]{zanzotto2010estimating}
-Zanzotto, F.~M., Korkontzelos, I., Fallucchi, F., and Manandhar, S. (2010).
-\newblock Estimating linear models for compositional distributional semantics.
-\newblock In {\em Proceedings of the 23rd International Conference on
-  Computational Linguistics}, pages 1263--1271. Association for Computational
-  Linguistics.
 
 \bibitem[Zeng et~al., 2015]{zeng2015distant}
 Zeng, D., Liu, K., Chen, Y., and Zhao, J. (2015).

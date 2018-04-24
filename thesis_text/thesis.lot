@@ -1,17 +1,18 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces Nearest neighbours for target words using GloVe vectors before and after counter-fitting}}{11}{table.2.1}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces The word embeddings used for the experiments}}{13}{table.3.1}
+\contentsline {table}{\numberline {3.1}{\ignorespaces The word embeddings used for the experiments}}{14}{table.3.1}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Cross-validation for the general domain}}{31}{table.4.1}
-\contentsline {table}{\numberline {4.2}{\ignorespaces Cross-validation for the general domain on locally trained embeddings}}{32}{table.4.2}
-\contentsline {table}{\numberline {4.3}{\ignorespaces General domain supervised experiments results}}{32}{table.4.3}
-\contentsline {table}{\numberline {4.4}{\ignorespaces Representative trigrams, SemEval dataset}}{34}{table.4.4}
-\contentsline {table}{\numberline {4.5}{\ignorespaces Cross-validation for the medical domain}}{42}{table.4.5}
-\contentsline {table}{\numberline {4.6}{\ignorespaces Medical domain, AIMed evaluation results}}{43}{table.4.6}
-\contentsline {table}{\numberline {4.7}{\ignorespaces Medical domain, DDI evaluation results}}{43}{table.4.7}
-\contentsline {table}{\numberline {4.8}{\ignorespaces Medical domain, Rosario-Hearst evaluation results}}{43}{table.4.8}
-\contentsline {table}{\numberline {4.9}{\ignorespaces General domain, Distant Supervision experiments results}}{49}{table.4.9}
-\contentsline {table}{\numberline {4.10}{\ignorespaces Medical domain, Distant Supervision experiments results}}{55}{table.4.10}
-\contentsline {table}{\numberline {4.11}{\ignorespaces Medical domain, Distant Supervision with balancing experiments results}}{55}{table.4.11}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Cross-validation for the general domain}}{32}{table.4.1}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Cross-validation for the general domain on locally trained embeddings}}{33}{table.4.2}
+\contentsline {table}{\numberline {4.3}{\ignorespaces General domain supervised experiments results}}{33}{table.4.3}
+\contentsline {table}{\numberline {4.4}{\ignorespaces Representative trigrams, SemEval dataset}}{35}{table.4.4}
+\contentsline {table}{\numberline {4.5}{\ignorespaces Cross-validation for the medical domain}}{43}{table.4.5}
+\contentsline {table}{\numberline {4.6}{\ignorespaces Medical domain, AIMed evaluation results}}{44}{table.4.6}
+\contentsline {table}{\numberline {4.7}{\ignorespaces Medical domain, DDI evaluation results}}{44}{table.4.7}
+\contentsline {table}{\numberline {4.8}{\ignorespaces Medical domain, Rosario-Hearst evaluation results}}{44}{table.4.8}
+\contentsline {table}{\numberline {4.9}{\ignorespaces General domain, Distant Supervision experiments results}}{50}{table.4.9}
+\contentsline {table}{\numberline {4.10}{\ignorespaces Medical domain, Distant Supervision experiments results}}{56}{table.4.10}
+\contentsline {table}{\numberline {4.11}{\ignorespaces Medical domain, Distant Supervision with balancing experiments results}}{56}{table.4.11}
 \addvspace {10\p@ }
