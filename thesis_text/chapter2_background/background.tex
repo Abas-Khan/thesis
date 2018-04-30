@@ -22,7 +22,7 @@ BM25  is a bag-of-words information retrieval function that ranks a set of docum
 The TFIDF vectors tend be large since they have one component for every word in the vocabulary. \cite{berger2000bridging} propse a number of extensions to TFIDF, including what they call Adaptive TFIDF. This algorithm incorporates hill-climbing and gradient descent to improve the performance.
 
 Another extension introduced by \cite{dumais2004latent} is known as Latent semantic analysis LSA.
-LSA uses Singular Value Decomposition (SVD) to perform dimensionality reduction on the TFIDF vectors resulting in smaller and better features. In LSA documents are represented as bags-of-words, where the order of the words in a document is not important, only how many times each word appears in a document. Furthermore, LSA assumes that words which are close in meaning will appear in similar pieces of text, A concept known as  distributional hypothesis. \cite{boling2014semantic} has shown that LSA performs very well in finding semantic similarity between documents. Other popular models which use distributional hypothesis are Word2Vec (\cite{mikolov2013efficient}) and GloVe (\cite{pennington2014glove}).
+LSA uses Singular Value Decomposition (SVD) to perform dimensionality reduction on the TFIDF vectors resulting in smaller and better features. In LSA documents are represented as bags-of-words, where the order of the words in a document is not important, only how many times each word appears in a document. Furthermore, LSA assumes that words which are close in meaning will appear in similar pieces of text, a concept known as  distributional hypothesis. \cite{boling2014semantic} has shown that LSA performs very well in finding semantic similarity between documents. Other popular models which use distributional hypothesis are Word2Vec (\cite{mikolov2013efficient}) and GloVe (\cite{pennington2014glove}).
 \subsection{Word and Document Embeddings} 
 Word embedding is a language modeling and feature learning technique in natural language processing(NLP) which maps words and phrases to the real number vector space of desired dimension. 
 
@@ -49,7 +49,7 @@ $w_{1}, w_{2}, w_{3}, ..., w_{T} $, the objective of the word vector model is to
  representations while taking into account morphology.
  FastText models morphology by considering subword
  units, and representing words by a sum of its character
- n-grams.  Since FastText exploits subword information, It can also
+ n-grams.  Since FastText exploits subword information, it can also
  compute valid representations for out-of-vocabulary
  words. FastText obtains representations for out-of-vocabulary words by summing the vectors of character
  n-grams.
