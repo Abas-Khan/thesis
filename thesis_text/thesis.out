@@ -4,7 +4,7 @@
 \BOOKMARK [1][-]{section.1.3}{Structure of the thesis}{chapter.1}% 4
 \BOOKMARK [0][-]{chapter.2}{Background}{}% 5
 \BOOKMARK [1][-]{section.2.1}{Summary of relevant approaches}{chapter.2}% 6
-\BOOKMARK [2][-]{subsection.2.1.1}{Word Embeddings}{section.2.1}% 7
+\BOOKMARK [2][-]{subsection.2.1.1}{Word and Document Embeddings}{section.2.1}% 7
 \BOOKMARK [0][-]{chapter.3}{Approach}{}% 8
 \BOOKMARK [1][-]{section.3.1}{Model description}{chapter.3}% 9
 \BOOKMARK [2][-]{subsection.3.1.1}{Ranking convolutional neural network}{section.3.1}% 10

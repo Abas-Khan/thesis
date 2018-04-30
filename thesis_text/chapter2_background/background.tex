@@ -1,9 +1,7 @@
 \chapter{Background} 
 \label{chapter:background}
-
-
-In information retrieval one of the most easiest approaches of finding relevant documents given a query is TFIDF.
-TFIDF,short for term frequency-inverse document frequency, is a information retrieval technique that shows how important a word is to a document. Another information retrieval function known as BM25 (BM stands for Best Match) \cite{robertson2009probabilistic} can be used to retrieve matching documents according to their relevance to a given query. \cite{dumais2004latent} introduced a word embedding method as an extension of TDIDF known as Latent Semantic Analysis (LSA). \cite{mikolov2013efficient}, \cite{pennington2014glove} and \cite{shazeer2016swivel} have introduced neural network based word embedding models which have now become benchmarks in semantic similarity extraction.
+Information retrieval (IR) is the activity of obtaining information resources which are relevant to a given query. In terms of semantic similarity, the task of information retrieval is to find documents which are semantically similar to a given query. One of the easiest approaches for finding relevant documents given a query is TFIDF.
+TFIDF, short for term frequency inverse document frequency, is a information retrieval technique that shows how important a word is to a document. Another information retrieval algorithm known as BM25 (BM stands for Best Match) \cite{robertson2009probabilistic} can be used to retrieve matching documents according to their relevance to a given query. \cite{dumais2004latent} introduced a word embedding method as an extension of TDIDF known as Latent Semantic Analysis (LSA). \cite{mikolov2013efficient}, \cite{pennington2014glove} and \cite{shazeer2016swivel} have introduced neural network based word embedding models which have now become benchmarks in semantic similarity extraction.
 
 
 \section{Summary of relevant approaches}
@@ -18,17 +16,17 @@ We define inverse frequency of a word $w$ as follows:
 
 Where $DF_{w}$ is the document frequency and is defined as the number of documents in the collection that contain a word $w$ and N is the total number of documents. Thus the IDF of a rare word is high, whereas the IDF of a frequent word is likely to be low. Each word has its own TF and IDF score, the product of the two scores is called the TFIDF weight of that word. \cite{ramos2003using} provide evidence that TFIDF returns
 documents highly correlate to the given query. Different weight schemes for these counts lead to a variety of TFIDF ranking features. One very successful TFIDF
-formulation is known as BM25 \cite{robertson2009probabilistic}.
+formulation is known as BM25 (\cite{robertson2009probabilistic}).
 BM25  is a bag-of-words information retrieval function that ranks a set of documents based on their relevance to the query terms. Tweaking different components and parameters produce different variations of the BM25. \cite{mitra2016dual} have shown BM25 to be effective in information retrieval and have also proposed using it in an ensemble model along with other embedding model, namely Word2Vec. 
 
 The TFIDF vectors tend be large since they have one component for every word in the vocabulary. \cite{berger2000bridging} propse a number of extensions to TFIDF, including what they call Adaptive TFIDF. This algorithm incorporates hill-climbing and gradient descent to improve the performance.
 
 Another extension introduced by \cite{dumais2004latent} is known as Latent semantic analysis LSA.
-LSA uses Singular Value Decomposition (SVD) to perform dimensionality reduction on the TFIDF vectors resulting in smaller and better features. In LSA documents are represented as bags-of-words, where the order of the words in a document is not important, only how many times each word appears in a document. Furthermore, LSA assumes that words which are close in meaning will appear in similar pieces of text, A concept known as  distributional hypothesis. \cite{boling2014semantic} has shown that LSA performs very well in finding semantic similarity between documents. Other popular models which use distributional hypothesis are Word2Vec \cite{mikolov2013efficient} and GloVe \cite{pennington2014glove}. 
-\subsection{Word Embeddings} 
+LSA uses Singular Value Decomposition (SVD) to perform dimensionality reduction on the TFIDF vectors resulting in smaller and better features. In LSA documents are represented as bags-of-words, where the order of the words in a document is not important, only how many times each word appears in a document. Furthermore, LSA assumes that words which are close in meaning will appear in similar pieces of text, A concept known as  distributional hypothesis. \cite{boling2014semantic} has shown that LSA performs very well in finding semantic similarity between documents. Other popular models which use distributional hypothesis are Word2Vec (\cite{mikolov2013efficient}) and GloVe (\cite{pennington2014glove}).
+\subsection{Word and Document Embeddings} 
 Word embedding is a language modeling and feature learning technique in natural language processing(NLP) which maps words and phrases to the real number vector space of desired dimension. 
 
-\paragraph{Word2Vec} Word2Vec model uses distributed vector representation of words, a well-known framework for learning word vectors as shown in the Figure \ref{fig:Word2Vec model}. The task is to learn to predict a word given other words in the context.
+\paragraph{Word2Vec} Word2Vec model was  introduced by \cite{mikolov2013efficient}. It uses distributed vector representation of words, a well-known framework for learning word vectors as shown in the Figure \ref{fig:Word2Vec model}. The task is to learn to predict a word given other words in the context.
 More formally, given a sequence of training words
 $w_{1}, w_{2}, w_{3}, ..., w_{T} $, the objective of the word vector model is to maximize the average log probability
 \\
