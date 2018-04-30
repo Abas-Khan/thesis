@@ -1,24 +1,30 @@
 \chapter{Background} 
 \label{chapter:background}
 
-In information reterval one of the most easiest approaches of finding relevant documents given a query is TFIDF.
-TFIDF,short for term frequency-inverse document frequency, is a information retrieval technique that shows how important a word is to a document. Another information retieval function known as BM25 (BM stands for Best Match) \cite{robertson2009probabilistic}can be used to retreive matching documents according to their relevance to a given query.\cite{dumais2004latent} introduced a word embedding method as an extension of TDIDF known as Latent Semantic Analysis(LSA). LSA is essentailly a statistical method, other word embedding models such as  Word2Vec \cite{mikolov2013efficient}  ,Glove \cite{pennington2014glove} and Swivel \cite{shazeer2016swivel} have now become a benchmark in semantic similarity extraction.
+
+In information retrieval one of the most easiest approaches of finding relevant documents given a query is TFIDF.
+TFIDF,short for term frequency-inverse document frequency, is a information retrieval technique that shows how important a word is to a document. Another information retrieval function known as BM25 (BM stands for Best Match) \cite{robertson2009probabilistic} can be used to retrieve matching documents according to their relevance to a given query. \cite{dumais2004latent} introduced a word embedding method as an extension of TDIDF known as Latent Semantic Analysis (LSA). \cite{mikolov2013efficient}, \cite{pennington2014glove} and \cite{shazeer2016swivel} have introduced neural network based word embedding models which have now become benchmarks in semantic similarity extraction.
 
 
 \section{Summary of relevant approaches}
-TFIDF is an information retrieval technique that calculates a a given terms frequency(TF) and its inverse document frequency(IDF). Each word or term has its own TF and IDF score, the product of the two scores is called the TFIDF weight of that term.\cite{ramos2003using} provide evidence that TFIDF returns
-documents highly correlate to the given query.Different weight schemes for these counts lead to a variety of TF-IDF ranking features. One very successful TF-IDF
-formulation is known as BM25\cite{robertson2009probabilistic}.
-BM25  is a bag-of-words information retrieval function that ranks a set of documents based on their relevance to the query terms. Tweaking different components and parameters produce different variations of the BM25. \cite{mitra2016dual} have shown BM25 to be effective in information retrieval and have also proposed using it in an ensemble model along with other embedding model, namely Word2Vec.
+The most naive and intuitive way of finding relevant documents given a query term is to use term frequency (TF). TF assumes that the more frequently the given query term appears in a document the more relevant that document is to the given query. TF however suffers from a critical problem: all words are considered equally important when it comes to assessing relevancy on a query. In fact, though some words appear multiple times in a document they have very little discriminating power  in determining the relevancy. For instance, a collection of documents on the football is likely to have the word football or soccer in almost every document. To circumvent this issue a technique known as inverse document frequency (IDF) is used to  attenuate the effect of words that occur too often in the collection of documents to be meaningful for relevance determination.
+\\
+\\
+We define inverse frequency of a word $w$ as follows:
 
-The TF-IDF vectors tend be large since they have one component for every word in the vocabulary. \cite{berger2000bridging} propse a number of extentions to TFIDF, including what they call Adaptive TFIDF. This algorithm incorporates hillclimbing and gradient descent to improve the performance.
+\begin{displaymath}
+\mbox{IDF}_w = \log {N\over \mbox{DF}_w}.
+\end{displaymath}
 
-Another extension introduced by \cite{dumais2004latent} is known as LSA.
-LSA uses Singular Value Decomposition(SVD) to perform dimensionality reduction on the TF-IDF vectors resulting in smaller and better features.
-\cite{boling2014semantic} has shown that LSA performs very well in finding semantic similarity between documents and its terms
-As of late, the most used and
-powerful representations are one of the following embeddings: Word2Vec \cite{mikolov2013efficient} 
-and GloVe \cite{pennington2014glove}, which are word level embeddings
+Where $DF_{w}$ is the document frequency and is defined as the number of documents in the collection that contain a word $w$ and N is the total number of documents. Thus the IDF of a rare word is high, whereas the IDF of a frequent word is likely to be low. Each word has its own TF and IDF score, the product of the two scores is called the TFIDF weight of that word. \cite{ramos2003using} provide evidence that TFIDF returns
+documents highly correlate to the given query. Different weight schemes for these counts lead to a variety of TFIDF ranking features. One very successful TFIDF
+formulation is known as BM25 \cite{robertson2009probabilistic}.
+BM25  is a bag-of-words information retrieval function that ranks a set of documents based on their relevance to the query terms. Tweaking different components and parameters produce different variations of the BM25. \cite{mitra2016dual} have shown BM25 to be effective in information retrieval and have also proposed using it in an ensemble model along with other embedding model, namely Word2Vec. 
+
+The TFIDF vectors tend be large since they have one component for every word in the vocabulary. \cite{berger2000bridging} propse a number of extensions to TFIDF, including what they call Adaptive TFIDF. This algorithm incorporates hill-climbing and gradient descent to improve the performance.
+
+Another extension introduced by \cite{dumais2004latent} is known as Latent semantic analysis LSA.
+LSA uses Singular Value Decomposition (SVD) to perform dimensionality reduction on the TFIDF vectors resulting in smaller and better features. In LSA documents are represented as bags-of-words, where the order of the words in a document is not important, only how many times each word appears in a document. Furthermore, LSA assumes that words which are close in meaning will appear in similar pieces of text, A concept known as  distributional hypothesis. \cite{boling2014semantic} has shown that LSA performs very well in finding semantic similarity between documents. Other popular models which use distributional hypothesis are Word2Vec \cite{mikolov2013efficient} and GloVe \cite{pennington2014glove}. 
 \subsection{Word Embeddings} 
 Word embedding is a language modeling and feature learning technique in natural language processing(NLP) which maps words and phrases to the real number vector space of desired dimension. 
 
@@ -48,19 +54,17 @@ $w_{1}, w_{2}, w_{3}, ..., w_{T} $, the objective of the word vector model is to
  n-grams.  Since FastText exploits subword information, It can also
  compute valid representations for out-of-vocabulary
  words. FastText obtains representations for out-of-vocabulary words by summing the vectors of character
- n-grams
- 
- \cite{joulin2016fasttext} propose a memory efficient extension of FastText. They propose using product quantization to store word embeddings.
- 
+ n-grams.
+  
  \cite{ghosh2016characterizing} introduce a vocabulary driven Word2Vec method known as Dis2Vec which is
- used to generate disease-specific word embeddings from unstructured health-
- related news corpus. The input corpus D consists of a collection of word context pairs.The input corpus $D$ consists of a collection of word context pairs. Based on the vocabulary $ V$, we can categorize the word context pairs into three types as shown
+ used to generate disease specific word embeddings from unstructured health
+ related news corpus. The input corpus D consists of a collection of word context pairs. Based on the vocabulary $V$, we can categorize the word context pairs into three types as shown
  below:
  \\
  \begin{itemize}
  	\item $ D(d) = {(w, c): w \in V ∧c \in V }$, i.e. both the word w and the context c are in V
  	\item $D(\rightharpoondown d) = {(w, c): w \notin V ∧c \notin V }$, i.e. neither the word w nor the context c are in V
- 	\item $D(\rightharpoondown d) = {(w, c): w \in V \oplus c \in V }$, i.e. either the word w is in V or the context c is in V but both cannot be in V
+ 	\item $D(d)(\rightharpoondown d) = {(w, c): w \in V \oplus c \in V }$, i.e. either the word w is in V or the context c is in V but both cannot be in V
  \end{itemize}
  
  Each of these categories of (w, c) pairs
@@ -69,11 +73,11 @@ $w_{1}, w_{2}, w_{3}, ..., w_{T} $, the objective of the word vector model is to
  
  All the above mentioned word embedding models learn word embeddings from co-occurrence information in corpora.
  One drawback of learning word embeddings by by this approach is that such methods will generally fail to tell synonyms from
- antonyms (Mohammad et al., 2008). For example, words like east and west
- or expensive and cheaper appear in near-identical contexts, which means
- that distributional models produce very similar word vectors for such words.
- \cite{mrksic:2016:naacl} proposed a novel counter-fitting method which injects antonymy and
- synonymy constraints into vector space representations in order to circumvent this issue.\ref{tab:counter_fitting} shows the results \cite{mrksic:2016:naacl} achieved using their counter-fitting technique.
+ antonyms (\cite{mohammad2008computing}). For example, words like east and west
+ or expensive and inexpensive appear in near-identical contexts, which means
+ that distributional models produce very similar word vectors for such words. Such embedding are very undesirable when the goal is to find semantic similarity between documents. 
+ \cite{mrksic:2016:naacl} proposed a novel counter-fitting method which injects antonym and
+ synonymy constraints into vector space representations in order to circumvent this issue. Table \ref{tab:counter_fitting} shows the results \cite{mrksic:2016:naacl} achieved using their counter-fitting technique.
  
  \begin{table}[h]
  	\begin{center}
@@ -110,8 +114,9 @@ $w_{1}, w_{2}, w_{3}, ..., w_{T} $, the objective of the word vector model is to
  based on the syntactic relations the word participates
  in as proposed by \cite{levy2014dependency}.
 
-
-\paragraph{Doc2Vec}Doc2Vec is capable of constructing representations of input sequences of
+All the above mentioned approaches are word embedding models and do not generalize to sentences and documents. \cite{jsnior2017nilc} propose two methods for obtaining sentence and document level embeddings. The first approach obtains vector embeddings for documents by averaging the word embeddings of all the words in a document. The second approach also averages word embeddings, but each embedding vector is now weighted (multiplied) by the TFIDF
+of the word it represents.
+\paragraph{Doc2Vec} An extension to the Word2Vec model known as Doc2Vec was introduced by \cite{le2014distributed}. Doc2Vec is capable of constructing representations of input sequences of
 variable length. Unlike some of the previous approaches, it is general and
 applicable to texts of any length: sentences, paragraphs, and documents. In
 Doc2Vec framework (see Figure \ref{fig:doc2vec model}), every document is mapped to a unique
@@ -129,16 +134,10 @@ is obtained via back-propagation.
 	\caption[]{A framework for learning paragraph vector. This framework
 		is similar to the framework presented in Figure 1; the only
 		change is the additional paragraph token that is mapped to a vector
-		via matrix D. In this model, the concatenation or average of
-		this vector with a context of three words is used to predict the
-		fourth word. The paragraph vector represents the missing information
-		from the current context and can act as a memory of the
-		topic of the paragraph.}
+		via matrix D.}
 	\label{fig:doc2vec model}
 \end{figure}
 
-An extension to Word2Vec
-known as Doc2Vec was proposed in /////. 
 
 
 

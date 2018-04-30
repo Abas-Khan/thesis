@@ -90,11 +90,18 @@ Hu, Z., Yang, Z., Liang, X., Salakhutdinov, R., and Xing, E.~P. (2017).
 \newblock Controllable text generation.
 \newblock {\em arXiv preprint arXiv:1703.00955}.
 
-\bibitem[Joulin et~al., 2016]{joulin2016fasttext}
-Joulin, A., Grave, E., Bojanowski, P., Douze, M., J{\'e}gou, H., and Mikolov,
-  T. (2016).
-\newblock Fasttext. zip: Compressing text classification models.
-\newblock {\em arXiv preprint arXiv:1612.03651}.
+\bibitem[J{\'s}nior et~al., 2017]{jsnior2017nilc}
+J{\'s}nior, E. A.~C., Marinho, V.~Q., and dos Santos, L.~B. (2017).
+\newblock Nilc-usp at semeval-2017 task 4: A multi-view ensemble for twitter
+  sentiment analysis.
+\newblock In {\em Proceedings of the 11th International Workshop on Semantic
+  Evaluation (SemEval-2017)}, pages 611--615.
+
+\bibitem[Le and Mikolov, 2014]{le2014distributed}
+Le, Q. and Mikolov, T. (2014).
+\newblock Distributed representations of sentences and documents.
+\newblock In {\em Proceedings of the 31st International Conference on Machine
+  Learning (ICML-14)}, pages 1188--1196.
 
 \bibitem[Levy and Goldberg, 2014]{levy2014dependency}
 Levy, O. and Goldberg, Y. (2014).
@@ -133,6 +140,13 @@ Mintz, M., Bills, S., Snow, R., and Jurafsky, D. (2009).
 Mitra, B., Nalisnick, E., Craswell, N., and Caruana, R. (2016).
 \newblock A dual embedding space model for document ranking.
 \newblock {\em arXiv preprint arXiv:1602.01137}.
+
+\bibitem[Mohammad et~al., 2008]{mohammad2008computing}
+Mohammad, S., Dorr, B., and Hirst, G. (2008).
+\newblock Computing word-pair antonymy.
+\newblock In {\em Proceedings of the Conference on Empirical Methods in Natural
+  Language Processing}, pages 982--991. Association for Computational
+  Linguistics.
 
 \bibitem[Mrk\v{s}i\'c et~al., 2016]{mrksic:2016:naacl}
 Mrk\v{s}i\'c, N., {\'O S\'eaghdha}, D., Thomson, B., Ga\v{s}i\'c, M.,
