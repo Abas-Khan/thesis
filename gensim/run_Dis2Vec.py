@@ -7,6 +7,7 @@ __email__ = "sauravcsvt@vt.edu"
 
 import os
 
+import re
 import cPickle as pickle
 from gensim.models import Word2Vec
 from gensim.models import Doc2Vec
@@ -120,20 +121,33 @@ class TaggedTester(object):
         #self.wiki.metadata = True
     def __iter__(self):
         for line_no,doc in enumerate(self.data):
+            #str_doc = " ".join(doc)
+            #str_doc = re.sub(r'(?<!\d)[.,;:](?!\d)', '', str_doc)
+
+            
+            #str_doc = re.sub(r"(\S)\(",r"\1 ( ",str_doc)
+            #print str_doc
+            #sys.exit()
             doc = list(filter(lambda word: word not in stopwords.words('english'), doc))
             label = " ".join(doc[:5])
             doc = [element.lower() for element in doc]
         
             yield TaggedDocument(doc, [label])
+            #break
 
 def main():
 
     
    # sentences_corpus = pickle.load(open(_arg.inputcorpus, "r")) # Input corpus (list of sentences as input where each sentence is a list of tokens. file should be in .pkl format).
-    sentences =  LineSentence('new_test_1000.txt')
+    sentences =  LineSentence('refined.txt')
     contents = TaggedTester(sentences)
 
-    domain_vocab_file = "study effects studies analysis evidence liver cancer"
+    '''
+    for item in contents:
+        print item
+    '''
+
+    domain_vocab_file = "study investigations effects studies analysis evidence liver cancer"
     vocab_list = domain_vocab_file.split()
 
 

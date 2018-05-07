@@ -56,6 +56,7 @@ except ImportError:
 
 from collections import namedtuple, defaultdict
 from timeit import default_timer
+from nltk.tokenize import word_tokenize
 
 from numpy import zeros, float32 as REAL, empty, ones, \
     memmap as np_memmap, vstack, integer, dtype, sum as np_sum, add as np_add, repeat as np_repeat, concatenate
@@ -296,7 +297,11 @@ class TaggedDocument(namedtuple('TaggedDocument', 'words tags')):
     """
 
     def __str__(self):
-        return '%s(%s, %s)' % (self.__class__.__name__, self.words, self.tags)
+        wrds = word_tokenize(" ".join(self.words))
+        wrds = filter(lambda a: a != ".", wrds)
+        
+        
+        return '%s(%s, %s)' % (self.__class__.__name__, wrds, self.tags)
 
 
 # for compatibility

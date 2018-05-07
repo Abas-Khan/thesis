@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.2.19)  30 APR 2018 15:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.2.19)  7 MAY 2018 06:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -474,6 +474,13 @@ Package: footnote 1997/01/28 1.13 Save footnotes around boxes
 (/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
 \bigstrutjot=\dimen133
 )
+(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip68
+\bibsep=\skip69
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count152
+)
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... none found.
  (./thesis.aux)
@@ -502,7 +509,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count152
+\c@section@level=\count153
 )
 LaTeX Info: Redefining \ref on input line 19.
 LaTeX Info: Redefining \pageref on input line 19.
@@ -515,16 +522,16 @@ LaTeX Info: Redefining \nameref on input line 19.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count153
+\scratchcounter=\count154
 \scratchdimen=\dimen134
 \scratchbox=\box38
-\nofMPsegments=\count154
-\nofMParguments=\count155
+\nofMPsegments=\count155
+\nofMParguments=\count156
 \everyMPshowfont=\toks37
-\MPscratchCnt=\count156
+\MPscratchCnt=\count157
 \MPscratchDim=\dimen135
-\MPnumerator=\count157
-\makeMPintoPDFobject=\count158
+\MPnumerator=\count158
+\makeMPintoPDFobject=\count159
 \everyMPtoPDFconversion=\toks38
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -631,10 +638,10 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 14.
 
-[9] <w2v.png, id=325, 606.265pt x 373.395pt>
+[9] <w2v.png, id=338, 606.265pt x 373.395pt>
 File: w2v.png Graphic file (type png)
  <use w2v.png>
-Package pdftex.def Info: w2v.png used on input line 39.
+Package pdftex.def Info: w2v.png used on input line 38.
 (pdftex.def)             Requested size: 227.62634pt x 142.26192pt.
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
@@ -685,41 +692,38 @@ Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ù in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 57--62
+Underfull \hbox (badness 10000) in paragraph at lines 56--61
 
  []
 
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no à in font cmr12!
+Missing character: There is no ß in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no à in font cmr12!
+Missing character: There is no ß in font cmr12!
 [10pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.62  \begin{itemize}
-                      <./w2v.png>]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no à in font cmr12!
-Missing character: There is no ß in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no à in font cmr12!
-Missing character: There is no ß in font cmr12!
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[11] <para.jpg, id=360, 587.19376pt x 312.16624pt>
-File: para.jpg Graphic file (type jpg)
- <use para.jpg>
-Package pdftex.def Info: para.jpg used on input line 131.
-(pdftex.def)             Requested size: 227.61586pt x 142.2645pt.
-)
-(./chapter3_approach/approach.tex [12pdfTeX warning (ext4): destination with th
-e same identifier (name{table.2.1}) has been already used, duplicate ignored
+l.64  	\item $
+              D(d)(\rightharpoondown d) = {(w, c): w \in V \oplus c \in V }$...
+ <./w2v.png>] [11pdfTeX warning (ext4): destination with the same identifier (n
+ame{table.2.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1 \chapter
-            {Approach}pdfTeX warning (ext4): destination with the same identifi
-er (name{figure.2.2}) has been already used, duplicate ignored
+l.116 \paragraph
+                {Doc2Vec} An extension to the Word2Vec model known as Doc2Ve...
+] <para.jpg, id=379, 587.19376pt x 312.16624pt>
+File: para.jpg Graphic file (type jpg)
+ <use para.jpg>
+Package pdftex.def Info: para.jpg used on input line 130.
+(pdftex.def)             Requested size: 227.61586pt x 142.2645pt.
+)
+(./chapter3_approach/approach.tex [12pdfTeX warning (ext4): destination with th
+e same identifier (name{figure.2.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -818,7 +822,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 50--50
                                                   \fi \fi 
 l.59 
      ] [15]
-<chapter3_approach/images/ranking_cnn.png, id=467, 242.9075pt x 493.845pt>
+<chapter3_approach/images/ranking_cnn.png, id=465, 242.9075pt x 493.845pt>
 File: chapter3_approach/images/ranking_cnn.png Graphic file (type png)
 
 <use chapter3_approach/images/ranking_cnn.png>
@@ -832,7 +836,7 @@ re.3.1}) has been already used, duplicate ignored
                                                   \fi \fi 
 l.136 
        <./chapter3_approach/images/ranking_cnn.png>] [18] [19]
-<chapter3_approach/images/mult-inst-learn.png, id=508, 201.75375pt x 312.16624p
+<chapter3_approach/images/mult-inst-learn.png, id=520, 201.75375pt x 312.16624p
 t>
 File: chapter3_approach/images/mult-inst-learn.png Graphic file (type png)
  <use chapter3_approach/images/mult-inst-learn.png>
@@ -846,7 +850,7 @@ re.3.2}) has been already used, duplicate ignored
                                                   \fi \fi 
 l.266 
        <./chapter3_approach/images/mult-inst-learn.png>]
-<chapter3_approach/images/repr-trigram.png, id=529, 320.19624pt x 420.57124pt>
+<chapter3_approach/images/repr-trigram.png, id=542, 320.19624pt x 420.57124pt>
 File: chapter3_approach/images/repr-trigram.png Graphic file (type png)
 
 <use chapter3_approach/images/repr-trigram.png>
@@ -860,7 +864,7 @@ t line 269.
                                                   \fi \fi 
 l.295 
        <./chapter3_approach/images/repr-trigram.png>]
-<chapter3_approach/images/tensorboard_vis.png, id=543, 2475.2475pt x 1613.02625
+<chapter3_approach/images/tensorboard_vis.png, id=558, 2475.2475pt x 1613.02625
 pt>
 File: chapter3_approach/images/tensorboard_vis.png Graphic file (type png)
  <use chapter3_approach/images/tensorboard_vis.png>
@@ -883,7 +887,7 @@ l.339
 (./chapter4_experiments/experiments.tex [26]
 Chapter 4.
 
-<chapter4_experiments/images/exp-schema.png, id=573, 530.98375pt x 280.04625pt>
+<chapter4_experiments/images/exp-schema.png, id=588, 530.98375pt x 280.04625pt>
 File: chapter4_experiments/images/exp-schema.png Graphic file (type png)
 <use chapter4_experiments/images/exp-schema.png>
 Package pdftex.def Info: chapter4_experiments/images/exp-schema.png used on inp
@@ -996,7 +1000,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 211--241
                                                   \fi \fi 
 l.241 
       ] [36]
-<chapter4_experiments/images/sem-val1.png, id=670, 578.16pt x 433.62pt>
+<chapter4_experiments/images/sem-val1.png, id=699, 578.16pt x 433.62pt>
 File: chapter4_experiments/images/sem-val1.png Graphic file (type png)
 
 <use chapter4_experiments/images/sem-val1.png>
@@ -1004,7 +1008,7 @@ Package pdftex.def Info: chapter4_experiments/images/sem-val1.png used on input
  line 273.
 (pdftex.def)             Requested size: 187.19833pt x 140.39551pt.
 
-<chapter4_experiments/images/sem-val2.png, id=671, 578.16pt x 433.62pt>
+<chapter4_experiments/images/sem-val2.png, id=700, 578.16pt x 433.62pt>
 File: chapter4_experiments/images/sem-val2.png Graphic file (type png)
 
 <use chapter4_experiments/images/sem-val2.png>
@@ -1012,7 +1016,7 @@ Package pdftex.def Info: chapter4_experiments/images/sem-val2.png used on input
  line 276.
 (pdftex.def)             Requested size: 187.19833pt x 140.39551pt.
 
-<chapter4_experiments/images/sem-val3.png, id=672, 578.16pt x 433.62pt>
+<chapter4_experiments/images/sem-val3.png, id=701, 578.16pt x 433.62pt>
 File: chapter4_experiments/images/sem-val3.png Graphic file (type png)
 
 <use chapter4_experiments/images/sem-val3.png>
@@ -1020,7 +1024,7 @@ Package pdftex.def Info: chapter4_experiments/images/sem-val3.png used on input
  line 279.
 (pdftex.def)             Requested size: 187.19833pt x 140.39551pt.
  [37]
-<chapter4_experiments/images/scores1.png, id=680, 578.16pt x 433.62pt>
+<chapter4_experiments/images/scores1.png, id=709, 578.16pt x 433.62pt>
 File: chapter4_experiments/images/scores1.png Graphic file (type png)
 
 <use chapter4_experiments/images/scores1.png>
@@ -1028,7 +1032,7 @@ Package pdftex.def Info: chapter4_experiments/images/scores1.png used on input
 line 298.
 (pdftex.def)             Requested size: 183.30048pt x 137.47101pt.
 
-<chapter4_experiments/images/scores2.png, id=681, 578.16pt x 433.62pt>
+<chapter4_experiments/images/scores2.png, id=710, 578.16pt x 433.62pt>
 File: chapter4_experiments/images/scores2.png Graphic file (type png)
 
 <use chapter4_experiments/images/scores2.png>
@@ -1036,7 +1040,7 @@ Package pdftex.def Info: chapter4_experiments/images/scores2.png used on input
 line 301.
 (pdftex.def)             Requested size: 183.30048pt x 137.47101pt.
 
-<chapter4_experiments/images/scores3.png, id=682, 578.16pt x 433.62pt>
+<chapter4_experiments/images/scores3.png, id=711, 578.16pt x 433.62pt>
 File: chapter4_experiments/images/scores3.png Graphic file (type png)
 
 <use chapter4_experiments/images/scores3.png>
@@ -1067,7 +1071,7 @@ Overfull \hbox (5.2002pt too wide) in paragraph at lines 71--71
  []
 
 [41] [42]
-Overfull \hbox (1.7083pt too wide) in paragraph at lines 153--162
+Overfull \hbox (1.05553pt too wide) in paragraph at lines 153--162
  [] 
  []
 
@@ -1105,14 +1109,14 @@ $\OML/cmm/m/it/12 <
  []
 
 
-<chapter4_experiments/images/aimed-sem-val1.png, id=778, 1199.682pt x 433.62pt>
+<chapter4_experiments/images/aimed-sem-val1.png, id=820, 1199.682pt x 433.62pt>
 File: chapter4_experiments/images/aimed-sem-val1.png Graphic file (type png)
 <use chapter4_experiments/images/aimed-sem-val1.png>
 Package pdftex.def Info: chapter4_experiments/images/aimed-sem-val1.png used on
  input line 273.
 (pdftex.def)             Requested size: 390.0pt x 140.96452pt.
 
-<chapter4_experiments/images/aimed-sem-val2.png, id=779, 838.332pt x 433.62pt>
+<chapter4_experiments/images/aimed-sem-val2.png, id=821, 838.332pt x 433.62pt>
 File: chapter4_experiments/images/aimed-sem-val2.png Graphic file (type png)
 
 <use chapter4_experiments/images/aimed-sem-val2.png>
@@ -1125,7 +1129,7 @@ Overfull \hbox (4.99991pt too wide) in paragraph at lines 273--277
  []
 
 [46]
-<chapter4_experiments/images/aimed-scores1.png, id=788, 578.16pt x 433.62pt>
+<chapter4_experiments/images/aimed-scores1.png, id=830, 578.16pt x 433.62pt>
 File: chapter4_experiments/images/aimed-scores1.png Graphic file (type png)
 
 <use chapter4_experiments/images/aimed-scores1.png>
@@ -1133,7 +1137,7 @@ Package pdftex.def Info: chapter4_experiments/images/aimed-scores1.png used on
 input line 292.
 (pdftex.def)             Requested size: 183.30048pt x 137.47101pt.
 
-<chapter4_experiments/images/aimed-scores2.png, id=789, 578.16pt x 433.62pt>
+<chapter4_experiments/images/aimed-scores2.png, id=831, 578.16pt x 433.62pt>
 File: chapter4_experiments/images/aimed-scores2.png Graphic file (type png)
 
 <use chapter4_experiments/images/aimed-scores2.png>
@@ -1163,7 +1167,7 @@ l.22
                                                   \fi \fi 
 l.95 
      ] [51]
-<chapter4_experiments/images/dist-superv-knowledge.png, id=850, 450.68375pt x 2
+<chapter4_experiments/images/dist-superv-knowledge.png, id=894, 450.68375pt x 2
 39.89626pt>
 File: chapter4_experiments/images/dist-superv-knowledge.png Graphic file (type 
 png)
@@ -1172,7 +1176,7 @@ Package pdftex.def Info: chapter4_experiments/images/dist-superv-knowledge.png
 used on input line 136.
 (pdftex.def)             Requested size: 250.93842pt x 133.57593pt.
 
-<chapter4_experiments/images/uniq-correct.png, id=852, 1349.2809pt x 775.4571pt
+<chapter4_experiments/images/uniq-correct.png, id=896, 1349.2809pt x 775.4571pt
 >
 File: chapter4_experiments/images/uniq-correct.png Graphic file (type png)
  <use chapter4_experiments/images/uniq-correct.png>
@@ -1186,7 +1190,7 @@ nput line 151.
                                                   \fi \fi 
 l.155 
        <./chapter4_experiments/images/dist-superv-knowledge.png>]
-<chapter4_experiments/images/length_errors.png, id=862, 807.9786pt x 433.62pt>
+<chapter4_experiments/images/length_errors.png, id=906, 807.9786pt x 433.62pt>
 File: chapter4_experiments/images/length_errors.png Graphic file (type png)
 
 <use chapter4_experiments/images/length_errors.png>
@@ -1194,7 +1198,7 @@ Package pdftex.def Info: chapter4_experiments/images/length_errors.png used on
 input line 170.
 (pdftex.def)             Requested size: 183.30048pt x 98.3675pt.
 
-<chapter4_experiments/images/betw_ent_errors.png, id=863, 813.0375pt x 433.62pt
+<chapter4_experiments/images/betw_ent_errors.png, id=907, 813.0375pt x 433.62pt
 >
 File: chapter4_experiments/images/betw_ent_errors.png Graphic file (type png)
  <use chapter4_experiments/images/betw_ent_errors.png>
@@ -1277,8 +1281,9 @@ Missing character: There is no ù in font cmr12!
 
 ]
 [65] [66]
-Underfull \hbox (badness 6725) in paragraph at lines 211--214
-[]\OT1/cmr/m/n/12 Segura Bed-mar, I., Mar-tinez, P., and
+Underfull \hbox (badness 1117) in paragraph at lines 216--219
+\OT1/cmr/m/n/12 Im-prov-ing em-bed-dings by notic-ing what's miss-ing.  \OT1/cm
+r/m/it/12 arXiv preprint
  []
 
 [67])
@@ -1297,10 +1302,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 80.
  ) 
 Here is how much of TeX's memory you used:
- 11190 strings out of 493029
- 167322 string characters out of 6136234
- 327779 words of memory out of 5000000
- 14189 multiletter control sequences out of 15000+600000
+ 11588 strings out of 493029
+ 173504 string characters out of 6136234
+ 328355 words of memory out of 5000000
+ 14583 multiletter control sequences out of 15000+600000
  18453 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  46i,18n,36p,1950b,623s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1328,10 +1333,10 @@ b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on thesis.pdf (71 pages, 1282621 bytes).
+Output written on thesis.pdf (71 pages, 1283944 bytes).
 PDF statistics:
- 1118 PDF objects out of 1200 (max. 8388607)
- 976 compressed objects within 10 object streams
+ 1169 PDF objects out of 1200 (max. 8388607)
+ 1025 compressed objects within 11 object streams
  265 named destinations out of 1000 (max. 500000)
  455 words of extra memory for PDF output out of 10000 (max. 10000000)
 
