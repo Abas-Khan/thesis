@@ -535,11 +535,14 @@ class Doc2Vec(BaseWordEmbeddingsModel):
     def _do_train_job(self, job, alpha, inits):
         work, neu1 = inits
         tally = 0
+        
         for doc in job:
             doctag_indexes = self.vocabulary.indexed_doctags(doc.tags, self.docvecs)
             doctag_vectors = self.docvecs.vectors_docs
             doctag_locks = self.trainables.vectors_docs_lockf
-            print "current epoch is ",self.current_epoch
+            
+            print "current epoch is.....",self.current_epoch,
+            print "and has ",doc.words[:5]
             if self.sg:
                 if self.dbow_words:
                     tally += train_document_dbow(
@@ -893,7 +896,7 @@ class Doc2Vec(BaseWordEmbeddingsModel):
         self.trainables.prepare_weights(
             self.hs, self.negative, self.wv, self.docvecs, update=update)
 
-
+import unicodedata
 class Doc2VecVocab(Word2VecVocab):
     def __init__(self, max_vocab_size=None, min_count=5, sample=1e-3, sorted_vocab=True, null_word=0,vocab_file = None, smoothing = 0.75):
        # print " the vocab_file is  {0}".format(vocab_file)

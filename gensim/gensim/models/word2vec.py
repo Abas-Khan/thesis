@@ -1469,6 +1469,8 @@ def print_caller_name(stack_size=3):
         return inner
     return wrapper
 
+import unicodedata
+
 class Word2VecVocab(utils.SaveLoad):
     def __init__(self, max_vocab_size=None, min_count=5, sample=1e-3, sorted_vocab=True, null_word=0 , vocab_file =None , smoothing = 0.75 ):
         self.max_vocab_size = max_vocab_size
@@ -1571,14 +1573,16 @@ class Word2VecVocab(utils.SaveLoad):
                     retain_words.append(word)
                     retain_total += v
                     if not dry_run:
-                        
+                        '''
+                        #TODO
                         if word in diction:
                             for synonym in diction[word]:
                                 print "\n added synonym to the vocab" 
                                 #sys.exit()
                                 wv.vocab[synonym] = Vocab(count=v, index=len(wv.index2word))
                                 wv.index2word.append(synonym)
-
+                        '''        
+                        word = unicodedata.normalize('NFKD', unicode(word)).encode('ascii', 'ignore')
                         wv.vocab[word] = Vocab(count=v, index=len(wv.index2word))
                         wv.index2word.append(word)
                 else:

@@ -41,7 +41,7 @@ ARTICLE_MIN_WORDS = 50
 """Ignore shorter articles (after full preprocessing)."""
 
 # default thresholds for lengths of individual tokens
-TOKEN_MIN_LEN = 2
+TOKEN_MIN_LEN = 1
 TOKEN_MAX_LEN = 15
 
 RE_P0 = re.compile(r'<!--.*?-->', re.DOTALL | re.UNICODE)
@@ -276,7 +276,7 @@ def remove_file(s):
         s = s.replace(m, caption, 1)
     return s
 
-
+import sys
 def tokenize(content, token_min_len=TOKEN_MIN_LEN, token_max_len=TOKEN_MAX_LEN, lower=True):
     """Tokenize a piece of text from wikipedia.
 
@@ -299,6 +299,10 @@ def tokenize(content, token_min_len=TOKEN_MIN_LEN, token_max_len=TOKEN_MAX_LEN, 
         List of tokens from `content`.
 
     """
+    
+    #TODO
+    #content = re.sub(r"\.[^\w]"," ",content)
+    
     # TODO maybe ignore tokens with non-latin characters? (no chinese, arabic, russian etc.)
     return [
         utils.to_unicode(token) for token in utils.tokenize(content, lower=lower, errors='ignore')
@@ -329,7 +333,7 @@ def get_namespace(tag):
 
 _get_namespace = get_namespace
 
-
+import sys 
 def extract_pages(f, filter_namespaces=False):
     """Extract pages from a MediaWiki database dump.
 
@@ -365,12 +369,13 @@ def extract_pages(f, filter_namespaces=False):
         if elem.tag == page_tag:
             title = elem.find(title_path).text
             text = elem.find(text_path).text
+            
 
             if filter_namespaces:
                 ns = elem.find(ns_path).text
                 if ns not in filter_namespaces:
                     text = None
-
+            
             pageid = elem.find(pageid_path).text
             yield title, text or "", pageid  # empty page will yield None
 
@@ -386,7 +391,7 @@ def extract_pages(f, filter_namespaces=False):
 
 _extract_pages = extract_pages  # for backward compatibility
 
-
+import unicodedata
 def process_article(args, tokenizer_func=tokenize, token_min_len=TOKEN_MIN_LEN,
                     token_max_len=TOKEN_MAX_LEN, lower=True):
     """Parse a wikipedia article, extract all tokens.
@@ -421,6 +426,8 @@ def process_article(args, tokenizer_func=tokenize, token_min_len=TOKEN_MIN_LEN,
     """
     text, lemmatize, title, pageid = args
     text = filter_wiki(text)
+    
+ 
     if lemmatize:
         result = utils.lemmatize(text)
     else:
@@ -549,8 +556,8 @@ class WikiCorpus(TextCorpus):
         self.token_min_len = token_min_len
         self.token_max_len = token_max_len
         self.lower = lower
-        self.dictionary = dictionary or Dictionary(self.get_texts())
-
+        #print "setting the dictionary to {}"
+        self.dictionary = {}
     def get_texts(self):
         """Iterate over the dump, yielding list of tokens for each article.
 
@@ -580,7 +587,7 @@ class WikiCorpus(TextCorpus):
              for title, text, pageid
              in extract_pages(bz2.BZ2File(self.fname), self.filter_namespaces))
         pool = multiprocessing.Pool(self.processes, init_to_ignore_interrupt)
-
+        
         try:
             # process the corpus in smaller chunks of docs, because multiprocessing.Pool
             # is dumb and would load the entire input into RAM at once...
@@ -597,7 +604,7 @@ class WikiCorpus(TextCorpus):
                     if self.metadata:
                         yield (tokens, (pageid, title))
                     else:
-                        yield tokens
+                        yield tokens      
 
         except KeyboardInterrupt:
             logger.warn(
