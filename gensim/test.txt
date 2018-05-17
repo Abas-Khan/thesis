@@ -1,0 +1,2 @@
+The hyphen-minus (-) is a character used in digital documents and computing to represent a hyphen (‐) or a minus sign (−).[1]
+It is present in Unicode as code point U+002D - HYPHEN-MINUS; it is also in ASCII with the same value.
