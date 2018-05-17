@@ -1582,7 +1582,7 @@ class Word2VecVocab(utils.SaveLoad):
                                 wv.vocab[synonym] = Vocab(count=v, index=len(wv.index2word))
                                 wv.index2word.append(synonym)
                         '''        
-                        word = unicodedata.normalize('NFKD', unicode(word)).encode('ascii', 'ignore')
+                        #word = unicodedata.normalize('NFKD', unicode(word)).encode('ascii', 'ignore')
                         wv.vocab[word] = Vocab(count=v, index=len(wv.index2word))
                         wv.index2word.append(word)
                 else:
