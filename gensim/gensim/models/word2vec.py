@@ -1514,6 +1514,7 @@ class Word2VecVocab(utils.SaveLoad):
                     sentence_no, total_words, len(vocab)
                 )
             for word in sentence:
+                word = unicodedata.normalize('NFKD', unicode(word)).encode('ascii', 'ignore')
                 vocab[word] += 1
             total_words += len(sentence)
 

@@ -135,7 +135,7 @@ class SentenceAnalyzer(object):
                     bigram_count=float(vocab[bigram]))
         return -1
 
-    def analyze_sentence(self, sentence, threshold, common_terms, scorer):
+    def analyze_sentence(self, sentence, threshold, common_terms, scorer,custom_bigrams = []):
         """Analyze a sentence
 
         `sentence` a token list representing the sentence to be analyzed.
@@ -149,20 +149,35 @@ class SentenceAnalyzer(object):
         s = [utils.any2utf8(w) for w in sentence]
         last_uncommon = None
         in_between = []
+        my_phrases = custom_bigrams
+        
         # adding None is a trick that helps getting an automatic happy ending
         # has it won't be a common_word, nor score
         for word in s + [None]:
+            
             is_common = word in common_terms
             if not is_common and last_uncommon:
                 chain = [last_uncommon] + in_between + [word]
                 # test between last_uncommon
+                #print chain
+                #print "........",my_phrases
+                
+                
                 score = self.score_item(
                     worda=last_uncommon,
                     wordb=word,
                     components=chain,
                     scorer=scorer,
                 )
+                
+                if chain in my_phrases:
+                    print "........",chain
+                    score = 1.0
+                    #print threshold
+                    
+
                 if score > threshold:
+                    #print chain," the score ",score
                     yield (chain, score)
                     last_uncommon = None
                     in_between = []
@@ -233,7 +248,7 @@ class Phrases(SentenceAnalyzer, PhrasesTransformation):
 
     def __init__(self, sentences=None, min_count=5, threshold=10.0,
                  max_vocab_size=40000000, delimiter=b'_', progress_per=10000,
-                 scoring='default', common_terms=frozenset()):
+                 scoring='default', common_terms=frozenset(),custom_bigrams=None):
         """
         Initialize the model from an iterable of `sentences`. Each sentence must be
         a list of words (unicode strings) that will be used for training.
@@ -324,6 +339,7 @@ class Phrases(SentenceAnalyzer, PhrasesTransformation):
                 raise ValueError('scoring function missing expected parameters')
 
         self.min_count = min_count
+        self.custom_bigrams = custom_bigrams
         self.threshold = threshold
         self.max_vocab_size = max_vocab_size
         self.vocab = defaultdict(int)  # mapping between utf8 token => its count
@@ -457,9 +473,11 @@ class Phrases(SentenceAnalyzer, PhrasesTransformation):
                 min_count=float(self.min_count),
                 corpus_word_count=float(self.corpus_word_count),
             ),
+
         )
         for sentence in sentences:
             bigrams = analyze_sentence(sentence)
+            
             # keeps only not None scores
             filtered = ((words, score) for words, score in bigrams if score is not None)
             for words, score in filtered:
@@ -496,7 +514,7 @@ class Phrases(SentenceAnalyzer, PhrasesTransformation):
             # if the input is an entire corpus (rather than a single sentence),
             # return an iterable stream.
             return self._apply(sentence)
-
+        
         delimiter = self.delimiter
         bigrams = self.analyze_sentence(
             sentence,
@@ -508,10 +526,16 @@ class Phrases(SentenceAnalyzer, PhrasesTransformation):
                 min_count=float(self.min_count),
                 corpus_word_count=float(self.corpus_word_count),
             ),
+            custom_bigrams=self.custom_bigrams
         )
+
+        
         new_s = []
+        
         for words, score in bigrams:
+            print words
             if score is not None:
+                #print words
                 words = delimiter.join(words)
             new_s.append(words)
 
@@ -550,7 +574,7 @@ def pseudocorpus(source_vocab, sep, common_terms=frozenset()):
                     components.append(sep.join(tail))
                 yield components
 
-
+import itertools
 class Phraser(SentenceAnalyzer, PhrasesTransformation):
     """
     Minimal state & functionality to apply results of a Phrases model to tokens.
@@ -565,6 +589,7 @@ class Phraser(SentenceAnalyzer, PhrasesTransformation):
     """
 
     def __init__(self, phrases_model):
+        self.custom_bigrams = phrases_model.custom_bigrams
         self.threshold = phrases_model.threshold
         self.min_count = phrases_model.min_count
         self.delimiter = phrases_model.delimiter
@@ -617,10 +642,14 @@ class Phraser(SentenceAnalyzer, PhrasesTransformation):
             sentence,
             threshold=self.threshold,
             common_terms=self.common_terms,
-            scorer=None)  # we will use our score_item function redefinition
+            scorer=None,custom_bigrams=self.custom_bigrams)  # we will use our score_item function redefinition
         new_s = []
+        
+        
         for words, score in bigrams:
+            #print "just words",words
             if score is not None:
+                #print "?",words
                 words = delimiter.join(words)
             new_s.append(words)
         return [utils.to_unicode(w) for w in new_s]

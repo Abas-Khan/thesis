@@ -51,14 +51,17 @@ class Dis2Vec(object):
     
 
         model = Doc2Vec(self.params["sent"], vector_size=self.params["dim"], window=self.params["win"], 
-                            min_count=self.params["min_cnt"], workers=1,hs=0,negative=5,
+                            min_count=self.params["min_cnt"], workers=cores,hs=0,negative=5,
                             dm=0,dbow_words=1,epochs=self.params["iter"], smoothing=0.75,
                             sampling_param=0.5, objective_param=0.3, vocab_file=self.params["vocab"])
                             
         end_time = time.time()
         print ("Total time taken is: " + str((end_time - start_time) / 3600.) + " hours")
-
-        model.save("dis2wiki")        	
+        out_folder = './dis2wiki/'
+        if not os.path.isdir(out_folder):
+            os.makedirs(out_folder)
+        model.save(out_folder + 'dis2wiki')
+                	
      
 
 
@@ -70,9 +73,8 @@ class TaggedWikiDocument(object):
         for idx,(content, (page_id, title)) in enumerate(self.wiki.get_texts()):
             print content[0:5]
             yield TaggedDocument([c for c in content], [title])
-            if idx > 500:
+            if idx > 1000:
                 break
-            
            
 
 def main():
