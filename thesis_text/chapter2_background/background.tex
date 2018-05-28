@@ -6,22 +6,19 @@ TFIDF, short for term frequency inverse document frequency, is an information re
 
 \section{Summary of relevant approaches}
 The most naive and intuitive way of finding relevant documents given a query term is to use term frequency (TF). Term frequency assumes that the more frequently the given query term appears in a document the more relevant that document is to the given query. Term frequency, however, suffers from a critical problem: all words are considered equally important when it comes to assessing relevancy on a query. In fact, though some words appear multiple times in a document they have very little discriminating power  in determining the relevancy. For instance, a collection of documents on football is likely to have the word football or soccer in almost every document. To circumvent this issue a technique known as inverse document frequency (IDF) is used to  attenuate the effect of words that occur too often in the collection of documents to be meaningful for relevance determination.
-\\
-\\
 We define the inverse frequency of a word $w$ as follows:
 
 \begin{displaymath}
 \mbox{IDF}_w = \log {N\over \mbox{DF}_w}.
 \end{displaymath}
 
-Where $DF_{w}$ is the document frequency and is defined as the number of documents in the collection that contain a word $w$ and N is the total number of documents. Thus the inverse document frequency of a rare word is high, whereas the inverse document frequency of a frequent word is likely to be low. Each word has its own term frequency and inverse document frequency score, the product of the two scores is called the TFIDF weight of that word. \citet{ramos2003using} provide evidence that TFIDF returns
-documents highly correlate to the given query. Different weight schemes for these counts lead to a variety of TFIDF ranking features. One very successful TFIDF
+where $DF_{w}$ is the document frequency and is defined as the number of documents in the collection that contain a word $w$ and N is the total number of documents. Thus the inverse document frequency of a rare word is high, whereas the inverse document frequency of a frequent word is likely to be low. Each word has its own term frequency and inverse document frequency score, the product of the two scores is called the TFIDF weight of that word. \citet{ramos2003using} provide evidence that TFIDF returns
+documents highly correlated to the given query. Different weight schemes for these counts lead to a variety of TFIDF ranking features. One very successful TFIDF
 formulation is known as BM25 \citep{robertson2009probabilistic}.
 BM25  is a bag-of-words information retrieval function that ranks a set of documents based on their relevance to the query terms. Tweaking different components and parameters produce different variations of the BM25. \citet{mitra2016dual} have shown BM25 to be effective in information retrieval and have also proposed using it in an ensemble model along with another embedding model, namely Word2Vec. 
 
 
-Another extension introduced by \citet{dumais2004latent} is known as Latent semantic analysis LSA.
-LSA uses Singular Value Decomposition (SVD) to perform dimensionality reduction on the TFIDF vectors resulting in smaller and better features. In Latent semantic analysis documents are represented as bags-of-words, where the order of the words in a document is not important, only how many times each word appears in a document. Furthermore, Latent semantic analysis assumes that words which are close in meaning will appear in similar pieces of text, a concept known as the distributional hypothesis. \citet{boling2014semantic} have shown that Latent semantic analysis performs very well in finding semantic similarity between documents. Other popular models which use distributional hypothesis are Word2Vec \citep{mikolov2013efficient} and GloVe \citep{pennington2014glove}.
+Another extension introduced by \citet{dumais2004latent} is known as Latent Semantic Analysis(LSA). It uses Singular Value Decomposition (SVD) to perform dimensionality reduction on the TFIDF vectors resulting in smaller and better features. In Latent Semantic Analysis documents are represented as bags-of-words, where the order of the words in a document is not important, only how many times each word appears in a document. Furthermore, it assumes that words which are close in meaning will appear in similar pieces of text, a concept known as the distributional hypothesis. \citet{boling2014semantic} have shown that Latent Semantic Analysis performs very well in finding semantic similarity between documents. Other popular models which use distributional hypothesis are Word2Vec \citep{mikolov2013efficient} and Swivel \citep{shazeer2016swivel}.
 \subsection{Word and Document Embeddings} 
 Word embedding is a language modeling and feature learning technique in natural language processing(NLP) which maps words and phrases to the real number vector space of the desired dimension. 
 

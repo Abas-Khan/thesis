@@ -3,59 +3,63 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: thesis.aux
 The style file: apalike.bst
 Database file #1: literature.bib.bib
-Repeated entry---line 158 of file literature.bib.bib
+Repeated entry---line 86 of file literature.bib.bib
+ : @article{shazeer2016swivel
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 164 of file literature.bib.bib
  :  @article{robertson2009probabilistic
  :                                     ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 241 of file literature.bib.bib
+Repeated entry---line 247 of file literature.bib.bib
  :  @article{mitra2016dual
  :                        ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 318 of file literature.bib.bib
+Repeated entry---line 324 of file literature.bib.bib
  : @inproceedings{pennington2014glove
  :                                   ,
 I'm skipping whatever remains of this entry
 Warning--empty journal in riedel2013relation
 Warning--empty journal in segura20111st
-You've used 41 entries,
+You've used 40 entries,
             1935 wiz_defined-function locations,
-            698 strings with 12561 characters,
-and the built_in function-call counts, 19801 in all, are:
-= -- 1964
-> -- 904
-< -- 36
-+ -- 319
-- -- 311
-* -- 1569
-:= -- 3245
-add.period$ -- 128
-call.type$ -- 41
-change.case$ -- 354
-chr.to.int$ -- 39
-cite$ -- 43
-duplicate$ -- 834
-empty$ -- 1326
-format.name$ -- 371
-if$ -- 4063
+            693 strings with 12266 characters,
+and the built_in function-call counts, 19182 in all, are:
+= -- 1900
+> -- 876
+< -- 35
++ -- 309
+- -- 301
+* -- 1521
+:= -- 3150
+add.period$ -- 124
+call.type$ -- 40
+change.case$ -- 344
+chr.to.int$ -- 38
+cite$ -- 42
+duplicate$ -- 807
+empty$ -- 1284
+format.name$ -- 360
+if$ -- 3930
 int.to.chr$ -- 3
 int.to.str$ -- 0
-missing$ -- 40
-newline$ -- 205
-num.names$ -- 125
-pop$ -- 401
+missing$ -- 39
+newline$ -- 200
+num.names$ -- 122
+pop$ -- 388
 preamble$ -- 1
-purify$ -- 354
+purify$ -- 344
 quote$ -- 0
-skip$ -- 665
+skip$ -- 644
 stack$ -- 0
-substring$ -- 1268
-swap$ -- 235
-text.length$ -- 25
+substring$ -- 1224
+swap$ -- 225
+text.length$ -- 24
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 246
+type$ -- 240
 warning$ -- 2
-while$ -- 153
+while$ -- 148
 width$ -- 0
-write$ -- 531
-(There were 3 error messages)
+write$ -- 517
+(There were 4 error messages)

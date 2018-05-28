@@ -12,13 +12,6 @@ Angeli, G., Tibshirani, J., Wu, J., and Manning, C.~D. (2014).
 \newblock Combining distant and partial supervision for relation extraction.
 \newblock In {\em EMNLP}, pages 1556--1567.
 
-\bibitem[Berger et~al., 2000]{berger2000bridging}
-Berger, A., Caruana, R., Cohn, D., Freitag, D., and Mittal, V. (2000).
-\newblock Bridging the lexical chasm: statistical approaches to answer-finding.
-\newblock In {\em Proceedings of the 23rd annual international ACM SIGIR
-  conference on Research and development in information retrieval}, pages
-  192--199. ACM.
-
 \bibitem[Bojanowski et~al., 2016]{bojanowski2016enriching}
 Bojanowski, P., Grave, E., Joulin, A., and Mikolov, T. (2016).
 \newblock Enriching word vectors with subword information. corr abs/1607.04606.
