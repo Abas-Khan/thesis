@@ -137,7 +137,7 @@ logger = logging.getLogger(__name__)
 from gensim.models.word2vec_inner import train_batch_sg, train_batch_cbow
 from gensim.models.word2vec_inner import score_sentence_sg, score_sentence_cbow
 from gensim.models.word2vec_inner import FAST_VERSION, MAX_WORDS_IN_BATCH
-'''
+
 try:
     from gensim.models.word2vec_inner import train_batch_sg, train_batch_cbow
     from gensim.models.word2vec_inner import score_sentence_sg, score_sentence_cbow
@@ -145,159 +145,159 @@ try:
 
 except ImportError:
     # failed... fall back to plain numpy (20-80x slower training than the above)
-'''
-FAST_VERSION = -1
-MAX_WORDS_IN_BATCH = 10000
 
-def train_batch_sg(model, sentences, alpha, work=None, compute_loss=False):
-    """
-    Update skip-gram model by training on a sequence of sentences.
-    Each sentence is a list of string tokens, which are looked up in the model's
-    vocab dictionary. Called internally from `Word2Vec.train()`.
-    This is the non-optimized, Python version. If you have cython installed, gensim
-    will use the optimized version from word2vec_inner instead.
-    """
+    FAST_VERSION = -1
+    MAX_WORDS_IN_BATCH = 10000
 
-    # print " ........................ I was here .................".format(vocab_file)
-    result = 0
-    #print sentences
+    def train_batch_sg(model, sentences, alpha, work=None, compute_loss=False):
+        """
+        Update skip-gram model by training on a sequence of sentences.
+        Each sentence is a list of string tokens, which are looked up in the model's
+        vocab dictionary. Called internally from `Word2Vec.train()`.
+        This is the non-optimized, Python version. If you have cython installed, gensim
+        will use the optimized version from word2vec_inner instead.
+        """
 
-    
-    
-    for sentence in sentences:
+        # print " ........................ I was here .................".format(vocab_file)
+        result = 0
+        #print sentences
+
         
-       
-        word_vocabs = [model.wv.vocab[w] for w in sentence if w in model.wv.vocab and
-                        model.wv.vocab[w].sample_int > model.random.rand() * 2 ** 32]
-         
-        for pos, word in enumerate(word_vocabs):
-            reduced_window = model.random.randint(model.window)  # `b` in the original word2vec code
+        
+        for sentence in sentences:
             
-
-            # now go over all words from the (reduced) window, predicting each one in turn
-            start = max(0, pos - model.window + reduced_window)
-            for pos2, word2 in enumerate(word_vocabs[start:(pos + model.window + 1 - reduced_window)], start):
+        
+            word_vocabs = [model.wv.vocab[w] for w in sentence if w in model.wv.vocab and
+                            model.wv.vocab[w].sample_int > model.random.rand() * 2 ** 32]
+            
+            for pos, word in enumerate(word_vocabs):
+                reduced_window = model.random.randint(model.window)  # `b` in the original word2vec code
                 
-                # don't train on the `word` itself
-                if pos2 != pos:
-                    # print " the second word is .......................".format(model.wv.index2word[word2.index])
-                    train_sg_pair(
-                        model, model.wv.index2word[word.index], word2.index, alpha, compute_loss=compute_loss 
-                    )
-                           
+
+                # now go over all words from the (reduced) window, predicting each one in turn
+                start = max(0, pos - model.window + reduced_window)
+                for pos2, word2 in enumerate(word_vocabs[start:(pos + model.window + 1 - reduced_window)], start):
+                    
+                    # don't train on the `word` itself
+                    if pos2 != pos:
+                        # print " the second word is .......................".format(model.wv.index2word[word2.index])
+                        train_sg_pair(
+                            model, model.wv.index2word[word.index], word2.index, alpha, compute_loss=compute_loss 
+                        )
+                            
 
 
-        result += len(word_vocabs)
-    return result
+            result += len(word_vocabs)
+        return result
 
 
-def train_batch_sg_normal(model, sentences, alpha, work=None, compute_loss=False):
-    """
-    Update skip-gram model by training on a sequence of sentences.
-    Each sentence is a list of string tokens, which are looked up in the model's
-    vocab dictionary. Called internally from `Word2Vec.train()`.
-    This is the non-optimized, Python version. If you have cython installed, gensim
-    will use the optimized version from word2vec_inner instead.
-    """
+    def train_batch_sg_normal(model, sentences, alpha, work=None, compute_loss=False):
+        """
+        Update skip-gram model by training on a sequence of sentences.
+        Each sentence is a list of string tokens, which are looked up in the model's
+        vocab dictionary. Called internally from `Word2Vec.train()`.
+        This is the non-optimized, Python version. If you have cython installed, gensim
+        will use the optimized version from word2vec_inner instead.
+        """
 
-    # print " ........................ I was here .................".format(vocab_file)
-    result = 0
-    diction = {"country" : ["mulk","das-land"]}
-    for sentence in sentences:
-        word_vocabs = [model.wv.vocab[w] for w in sentence if w in model.wv.vocab and
-                        model.wv.vocab[w].sample_int > model.random.rand() * 2 ** 32]
+        # print " ........................ I was here .................".format(vocab_file)
+        result = 0
+        diction = {"country" : ["mulk","das-land"]}
+        for sentence in sentences:
+            word_vocabs = [model.wv.vocab[w] for w in sentence if w in model.wv.vocab and
+                            model.wv.vocab[w].sample_int > model.random.rand() * 2 ** 32]
+            for pos, word in enumerate(word_vocabs):
+                reduced_window = model.random.randint(model.window)  # `b` in the original word2vec code
+
+                # now go over all words from the (reduced) window, predicting each one in turn
+                start = max(0, pos - model.window + reduced_window)
+                for pos2, word2 in enumerate(word_vocabs[start:(pos + model.window + 1 - reduced_window)], start):
+                    # don't train on the `word` itself
+                    if pos2 != pos:
+                        # print " the second word is .......................".format(model.wv.index2word[word2.index])
+                        train_sg_pair_docs_only(
+                            model, model.wv.index2word[word.index], word2.index, alpha, compute_loss=compute_loss 
+                        )  
+
+            result += len(word_vocabs)
+        return result
+
+    def train_batch_cbow(model, sentences, alpha, work=None, neu1=None, compute_loss=False):
+        """
+        Update CBOW model by training on a sequence of sentences.
+        Each sentence is a list of string tokens, which are looked up in the model's
+        vocab dictionary. Called internally from `Word2Vec.train()`.
+        This is the non-optimized, Python version. If you have cython installed, gensim
+        will use the optimized version from word2vec_inner instead.
+        """
+        result = 0
+        for sentence in sentences:
+            word_vocabs = [model.wv.vocab[w] for w in sentence if w in model.wv.vocab and
+                            model.wv.vocab[w].sample_int > model.random.rand() * 2 ** 32]
+            for pos, word in enumerate(word_vocabs):
+                reduced_window = model.random.randint(model.window)  # `b` in the original word2vec code
+                start = max(0, pos - model.window + reduced_window)
+                window_pos = enumerate(word_vocabs[start:(pos + model.window + 1 - reduced_window)], start)
+                word2_indices = [word2.index for pos2, word2 in window_pos if (word2 is not None and pos2 != pos)]
+                l1 = np_sum(model.wv.syn0[word2_indices], axis=0)  # 1 x vector_size
+                if word2_indices and model.cbow_mean:
+                    l1 /= len(word2_indices)
+                train_cbow_pair(model, word, word2_indices, l1, alpha, compute_loss=compute_loss)
+            result += len(word_vocabs)
+        return result
+
+    def score_sentence_sg(model, sentence, work=None):
+        """
+        Obtain likelihood score for a single sentence in a fitted skip-gram representaion.
+        The sentence is a list of Vocab objects (or None, when the corresponding
+        word is not in the vocabulary). Called internally from `Word2Vec.score()`.
+        This is the non-optimized, Python version. If you have cython installed, gensim
+        will use the optimized version from word2vec_inner instead.
+        """
+        log_prob_sentence = 0.0
+        if model.negative:
+            raise RuntimeError("scoring is only available for HS=True")
+
+        word_vocabs = [model.wv.vocab[w] for w in sentence if w in model.wv.vocab]
         for pos, word in enumerate(word_vocabs):
-            reduced_window = model.random.randint(model.window)  # `b` in the original word2vec code
+            if word is None:
+                continue  # OOV word in the input sentence => skip
 
-            # now go over all words from the (reduced) window, predicting each one in turn
-            start = max(0, pos - model.window + reduced_window)
-            for pos2, word2 in enumerate(word_vocabs[start:(pos + model.window + 1 - reduced_window)], start):
-                # don't train on the `word` itself
-                if pos2 != pos:
-                    # print " the second word is .......................".format(model.wv.index2word[word2.index])
-                    train_sg_pair_docs_only(
-                        model, model.wv.index2word[word.index], word2.index, alpha, compute_loss=compute_loss 
-                    )  
+            # now go over all words from the window, predicting each one in turn
+            start = max(0, pos - model.window)
+            for pos2, word2 in enumerate(word_vocabs[start: pos + model.window + 1], start):
+                # don't train on OOV words and on the `word` itself
+                if word2 is not None and pos2 != pos:
+                    log_prob_sentence += score_sg_pair(model, word, word2)
 
-        result += len(word_vocabs)
-    return result
+        return log_prob_sentence
 
-def train_batch_cbow(model, sentences, alpha, work=None, neu1=None, compute_loss=False):
-    """
-    Update CBOW model by training on a sequence of sentences.
-    Each sentence is a list of string tokens, which are looked up in the model's
-    vocab dictionary. Called internally from `Word2Vec.train()`.
-    This is the non-optimized, Python version. If you have cython installed, gensim
-    will use the optimized version from word2vec_inner instead.
-    """
-    result = 0
-    for sentence in sentences:
-        word_vocabs = [model.wv.vocab[w] for w in sentence if w in model.wv.vocab and
-                        model.wv.vocab[w].sample_int > model.random.rand() * 2 ** 32]
+    def score_sentence_cbow(model, sentence, work=None, neu1=None):
+        """
+        Obtain likelihood score for a single sentence in a fitted CBOW representaion.
+        The sentence is a list of Vocab objects (or None, where the corresponding
+        word is not in the vocabulary. Called internally from `Word2Vec.score()`.
+        This is the non-optimized, Python version. If you have cython installed, gensim
+        will use the optimized version from word2vec_inner instead.
+        """
+        log_prob_sentence = 0.0
+        if model.negative:
+            raise RuntimeError("scoring is only available for HS=True")
+
+        word_vocabs = [model.wv.vocab[w] for w in sentence if w in model.wv.vocab]
         for pos, word in enumerate(word_vocabs):
-            reduced_window = model.random.randint(model.window)  # `b` in the original word2vec code
-            start = max(0, pos - model.window + reduced_window)
-            window_pos = enumerate(word_vocabs[start:(pos + model.window + 1 - reduced_window)], start)
+            if word is None:
+                continue  # OOV word in the input sentence => skip
+
+            start = max(0, pos - model.window)
+            window_pos = enumerate(word_vocabs[start:(pos + model.window + 1)], start)
             word2_indices = [word2.index for pos2, word2 in window_pos if (word2 is not None and pos2 != pos)]
-            l1 = np_sum(model.wv.syn0[word2_indices], axis=0)  # 1 x vector_size
+            l1 = np_sum(model.wv.syn0[word2_indices], axis=0)  # 1 x layer1_size
             if word2_indices and model.cbow_mean:
                 l1 /= len(word2_indices)
-            train_cbow_pair(model, word, word2_indices, l1, alpha, compute_loss=compute_loss)
-        result += len(word_vocabs)
-    return result
+            log_prob_sentence += score_cbow_pair(model, word, l1)
 
-def score_sentence_sg(model, sentence, work=None):
-    """
-    Obtain likelihood score for a single sentence in a fitted skip-gram representaion.
-    The sentence is a list of Vocab objects (or None, when the corresponding
-    word is not in the vocabulary). Called internally from `Word2Vec.score()`.
-    This is the non-optimized, Python version. If you have cython installed, gensim
-    will use the optimized version from word2vec_inner instead.
-    """
-    log_prob_sentence = 0.0
-    if model.negative:
-        raise RuntimeError("scoring is only available for HS=True")
-
-    word_vocabs = [model.wv.vocab[w] for w in sentence if w in model.wv.vocab]
-    for pos, word in enumerate(word_vocabs):
-        if word is None:
-            continue  # OOV word in the input sentence => skip
-
-        # now go over all words from the window, predicting each one in turn
-        start = max(0, pos - model.window)
-        for pos2, word2 in enumerate(word_vocabs[start: pos + model.window + 1], start):
-            # don't train on OOV words and on the `word` itself
-            if word2 is not None and pos2 != pos:
-                log_prob_sentence += score_sg_pair(model, word, word2)
-
-    return log_prob_sentence
-
-def score_sentence_cbow(model, sentence, work=None, neu1=None):
-    """
-    Obtain likelihood score for a single sentence in a fitted CBOW representaion.
-    The sentence is a list of Vocab objects (or None, where the corresponding
-    word is not in the vocabulary. Called internally from `Word2Vec.score()`.
-    This is the non-optimized, Python version. If you have cython installed, gensim
-    will use the optimized version from word2vec_inner instead.
-    """
-    log_prob_sentence = 0.0
-    if model.negative:
-        raise RuntimeError("scoring is only available for HS=True")
-
-    word_vocabs = [model.wv.vocab[w] for w in sentence if w in model.wv.vocab]
-    for pos, word in enumerate(word_vocabs):
-        if word is None:
-            continue  # OOV word in the input sentence => skip
-
-        start = max(0, pos - model.window)
-        window_pos = enumerate(word_vocabs[start:(pos + model.window + 1)], start)
-        word2_indices = [word2.index for pos2, word2 in window_pos if (word2 is not None and pos2 != pos)]
-        l1 = np_sum(model.wv.syn0[word2_indices], axis=0)  # 1 x layer1_size
-        if word2_indices and model.cbow_mean:
-            l1 /= len(word2_indices)
-        log_prob_sentence += score_cbow_pair(model, word, l1)
-
-    return log_prob_sentence
+        return log_prob_sentence
 
 
 def train_sg_pair(model, word, context_index, alpha, learn_vectors=True, learn_hidden=True,
@@ -1751,7 +1751,7 @@ class Word2VecVocab(utils.SaveLoad):
         self.index2disword = []
         self.index2nondisword = []
         vocab_size = len(wv.index2word)
-        print type(self.dis_vocab)
+        #print type(self.dis_vocab)
         for word_ind in xrange(vocab_size):
             if wv.index2word[word_ind] in self.dis_vocab:
                 self.isdis.append(0)

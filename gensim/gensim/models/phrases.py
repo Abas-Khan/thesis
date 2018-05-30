@@ -135,7 +135,7 @@ class SentenceAnalyzer(object):
                     bigram_count=float(vocab[bigram]))
         return -1
 
-    def analyze_sentence(self, sentence, threshold, common_terms, scorer,custom_bigrams = []):
+    def analyze_sentence(self, sentence, threshold, common_terms, scorer,custom_bigrams):
         """Analyze a sentence
 
         `sentence` a token list representing the sentence to be analyzed.
@@ -160,6 +160,7 @@ class SentenceAnalyzer(object):
                 chain = [last_uncommon] + in_between + [word]
                 # test between last_uncommon
                 #print chain
+                #print chain in my_phrases," ",my_phrases
                 #print "........",my_phrases
                 
                 
@@ -171,7 +172,7 @@ class SentenceAnalyzer(object):
                 )
                 
                 if chain in my_phrases:
-                    print "........",chain
+                    #print "........",chain
                     score = 1.0
                     #print threshold
                     
@@ -473,6 +474,8 @@ class Phrases(SentenceAnalyzer, PhrasesTransformation):
                 min_count=float(self.min_count),
                 corpus_word_count=float(self.corpus_word_count),
             ),
+            custom_bigrams = self.custom_bigrams
+
 
         )
         for sentence in sentences:

@@ -65,7 +65,7 @@ from numpy import zeros, float32 as REAL, empty, ones, \
 from gensim.utils import call_on_class_only
 from gensim import utils, matutils  # utility fnc for pickling, common scipy operations etc
 from gensim.models.word2vec import Word2VecKeyedVectors, Word2VecVocab, Word2VecTrainables, train_cbow_pair,\
-    train_sg_pair, train_batch_sg ,train_sg_pair_docs_only,train_cbow_pair_dis2vec,train_batch_sg_normal
+    train_sg_pair, train_batch_sg
 from six.moves import xrange
 from six import string_types, integer_types, itervalues
 from gensim.models.base_any2vec import BaseWordEmbeddingsModel

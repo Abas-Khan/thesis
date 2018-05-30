@@ -298,7 +298,7 @@ def stem_text(text):
     u'while it is quit us to be abl to search a larg collect of document almost instantly.'
 
     """
-    text = utils.to_unicode(text)
+    #text = utils.to_unicode(text)
     p = PorterStemmer()
     return ' '.join(p.stem(word) for word in text.split())
 
