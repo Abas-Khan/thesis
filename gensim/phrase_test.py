@@ -29,3 +29,7 @@ print(bigram[sent])
 print trigram[bigram[sent]]
 
 #print item
+bigram.save('./preprocessed_big_phrases')
+print "ngrams saved"
+trigram.save('./preprocessed_trigram_phrases')
+print "ngrams saved"

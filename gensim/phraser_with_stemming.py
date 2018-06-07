@@ -8,7 +8,11 @@ import re
 from gensim.models import Phrases
 from gensim.models.phrases import Phraser
 from gensim.parsing.preprocessing import remove_stopwords
+from word2number import w2n
 
+def fix_age(matchobj):
+    #print matchobj.group(0)
+    return str(w2n.word_to_num(matchobj.group(0)))+" "  
 
 class LineIterator(object):
     """Simple format: one sentence = one line; words already preprocessed and separated by whitespace.
@@ -36,7 +40,18 @@ class LineIterator(object):
                     #line = re.sub(r"(?<=\w[^\d])\.|\(|\)|\[|\]|,(?= )|((?<=[^\w])-|-(?=[^\w]))|'","",line)
                     
                     #NOTE split() will take care of extra spaces
-                    line = re.sub(r"(?<=\w[^\d])\.|\.(?=[^\d])|\(|\)|\[|\]|,(?= )|((?<=[^\w])-|-(?=[^\w]))|:"," ",line)
+                    line = re.sub(r"(?<=\w[^\d])\.|\.(?=[^\d])|\(|\)|\[|\]|,(?= )|((?<=[^\w])-|-(?=[^\w]))|:|\?|\;"," ",line)
+                    
+                    
+                    
+                    #NOTE convert ages to numeric
+                    
+                    try:
+                        line = re.sub(r"([a-z]+ (?=year-old))",fix_age,line)
+                    except:
+                        pass
+                      
+
                     line = remove_stopwords(line)
                     #doc = filter(lambda word: word not in stopwords.words('english'),line.split(" ") )
                     line = stem_text(line)
@@ -55,7 +70,7 @@ my_trigrams = [['lynch_syndrom', 'i'], ['transvers_colon', 'cancer'], ['relaps_f
 
 
 #NOTE I used tr -d to remove ' from the file
-contents = LineIterator("million_records.txt")
+contents = LineIterator("age_fix.txt")
 
 phrases = Phrases(contents,threshold=0.25,scoring="npmi",custom_bigrams=my_bigrams)
 bigram = Phraser(phrases)
@@ -64,7 +79,7 @@ tri_phase = Phrases(bigram[contents],custom_bigrams=my_trigrams,threshold=0.25,s
 trigram = Phraser(tri_phase)
 print "trirams calculated"
 
-bigram.save('./gensim_stopwords_stemmed_big_phrases')
+bigram.save('./preprocessed_big_phrases')
 print "ngrams saved"
-trigram.save('./gensim_stopwords_stemmed_trigram_phrases')
+trigram.save('./preprocessed_trigram_phrases')
 print "ngrams saved"

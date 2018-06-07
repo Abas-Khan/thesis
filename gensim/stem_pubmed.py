@@ -35,6 +35,7 @@ from gensim import utils, matutils
 from gensim.parsing.preprocessing import stem_text
 from gensim.parsing.preprocessing import remove_stopwords
 from gensim.utils import any2unicode
+from word2number import w2n
 logging.basicConfig()
 
 class Dis2Vec(object):
@@ -109,7 +110,7 @@ class Dis2Vec(object):
         for i, word in enumerate(words):
 	        pyplot.annotate(word, xy=(result[i, 0], result[i, 1]))
         pyplot.show()   
-        out_folder = './Fixed_Labels_Multi-tag/'
+        out_folder = './preprocessed_negative_sampling_ten/'
         if not os.path.isdir(out_folder):
             os.makedirs(out_folder)
         if model.sample == 0:
@@ -117,18 +118,23 @@ class Dis2Vec(object):
         else:
             model.save(out_folder + 'mod')
 
+def fix_age(matchobj):
+    #print matchobj.group(0)
+    return str(w2n.word_to_num(matchobj.group(0)))+" "  
 
 class TaggedPubMed(object):
 
     def __init__(self, source):
     
         self.source = source
-        self.bigram = Phraser.load('./gensim_stopwords_stemmed_big_phrases')
-        self.trigram = Phraser.load('./gensim_stopwords_stemmed_trigram_phrases')
+        self.bigram = Phraser.load('./preprocessed_big_phrases')
+        self.trigram = Phraser.load('./preprocessed_trigram_phrases')
+
+  
 
     def __iter__(self):
-        with utils.smart_open(self.source) as fin,utils.smart_open("tag_info.txt","r") as exta_tag:
-            for idx,(line,tag_info) in enumerate(zip(fin,exta_tag)):
+        with utils.smart_open(self.source) as fin:
+            for item_no, line in enumerate(fin):
 
                 #line = re.sub(r"(?<=\w[^\d])\.|\.(?=[^\d])|\(|\)|\[|\]|,(?= )|((?<=[^\w])-|-(?=[^\w]))|'","",line)
 
@@ -138,22 +144,21 @@ class TaggedPubMed(object):
 
                 #line = re.sub(r"\.(?=[^\d])|(?<=\w|\d)\(|(?<=\w|\d)\)"," ",line)
                 #line = re.sub(r"(?<=\w[^\d])\.|\(|\)|\[|\]|,(?= )|((?<=[^\w])-|-(?=[^\w]))|'","",line)
-                tag_info = re.sub(r"(?<=^) ","",tag_info)
-                tags=  tag_info.replace("\n","").split(",")
-                labels = []
+                
                 
                 label = " ".join(line.split(" ")[:10])
 
                 #NOTE split() will take care of extra spaces
-                line = re.sub(r"(?<=\w[^\d])\.|\.(?=[^\d])|\(|\)|\[|\]|,(?= )|((?<=[^\w])-|-(?=[^\w]))|:"," ",line)
-                line = remove_stopwords(line)
-
+                line = re.sub(r"(?<=\w[^\d])\.|\.(?=[^\d])|\(|\)|\[|\]|,(?= )|((?<=[^\w])-|-(?=[^\w]))|:|\?|\;"," ",line)
                 
-                labels.append(label)
-                #print label  
-                if tags!=['']:
-                    #   print tags
-                    labels.extend(tags)
+                
+                #NOTE convert ages to numeric
+                    
+                try:
+                    line = re.sub(r"([a-z]+ (?=year-old))",fix_age,line)
+                except:
+                    pass
+                line = remove_stopwords(line)
                 
                 line = stem_text(line).split()
                 
@@ -164,7 +169,7 @@ class TaggedPubMed(object):
                 
 
                 #doc = [element.lower() for element in doc]
-                yield TaggedDocument(doc, labels)   
+                yield TaggedDocument(doc, [label])   
                         
 
 def main():
@@ -172,7 +177,8 @@ def main():
     
     #NOTE I used tr -d to remove ' from the file
     #contents = TaggedPubMed('big_home_test.txt')
-    contents = TaggedPubMed("million_records.txt") 
+    contents = TaggedPubMed("age_fix.txt") 
+   
     
 
 
