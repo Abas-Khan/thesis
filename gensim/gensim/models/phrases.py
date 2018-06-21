@@ -108,6 +108,7 @@ def _is_single(obj):
     is a corpus if it is an iterable of documents.
     """
     obj_iter = iter(obj)
+    temp_iter = obj_iter
     try:
         peek = next(obj_iter)
         obj_iter = it.chain([peek], obj_iter)
@@ -117,9 +118,12 @@ def _is_single(obj):
     if isinstance(peek, string_types):
         # It's a document, return the iterator
         return True, obj_iter
+    if temp_iter == obj:
+        # Checking for iterator to the object
+        return False, obj_iter
     else:
         # If the first item isn't a string, assume obj is a corpus
-        return False, obj_iter
+        return False, obj
 
 
 class SentenceAnalyzer(object):
@@ -150,35 +154,25 @@ class SentenceAnalyzer(object):
         last_uncommon = None
         in_between = []
         my_phrases = custom_bigrams
+
+        #print "my phrase is ",my_phrases
         
         # adding None is a trick that helps getting an automatic happy ending
         # has it won't be a common_word, nor score
         for word in s + [None]:
-            
             is_common = word in common_terms
             if not is_common and last_uncommon:
                 chain = [last_uncommon] + in_between + [word]
-                # test between last_uncommon
                 #print chain
-                #print chain in my_phrases," ",my_phrases
-                #print "........",my_phrases
-                
-                
+                # test between last_uncommon
                 score = self.score_item(
                     worda=last_uncommon,
                     wordb=word,
                     components=chain,
                     scorer=scorer,
                 )
-                
-                if chain in my_phrases:
-                    #print "........",chain
-                    score = 1.0
-                    #print threshold
-                    
-
-                if score > threshold:
-                    #print chain," the score ",score
+                if score > threshold or chain in my_phrases:
+                    #print "got it"
                     yield (chain, score)
                     last_uncommon = None
                     in_between = []
@@ -473,14 +467,10 @@ class Phrases(SentenceAnalyzer, PhrasesTransformation):
                 len_vocab=float(len(self.vocab)),
                 min_count=float(self.min_count),
                 corpus_word_count=float(self.corpus_word_count),
-            ),
-            custom_bigrams = self.custom_bigrams
-
-
+            ),custom_bigrams = self.custom_bigrams
         )
         for sentence in sentences:
             bigrams = analyze_sentence(sentence)
-            
             # keeps only not None scores
             filtered = ((words, score) for words, score in bigrams if score is not None)
             for words, score in filtered:
@@ -517,7 +507,7 @@ class Phrases(SentenceAnalyzer, PhrasesTransformation):
             # if the input is an entire corpus (rather than a single sentence),
             # return an iterable stream.
             return self._apply(sentence)
-        
+
         delimiter = self.delimiter
         bigrams = self.analyze_sentence(
             sentence,
@@ -528,17 +518,11 @@ class Phrases(SentenceAnalyzer, PhrasesTransformation):
                 len_vocab=float(len(self.vocab)),
                 min_count=float(self.min_count),
                 corpus_word_count=float(self.corpus_word_count),
-            ),
-            custom_bigrams=self.custom_bigrams
+            ),custom_bigrams=self.custom_bigrams
         )
-
-        
         new_s = []
-        
         for words, score in bigrams:
-            print words
             if score is not None:
-                #print words
                 words = delimiter.join(words)
             new_s.append(words)
 
@@ -577,7 +561,7 @@ def pseudocorpus(source_vocab, sep, common_terms=frozenset()):
                     components.append(sep.join(tail))
                 yield components
 
-import itertools
+
 class Phraser(SentenceAnalyzer, PhrasesTransformation):
     """
     Minimal state & functionality to apply results of a Phrases model to tokens.
@@ -592,8 +576,8 @@ class Phraser(SentenceAnalyzer, PhrasesTransformation):
     """
 
     def __init__(self, phrases_model):
-        self.custom_bigrams = phrases_model.custom_bigrams
         self.threshold = phrases_model.threshold
+        self.custom_bigrams = phrases_model.custom_bigrams
         self.min_count = phrases_model.min_count
         self.delimiter = phrases_model.delimiter
         self.scoring = phrases_model.scoring
@@ -647,12 +631,8 @@ class Phraser(SentenceAnalyzer, PhrasesTransformation):
             common_terms=self.common_terms,
             scorer=None,custom_bigrams=self.custom_bigrams)  # we will use our score_item function redefinition
         new_s = []
-        
-        
         for words, score in bigrams:
-            #print "just words",words
             if score is not None:
-                #print "?",words
                 words = delimiter.join(words)
             new_s.append(words)
         return [utils.to_unicode(w) for w in new_s]

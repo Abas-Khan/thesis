@@ -384,6 +384,84 @@ class WordEmbeddingsKeyedVectors(BaseKeyedVectors):
         result = [(self.index2word[sim], float(dists[sim])) for sim in best if sim not in all_words]
         return result[:topn]
 
+
+    def most_similar_softCosine(self,similarity_matrix, positive=None, negative=None, topn=10, restrict_vocab=None, indexer=None):
+        """
+        Find the top-N most similar words. Positive words contribute positively towards the
+        similarity, negative words negatively.
+        This method computes cosine similarity between a simple mean of the projection
+        weight vectors of the given words and the vectors for each word in the model.
+        The method corresponds to the `word-analogy` and `distance` scripts in the original
+        word2vec implementation.
+        Parameters
+        ----------
+        positive : :obj: `list` of :obj: `str`
+            List of words that contribute positively.
+        negative : :obj: `list` of :obj: `str`
+            List of words that contribute negatively.
+        topn : int
+            Number of top-N similar words to return.
+        restrict_vocab : int
+            Optional integer which limits the range of vectors which
+            are searched for most-similar values. For example, restrict_vocab=10000 would
+            only check the first 10000 word vectors in the vocabulary order. (This may be
+            meaningful if you've sorted the vocabulary by descending frequency.)
+        Returns
+        -------
+        :obj: `list` of :obj: `tuple`
+            Returns a list of tuples (word, similarity)
+        Examples
+        --------
+        >>> trained_model.most_similar(positive=['woman', 'king'], negative=['man'])
+        [('queen', 0.50882536), ...]
+        """
+        if positive is None:
+            positive = []
+        if negative is None:
+            negative = []
+
+        self.init_sims()
+
+        if isinstance(positive, string_types) and not negative:
+            # allow calls like most_similar('dog'), as a shorthand for most_similar(['dog'])
+            positive = [positive]
+
+        # add weights for each word, if not already present; default to 1.0 for positive and -1.0 for negative words
+        positive = [
+            (word, 1.0) if isinstance(word, string_types + (ndarray,)) else word
+            for word in positive
+        ]
+        negative = [
+            (word, -1.0) if isinstance(word, string_types + (ndarray,)) else word
+            for word in negative
+        ]
+
+        # compute the weighted average of all words
+        all_words, mean = set(), []
+        for word, weight in positive + negative:
+            if isinstance(word, ndarray):
+                mean.append(weight * word)
+            else:
+                mean.append(weight * self.word_vec(word, use_norm=True))
+                if word in self.vocab:
+                    all_words.add(self.vocab[word].index)
+        if not mean:
+            raise ValueError("cannot compute similarity with no input")
+        mean = matutils.unitvec(array(mean).mean(axis=0)).astype(REAL)
+
+        if indexer is not None:
+            return indexer.most_similar(mean, topn)
+
+        limited = self.vectors_norm if restrict_vocab is None else self.vectors_norm[:restrict_vocab]
+        dists = dot(limited, mean)
+        dists = dot(dists,similarity_matrix)
+        if not topn:
+            return dists
+        best = matutils.argsort(dists, topn=topn + len(all_words), reverse=True)
+        # ignore (don't return) words from the input
+        result = [(self.index2word[sim], float(dists[sim])) for sim in best if sim not in all_words]
+        return result[:topn]
+
     def similar_by_word(self, word, topn=10, restrict_vocab=None):
         """
         Find the top-N most similar words.
@@ -1513,7 +1591,7 @@ class Doc2VecKeyedVectors(BaseKeyedVectors):
         """Return string key for given i_index, if available. Otherwise return raw int doctag (same int)."""
         candidate_offset = i_index - self.max_rawint - 1
         if 0 <= candidate_offset < len(self.offset2doctag):
-            return self.ffset2doctag[candidate_offset]
+            return self.offset2doctag[candidate_offset]
         else:
             return i_index
 

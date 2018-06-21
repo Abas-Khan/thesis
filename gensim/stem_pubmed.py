@@ -110,7 +110,7 @@ class Dis2Vec(object):
         for i, word in enumerate(words):
 	        pyplot.annotate(word, xy=(result[i, 0], result[i, 1]))
         pyplot.show()   
-        out_folder = './preprocessed_negative_sampling_ten/'
+        out_folder = './latest/'
         if not os.path.isdir(out_folder):
             os.makedirs(out_folder)
         if model.sample == 0:
