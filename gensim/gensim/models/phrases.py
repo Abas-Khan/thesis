@@ -139,7 +139,7 @@ class SentenceAnalyzer(object):
                     bigram_count=float(vocab[bigram]))
         return -1
 
-    def analyze_sentence(self, sentence, threshold, common_terms, scorer,custom_bigrams):
+    def analyze_sentence(self, sentence, threshold, common_terms, scorer,custom_bigrams,ignore_list):
         """Analyze a sentence
 
         `sentence` a token list representing the sentence to be analyzed.
@@ -154,6 +154,8 @@ class SentenceAnalyzer(object):
         last_uncommon = None
         in_between = []
         my_phrases = custom_bigrams
+        ignore_list = ignore_list
+        
 
         #print "my phrase is ",my_phrases
         
@@ -171,6 +173,13 @@ class SentenceAnalyzer(object):
                     components=chain,
                     scorer=scorer,
                 )
+                if ignore_list and (any(x in ignore_list for x in chain)):
+                    #print chain
+                    if chain not in my_phrases:
+                        score = threshold - 1
+                        #print chain
+                        #sys.exit()
+                        #continue
                 if score > threshold or chain in my_phrases:
                     #print "got it"
                     yield (chain, score)
@@ -243,7 +252,7 @@ class Phrases(SentenceAnalyzer, PhrasesTransformation):
 
     def __init__(self, sentences=None, min_count=5, threshold=10.0,
                  max_vocab_size=40000000, delimiter=b'_', progress_per=10000,
-                 scoring='default', common_terms=frozenset(),custom_bigrams=None):
+                 scoring='default', common_terms=frozenset(),custom_bigrams=None,ignore_list = None):
         """
         Initialize the model from an iterable of `sentences`. Each sentence must be
         a list of words (unicode strings) that will be used for training.
@@ -334,6 +343,7 @@ class Phrases(SentenceAnalyzer, PhrasesTransformation):
                 raise ValueError('scoring function missing expected parameters')
 
         self.min_count = min_count
+        self.ignore_list = ignore_list
         self.custom_bigrams = custom_bigrams
         self.threshold = threshold
         self.max_vocab_size = max_vocab_size
@@ -467,7 +477,7 @@ class Phrases(SentenceAnalyzer, PhrasesTransformation):
                 len_vocab=float(len(self.vocab)),
                 min_count=float(self.min_count),
                 corpus_word_count=float(self.corpus_word_count),
-            ),custom_bigrams = self.custom_bigrams
+            ),custom_bigrams = self.custom_bigrams, ignore_list = self.ignore_list
         )
         for sentence in sentences:
             bigrams = analyze_sentence(sentence)
@@ -518,7 +528,7 @@ class Phrases(SentenceAnalyzer, PhrasesTransformation):
                 len_vocab=float(len(self.vocab)),
                 min_count=float(self.min_count),
                 corpus_word_count=float(self.corpus_word_count),
-            ),custom_bigrams=self.custom_bigrams
+            ),custom_bigrams=self.custom_bigrams,ignore_list = self.ignore_list
         )
         new_s = []
         for words, score in bigrams:
@@ -578,6 +588,7 @@ class Phraser(SentenceAnalyzer, PhrasesTransformation):
     def __init__(self, phrases_model):
         self.threshold = phrases_model.threshold
         self.custom_bigrams = phrases_model.custom_bigrams
+        self.ignore_list    = phrases_model.ignore_list
         self.min_count = phrases_model.min_count
         self.delimiter = phrases_model.delimiter
         self.scoring = phrases_model.scoring
@@ -629,7 +640,7 @@ class Phraser(SentenceAnalyzer, PhrasesTransformation):
             sentence,
             threshold=self.threshold,
             common_terms=self.common_terms,
-            scorer=None,custom_bigrams=self.custom_bigrams)  # we will use our score_item function redefinition
+            scorer=None,custom_bigrams=self.custom_bigrams,ignore_list = self.ignore_list)  # we will use our score_item function redefinition
         new_s = []
         for words, score in bigrams:
             if score is not None:
